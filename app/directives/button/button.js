@@ -5,14 +5,14 @@
       restrict: 'E',
       templateUrl: './app/directives/button/button.html',
       controller: function($scope) {
-        this.arr = ['0','1','2','3','4','5','6','7','8','9','+','-','*','/', '='];
+        this.arr = ['0','1','2','3','4','5','6','7','8','9','.', '+','-','*','/', '='];
         this.toggle = true;
 
         this.reset = () => {
           $scope.first = '0';
           $scope.second = '';
           $scope.operator = undefined;
-          this.toggle = 1;
+          this.toggle = true;
         };
 
         this.back = () => {
@@ -32,7 +32,7 @@
           $scope.second = $scope.second.slice(0, -1);
         }
 
-        this.setValue = (value) => {
+        this.setValue = value => {
           if (this.toggle) {
             this.checkFirstInput(value);
           } else {
@@ -40,13 +40,13 @@
           }
         };
 
-        this.checkFirstInput = (input) => {
+        this.checkFirstInput = input => {
           if (this.checkFirstSymbol(input) ) {
             this.checkIfInputDigit(input);
           }
         };
 
-        this.checkFirstSymbol = (input) => {
+        this.checkFirstSymbol = input => {
           if ($scope.first === '0' && !this.IsInputNaN(input) ) {
             $scope.first = input;
             return false;
@@ -65,7 +65,7 @@
 
         };
 
-        this.checkIfInputDigit = (input) => {
+        this.checkIfInputDigit = input => {
           if ( this.IsInputNaN(input) ) {
               if (input !== '=') {
                 $scope.operator = input;
@@ -77,19 +77,23 @@
         };
 
 
-        this.checkSecondInput = (input) => {
+        this.checkSecondInput = input => {
           if ( $scope.second === '' && !this.IsInputNaN(input) ) {
             $scope.second = input;
           } else {
             if (!this.IsInputNaN(input)) {
               $scope.second = $scope.second.concat(input);
             }
-            
+
           }
 
           if ( this.IsInputNaN(input) ) {
 
             if (input !== '=' ) {
+              this.toggle = false;
+              if ($scope.second !== '') {
+                this.makeSomeMath();
+              }
               this.toggle = false;
               $scope.operator = input;
             }else {
@@ -99,7 +103,7 @@
 
         };
 
-        this.makeSomeMath = (value) => {
+        this.makeSomeMath = value => {
           switch($scope.operator) {
             case '+':
                     this.add();
@@ -119,23 +123,23 @@
             this.toggle = true;
         };
 
-        this.add = ()=> {
+        this.add = () => {
           $scope.first = Number($scope.first) + Number($scope.second);
         };
 
-        this.multiple = ()=> {
+        this.multiple = () => {
           $scope.first = Number($scope.first) * Number($scope.second);
         };
 
-        this.minus = ()=> {
+        this.minus = () => {
           $scope.first =  Number($scope.first) - Number($scope.second);
         };
 
-        this.divide = ()=> {
+        this.divide = () => {
           $scope.first = Number($scope.first) / Number($scope.second);
         };
 
-        this.IsInputNaN = (input) => isNaN(Number(input));
+        this.IsInputNaN = input => isNaN(Number(input));
       },
       controllerAs: 'button'
     };
