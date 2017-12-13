@@ -1,0 +1,11 @@
+<div  class='key'
+  ng-repeat='btn in button.arr'
+  ng-init='btnValue = btn'
+  ng-click="button.setValue(btnValue)">
+  <p class='btn'>{{btn}}</p>
+</div>
+
+<div class='reset' >
+	<p class='edit' ng-click='button.reset()'>Reset</p>
+	<p class='edit' ng-click='button.back()'>C</p>
+</div>
