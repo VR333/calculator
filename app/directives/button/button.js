@@ -132,6 +132,8 @@
           this.toggle = false;
         };
 
+        // arithmetic operations to be done with makeSomeMath() execution
+
         this.add = () => {
           $scope.first = Number($scope.first) + Number($scope.second);
         };
@@ -152,7 +154,11 @@
           $scope.first = Number($scope.first) % Number($scope.second);
         };
 
+        // Check if input value is non-digit one
+
         this.IsInputNaN = input => isNaN(Number(input));
+
+        // clear calculator operands and operator
 
         this.reset = () => {
           $scope.first = '0';
@@ -160,6 +166,8 @@
           $scope.operator = undefined;
           this.toggle = true;
         };
+
+        // clear last symbol of a current operand
 
         this.back = () => {
           if (this.toggle) {
