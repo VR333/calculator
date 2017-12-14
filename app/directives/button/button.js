@@ -73,6 +73,10 @@
             $scope.first = '0';
           }
 
+          if ($scope.second && $scope.operator) {
+            return this.actionPlusChooseNextOperator(operator);
+          }
+
           $scope.operator = operator;
           this.toggle = false;
         };
@@ -113,6 +117,16 @@
             $scope.second = '';
             $scope.operator = '';
             this.toggle = true;
+        };
+        /*
+        * start makeSomeMath() when both operands and operator is present
+        * and choose clicked operator for next action
+        */
+
+        this.actionPlusChooseNextOperator = operator => {
+          this.makeSomeMath(operator);
+          $scope.operator = operator;
+          this.toggle = false;
         };
 
         this.add = () => {
