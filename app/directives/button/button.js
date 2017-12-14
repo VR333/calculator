@@ -5,102 +5,70 @@
       restrict: 'E',
       templateUrl: './app/directives/button/button.html',
       controller: function($scope) {
-        this.arr = ['0','1','2','3','4','5','6','7','8','9','.', '+','-','*','/', '='];
+        this.digits = ['0','1','2','3','4','5','6','7','8','9'];
+        this.operators = ['+','-','*','/', '%'];
         this.toggle = true;
 
-        this.reset = () => {
-          $scope.first = '0';
-          $scope.second = '';
-          $scope.operator = undefined;
-          this.toggle = true;
+        this.handleEquilButton = () => {
+          if ($scope.second === '.') {
+            $scope.second = '0';
+          }
+          if ($scope.operator && $scope.second) {
+            this.makeSomeMath($scope.operator);
+          }
         };
 
-        this.back = () => {
-          if (this.toggle) {
-            if ($scope.first.length === 1) {
-              $scope.first = '0';
-              return true;
-            }
-            $scope.first = $scope.first.slice(0, -1);
-            return true;
+        this.handleDecimalDot = dot => {
+          if ( this.toggle && !$scope.first.includes('.') ) {
+            return $scope.first = $scope.first.concat(dot);
+          }
+          if ( $scope.operator && !$scope.second.includes('.') ) {
+            $scope.second = $scope.second.concat(dot);
           }
 
-          if ($scope.second.length === 1) {
-              $scope.second = '';
-              return true;
-          }
-          $scope.second = $scope.second.slice(0, -1);
-        }
+        };
 
         this.setValue = value => {
           if (this.toggle) {
-            this.checkFirstInput(value);
-          } else {
-            this.checkSecondInput(value);
+            return this.setFirstOperand(value);
           }
+          this.setSecondOperand(value);
         };
 
-        this.checkFirstInput = input => {
-          if (this.checkFirstSymbol(input) ) {
-            this.checkIfInputDigit(input);
+        this.setFirstOperand = firstOperand => {
+          if ($scope.first === '0') {
+            return $scope.first = firstOperand;
           }
+          $scope.first = $scope.first.concat(firstOperand);
         };
 
-        this.checkFirstSymbol = input => {
-          if ($scope.first === '0' && !this.IsInputNaN(input) ) {
-            $scope.first = input;
-            return false;
+        this.setSecondOperand = secondOperand => {
+          if ($scope.second == '') {
+            return $scope.second = secondOperand;
+          }
+          $scope.second = $scope.second.concat(secondOperand);
+        };
+
+        this.setOperator = operator => {
+          if ( this.checkForMinusNumber(operator) ) {
+            return true;
           }
 
-          if ($scope.first === '-' && input === '-') {
+          if ($scope.first === '-' || $scope.first === '-.') {
             $scope.first = '0';
-            return false;
           }
 
-          if ($scope.first === '0' && input === '-') {
-            $scope.first = input;
-            return false;
-          }
-          return true;
-
+          $scope.operator = operator;
+          this.toggle = false;
         };
 
-        this.checkIfInputDigit = input => {
-          if ( this.IsInputNaN(input) ) {
-              if (input !== '=') {
-                $scope.operator = input;
-                this.toggle = false;
-              }
-            } else {
-              $scope.first = $scope.first.concat(input);
+        this.checkForMinusNumber = minus => {
+          let condition = !$scope.first.includes('-') && $scope.first === '0';
+            if (minus === '-' && this.toggle && condition) {
+              $scope.first = minus;
+              return true;
             }
-        };
-
-
-        this.checkSecondInput = input => {
-          if ( $scope.second === '' && !this.IsInputNaN(input) ) {
-            $scope.second = input;
-          } else {
-            if (!this.IsInputNaN(input)) {
-              $scope.second = $scope.second.concat(input);
-            }
-
-          }
-
-          if ( this.IsInputNaN(input) ) {
-
-            if (input !== '=' ) {
-              this.toggle = false;
-              if ($scope.second !== '') {
-                this.makeSomeMath();
-              }
-              this.toggle = false;
-              $scope.operator = input;
-            }else {
-              this.makeSomeMath();
-            }
-          }
-
+            return false;
         };
 
         this.makeSomeMath = value => {
@@ -116,6 +84,9 @@
                     break;
             case '/':
                     this.divide();
+                    break;
+            case '%':
+                    this.module();
                     break;
             }
             $scope.second = '';
@@ -139,7 +110,35 @@
           $scope.first = Number($scope.first) / Number($scope.second);
         };
 
+        this.module = () => {
+          $scope.first = Number($scope.first) % Number($scope.second);
+        };
+
         this.IsInputNaN = input => isNaN(Number(input));
+
+        this.reset = () => {
+          $scope.first = '0';
+          $scope.second = '';
+          $scope.operator = undefined;
+          this.toggle = true;
+        };
+
+        this.back = () => {
+          if (this.toggle) {
+            if ($scope.first.length === 1) {
+              $scope.first = '0';
+              return true;
+            }
+            $scope.first = $scope.first.slice(0, -1);
+            return true;
+          }
+
+          if ($scope.second.length === 1) {
+              $scope.second = '';
+              return true;
+          }
+          $scope.second = $scope.second.slice(0, -1);
+        };
       },
       controllerAs: 'button'
     };
