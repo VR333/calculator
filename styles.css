@@ -12,6 +12,16 @@
    text-align: center;
    border: 1px solid skyblue;
    border-radius: 5px;
+   animation: circle 6s infinite;
+ }
+
+ @keyframes circle {
+   0% {top:200px; right: 0px}
+   20% {top:300px; right: 0px}
+   40% {top:200px; right: 400px}
+   60% {top:300px; right: -400px}
+   80% {top:0px; right: 0px; transform: rotate(180deg);}
+   100% {top:200px; right: 0px; transform: rotate(0deg);}
  }
 
  display {
@@ -27,8 +37,20 @@
  .computeResult {
    position: relative;
    text-align: right;
-   font-size: 1em;
+   font-size: 1.5em;
    margin-right: 1%;
+ }
+
+ #screen {
+   position: relative;
+   top: 63px;
+   animation: digit 6s infinite;
+ }
+
+ @keyframes digit {
+   0% {top: 63px;}
+   90% {top: 0px;}
+   100% {top: 63px;}
  }
 
  keyboard {
@@ -113,9 +135,4 @@ button {
  }
  #equil:hover {
    background-color: lightgreen;
- }
-
- #screen {
-   position: relative;
-   top: 80px;
  }
