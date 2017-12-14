@@ -114,3 +114,8 @@ button {
  #equil:hover {
    background-color: lightgreen;
  }
+
+ #screen {
+   position: relative;
+   top: 80px;
+ }
