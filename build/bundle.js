@@ -34366,6 +34366,7 @@ $provide.value("$locale", {
           if ($scope.operator && $scope.second) {
             this.makeSomeMath($scope.operator);
           }
+
         };
 
         // check for proper dot(.) usage..
@@ -34377,7 +34378,6 @@ $provide.value("$locale", {
           if ( $scope.operator && !$scope.second.includes('.') ) {
             $scope.second = $scope.second.concat(dot);
           }
-
         };
 
         // find out: first or second operand is adding..
@@ -34421,7 +34421,6 @@ $provide.value("$locale", {
           if ($scope.second && $scope.operator) {
             return this.actionPlusChooseNextOperator(operator);
           }
-
           $scope.operator = operator;
           this.toggle = false;
         };
@@ -34500,8 +34499,6 @@ $provide.value("$locale", {
         };
 
         // Check if input value is non-digit one
-
-        this.IsInputNaN = input => isNaN(Number(input));
 
         // clear calculator operands and operator
 

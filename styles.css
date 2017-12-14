@@ -12,16 +12,13 @@
    text-align: center;
    border: 1px solid skyblue;
    border-radius: 5px;
-   animation: circle 6s infinite;
+   animation: circle 2.3s;
  }
 
  @keyframes circle {
-   0% {top:200px; right: 0px}
-   20% {top:300px; right: 0px}
-   40% {top:200px; right: 400px}
-   60% {top:300px; right: -400px}
-   80% {top:0px; right: 0px; transform: rotate(180deg);}
-   100% {top:200px; right: 0px; transform: rotate(0deg);}
+   0% {top:200px; transform: rotate(0deg);}
+   50% {top:0px; transform: rotate(-180deg);}
+   100% {top:200px; transform: rotate(-360deg);}
  }
 
  display {
@@ -44,7 +41,7 @@
  #screen {
    position: relative;
    top: 63px;
-   animation: digit 6s infinite;
+   animation: digit 2.5s;
  }
 
  @keyframes digit {
