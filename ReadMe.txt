@@ -1,4 +1,4 @@
-I assume that have NodeJs and npm installed.
+I assume that you have NodeJs and npm installed.
 So you need only webpack and webpack-dev-server.
 just enter following command to install webpack:
      npm i -g webpack
@@ -23,5 +23,4 @@ bundle.js  1.29 MB       0  [emitted]  [big]  main
    [5] ./app/directives/button/button.js 2.96 kB {0} [built]
     + 1 hidden module
 
-2. webpack-dev-server (this will run server locally on 8081 port by default). So then you need only browser to view a page.
-
+2. webpack-dev-server (this will run server locally on 8080 port by default). So then you need only browser to view a page.
