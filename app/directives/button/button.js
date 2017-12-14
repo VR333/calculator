@@ -28,7 +28,8 @@
 
         this.handleDecimalDot = dot => {
           if ( this.toggle && !$scope.first.includes('.') ) {
-            return $scope.first = $scope.first.concat(dot);
+            $scope.first = $scope.first.concat(dot);
+            return;
           }
           if ( $scope.operator && !$scope.second.includes('.') ) {
             $scope.second = $scope.second.concat(dot);
@@ -66,7 +67,7 @@
 
         this.setOperator = operator => {
           if ( this.checkForMinusNumber(operator) ) {
-            return true;
+            return;
           }
 
           if ($scope.first === '-' || $scope.first === '-.') {
@@ -83,14 +84,16 @@
         // check if user want to use minus number for operation
 
         this.checkForMinusNumber = minus => {
-            if (minus === '-' && this.toggle
-                && !$scope.first.includes('-')
-                && $scope.first === '0'
-              ) {
+            const condition = minus === '-' &&
+                this.toggle &&
+                !$scope.first.toString().includes('-') &&
+                $scope.first === '0';
+
+            if (condition) {
                 $scope.first = minus;
-                return true;
+                return;
             }
-            return false;
+
         };
 
         // check operator and use proper action
