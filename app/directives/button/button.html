@@ -1,29 +1,29 @@
 
 <div class='buttons'>
-	<div  class='key'
-	  ng-repeat='btn in button.digits'
-	  ng-init='btnValue = btn'
-	  ng-click="button.setValue(btnValue)">
-	  <p class='btn'>{{btn}}</p>
-	</div>
-	<div  class='key'
-	  ng-init="btnValue = '.' "
-	  ng-click="button.handleDecimalDot(btnValue)">
-	  <p class='btn'>{{btnValue}}</p>
-	</div>
-	<div  class='key operators'
-	  ng-repeat='btn in button.operators'
-	  ng-init='btnValue = btn'
-	  ng-click="button.setOperator(btnValue)">
-	  <p class='btn'>{{btn}}</p>
-	</div>
-</div>
+	<div class='input-values'>
+		<div  class='key'
+		  ng-repeat='btn in button.digits'
+		  ng-init='btnValue = btn'
+		  ng-click="button.setValue(btnValue)">
+		  <p class='btn'>{{btn}}</p>
+		</div>
+		<div  class='key operators'
+		  ng-init="btnValue = '.' "
+		  ng-click="button.handleDecimalDot(btnValue)">
+		  <p class='btn'>{{btnValue}}</p>
+		</div>
+		<div  class='key operators'
+		  ng-repeat='btn in button.operators'
+		  ng-init='btnValue = btn'
+		  ng-click="button.setOperator(btnValue)">
+		  <p class='btn'>{{btn}}</p>
+		</div>
 
-<div class='reset' >
-	<p class='edit' ng-click='button.reset()'>AC</p>
-	<p class='edit' ng-click='button.back()'>C</p>
-	<p class='edit'
-		id='equil'
-	  ng-click="button.handleEquilButton()">=
-	</p>
+			<p class='key reset' ng-click='button.reset()'>AC</p>
+			<p class='key reset' ng-click='button.back()'>C</p>
+			<p class='key'
+				id='equil'
+			  ng-click="button.handleEquilButton()">=
+			</p>
+	</div>
 </div>

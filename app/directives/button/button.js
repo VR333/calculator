@@ -5,9 +5,14 @@
       restrict: 'E',
       templateUrl: './app/directives/button/button.html',
       controller: function($scope) {
+
+        // hard-code data
+
         this.digits = ['0','1','2','3','4','5','6','7','8','9'];
         this.operators = ['+','-','*','/', '%'];
         this.toggle = true;
+
+        // check for proper action if both operands and operator were chosen
 
         this.handleEquilButton = () => {
           if ($scope.second === '.') {
@@ -17,6 +22,8 @@
             this.makeSomeMath($scope.operator);
           }
         };
+
+        // check for proper dot(.) usage..
 
         this.handleDecimalDot = dot => {
           if ( this.toggle && !$scope.first.includes('.') ) {
@@ -28,12 +35,16 @@
 
         };
 
+        // find out: first or second operand is adding..
+
         this.setValue = value => {
           if (this.toggle) {
             return this.setFirstOperand(value);
           }
           this.setSecondOperand(value);
         };
+
+        // Set value for $scope.first variable
 
         this.setFirstOperand = firstOperand => {
           if ($scope.first === '0') {
@@ -42,12 +53,16 @@
           $scope.first = $scope.first.concat(firstOperand);
         };
 
+        // Set value for $scope.second variable
+
         this.setSecondOperand = secondOperand => {
-          if ($scope.second == '') {
+          if ($scope.second == '' || $scope.second == '0') {
             return $scope.second = secondOperand;
           }
           $scope.second = $scope.second.concat(secondOperand);
         };
+
+        // Set value for $scope.operator variable and check $scope.first
 
         this.setOperator = operator => {
           if ( this.checkForMinusNumber(operator) ) {
@@ -62,14 +77,20 @@
           this.toggle = false;
         };
 
+        // check if user want to use minus number for operation
+
         this.checkForMinusNumber = minus => {
-          let condition = !$scope.first.includes('-') && $scope.first === '0';
-            if (minus === '-' && this.toggle && condition) {
-              $scope.first = minus;
-              return true;
+            if (minus === '-' && this.toggle
+                && !$scope.first.includes('-')
+                && $scope.first === '0'
+              ) {
+                $scope.first = minus;
+                return true;
             }
             return false;
         };
+
+        // check operator and use proper action
 
         this.makeSomeMath = value => {
           switch($scope.operator) {
