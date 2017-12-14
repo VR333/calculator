@@ -124,6 +124,9 @@
         */
 
         this.actionPlusChooseNextOperator = operator => {
+          if ($scope.second === '.') {
+            $scope.second = '0';
+          }
           this.makeSomeMath(operator);
           $scope.operator = operator;
           this.toggle = false;
