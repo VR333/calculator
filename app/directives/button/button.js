@@ -40,7 +40,8 @@
 
         this.setValue = value => {
           if (this.toggle) {
-            return this.setFirstOperand(value);
+            this.setFirstOperand(value);
+            return;
           }
           this.setSecondOperand(value);
         };
@@ -49,7 +50,8 @@
 
         this.setFirstOperand = firstOperand => {
           if ($scope.first === '0') {
-            return $scope.first = firstOperand;
+            $scope.first = firstOperand;
+            return;
           }
           $scope.first = $scope.first.concat(firstOperand);
         };
@@ -58,7 +60,8 @@
 
         this.setSecondOperand = secondOperand => {
           if ($scope.second == '' || $scope.second == '0') {
-            return $scope.second = secondOperand;
+            $scope.second = secondOperand;
+            return;
           }
           $scope.second = $scope.second.concat(secondOperand);
         };
@@ -75,7 +78,8 @@
           }
 
           if ($scope.second && $scope.operator) {
-            return this.actionPlusChooseNextOperator(operator);
+            this.actionPlusChooseNextOperator(operator);
+            return;
           }
           $scope.operator = operator;
           this.toggle = false;
@@ -173,15 +177,15 @@
           if (this.toggle) {
             if ($scope.first.length === 1) {
               $scope.first = '0';
-              return true;
+              return;
             }
             $scope.first = $scope.first.slice(0, -1);
-            return true;
+            return;
           }
 
           if ($scope.second.length === 1) {
               $scope.second = '';
-              return true;
+              return;
           }
           $scope.second = $scope.second.slice(0, -1);
         };
