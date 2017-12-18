@@ -73,8 +73,8 @@
   __webpack_require__(3);
   __webpack_require__(4);
   __webpack_require__(5);
-  
-  const app = angular.module('calculator', ['calc-wrapper', 'calc-keyboard', 'calc-display', 'calc-button']);
+
+  const app = angular.module('calculator-app', ['calculator', 'keyboard', 'display', 'buttons']);
 })();
 
 
@@ -34279,12 +34279,8 @@ $provide.value("$locale", {
 /***/ (function(module, exports) {
 
 (function(){
-  // import * from './app/diractives/calc-display/calc-display.js';
-  // import * from './app/diractives/calc-keyboard/calc-keyboard.js';
-  // require('directives/calc-display/calc-display.js');
-  // require('directives/calc-keyboard/calc-keyboard.js');
-  let app = angular.module('calc-wrapper', []);
-  app.directive('wrapper', function(){
+  let app = angular.module('calculator', []);
+  app.directive('calculator', function(){
     return {
       restrict: 'E',
       templateUrl : './app/directives/calc-wrapper/calc-wrapper.html',
@@ -34304,14 +34300,14 @@ $provide.value("$locale", {
 /***/ (function(module, exports) {
 
 (function(){
-  let app = angular.module('calc-display', []);
+  let app = angular.module('display', []);
   app.directive('display', function(){
     return {
       restrict: 'E',
-      bindings: { 
+      bindings: {
         first: '=',
         second: '=',
-        operator: '=' 
+        operator: '='
       },
       templateUrl: './app/directives/calc-display/calc-display.html',
       controller: function($scope) {},
@@ -34326,7 +34322,7 @@ $provide.value("$locale", {
 /***/ (function(module, exports) {
 
 (function(){
-  let app = angular.module('calc-keyboard', []);
+  let app = angular.module('keyboard', []);
 
   app.directive('keyboard', function(){
     return {
@@ -34344,11 +34340,13 @@ $provide.value("$locale", {
 /***/ (function(module, exports) {
 
 (function(){
-  let app = angular.module('calc-button', []);
+  let app = angular.module('buttons', []);
   app.directive('button', function(){
     return {
       restrict: 'E',
       templateUrl: './app/directives/button/button.html',
+      transclude: true,
+      controllerAs: 'button',
       controller: function($scope) {
 
         // hard-code data
@@ -34534,8 +34532,7 @@ $provide.value("$locale", {
           }
           $scope.second = $scope.second.slice(0, -1);
         };
-      },
-      controllerAs: 'button'
+      }
     };
   });
 })();

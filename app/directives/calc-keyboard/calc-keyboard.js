@@ -1,5 +1,5 @@
 (function(){
-  let app = angular.module('calc-keyboard', []);
+  let app = angular.module('keyboard', []);
 
   app.directive('keyboard', function(){
     return {

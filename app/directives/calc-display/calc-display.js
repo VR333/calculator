@@ -1,12 +1,12 @@
 (function(){
-  let app = angular.module('calc-display', []);
+  let app = angular.module('display', []);
   app.directive('display', function(){
     return {
       restrict: 'E',
-      bindings: { 
+      bindings: {
         first: '=',
         second: '=',
-        operator: '=' 
+        operator: '='
       },
       templateUrl: './app/directives/calc-display/calc-display.html',
       controller: function($scope) {},

@@ -1,9 +1,11 @@
 (function(){
-  let app = angular.module('calc-button', []);
+  let app = angular.module('buttons', []);
   app.directive('button', function(){
     return {
       restrict: 'E',
       templateUrl: './app/directives/button/button.html',
+      transclude: true,
+      controllerAs: 'button',
       controller: function($scope) {
 
         // hard-code data
@@ -189,8 +191,7 @@
           }
           $scope.second = $scope.second.slice(0, -1);
         };
-      },
-      controllerAs: 'button'
+      }
     };
   });
 })();
