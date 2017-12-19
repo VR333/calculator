@@ -9,12 +9,17 @@
    margin:auto;
    display: block;
    width: 322px;
-   height: 520px;
+   height: 525px;
    text-align: center;
    border: 1px solid #278ad8;
    background-color: #ededed;
    box-shadow: 2px 2px 40px rgba(200, 200, 200, 1);
  }
+
+ header {
+  padding: 0 0 5px 0;
+ }
+
   /* windows */
  #logo {
    position: relative;
@@ -90,7 +95,7 @@ nav  img {
   height: 313px;
  }
  .input {
-   height: 314px;
+   height: 300px;
  }
  button {
    width: 23.3%;
@@ -136,4 +141,70 @@ nav  img {
    background-color: #7DBBEA;
    border: 1px solid #9DC8EA;
    color: white;
+ }
+
+aside {
+    background-color: #ededed;
+    width: 0px;
+    margin-top: 5px;
+    position: absolute;
+    z-index: 10;
+}
+
+ul {
+    text-align: left;
+    list-style-type: none;
+    /* position: relative; */
+    /* left: 13px; */
+    width: 82%;
+    height: 300px;
+    overflow: auto;
+}
+
+li.title {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+li {
+  padding: 3%;
+  cursor: default;
+}
+
+li.version:hover {
+  background-color: red;
+}
+
+.side {
+   display: inline;
+   padding: 4% 3%;
+   float: left;
+   width: 18%;
+ }
+
+ .side:hover {
+   background-color: #DEDEDE;
+ }
+ .side .line {
+   background-color: black;
+   width: 60%;
+   height: 1px;
+   margin: 4px;
+ }
+
+ .settings {
+  padding: 3%;
+  background-color: #ededed;
+  width: 100%;
+  height: 52px;
+  text-align: left;
+ }
+
+ .settings li {
+  font-size: 20px;
+  font-weight: bold;
+ }
+
+ #hider {
+  transition: width .4s;
  }

@@ -34289,6 +34289,21 @@ $provide.value("$locale", {
         $scope.first = '0';
         $scope.second = '';
         $scope.operator = '';
+
+        this.toggle = 0;
+
+        this.changeToggle = (value) => {
+          this.toggle = value;
+
+          if (this.toggle) {
+            document.getElementById('hiding').style.visibility = 'hidden';
+            document.getElementById('hider').style.width = '250px';
+          } else {
+            document.getElementById('hider').style.width = '0px';
+            document.getElementById('hiding').style.visibility = 'visible';
+          }
+
+        }
       }
     };
   });
@@ -34348,11 +34363,9 @@ $provide.value("$locale", {
       transclude: true,
       controllerAs: 'button',
       controller: function($scope) {
+        
+        // switcher to cgange input to a second number
 
-        // hard-code data
-
-        this.digits = ['0','1','2','3','4','5','6','7','8','9'];
-        this.operators = ['+','-','*','/', '%'];
         this.toggle = true;
 
         // check for proper action if both operands and operator were chosen
