@@ -34556,6 +34556,36 @@ $provide.value("$locale", {
           }
           this.second = this.second.slice(0, -1);
         };
+
+        // Change minus to plus and Vice Versa
+
+        this.changeMinus = () => {
+          if (this.toggle) {
+            this.first = (Number(this.first) * (-1)).toString();
+            return;
+          }
+          this.second = (Number(this.second) * (-1)).toString();
+        };
+
+        this.bringToPower = () => {
+          if (this.toggle) {
+            this.first = Math.pow(Number(this.first), 2);
+          }
+        };
+
+        // Divide 1 by this.first
+
+        this.divideOneByFirst = () => {
+          if (this.toggle) {
+            this.first = 1 / Number(this.first);
+          }
+        };
+
+        this.getSquareRoot = () => {
+          if (this.toggle) {
+            this.first = Math.pow(Number(this.first), 0.5);
+          }
+        };
       }
     };
   });
