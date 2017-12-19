@@ -149,6 +149,7 @@ aside {
     margin-top: 5px;
     position: absolute;
     z-index: 10;
+    padding-top: 14px;
 }
 
 ul {
@@ -187,7 +188,7 @@ li.version:hover {
  }
  .side .line {
    background-color: black;
-   width: 60%;
+   width: 70%;
    height: 1px;
    margin: 4px;
  }

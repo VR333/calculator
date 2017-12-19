@@ -34296,11 +34296,9 @@ $provide.value("$locale", {
           this.toggle = value;
 
           if (this.toggle) {
-            document.getElementById('hiding').style.visibility = 'hidden';
             document.getElementById('hider').style.width = '250px';
           } else {
             document.getElementById('hider').style.width = '0px';
-            document.getElementById('hiding').style.visibility = 'visible';
           }
 
         }
