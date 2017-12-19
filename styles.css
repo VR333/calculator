@@ -137,6 +137,11 @@ nav  img {
    font-size: 20px;
  }
 
+
+ button.arithmetic {
+  font-size: 28px;
+ }
+
  button.arithmetic:hover {
    background-color: #7DBBEA;
    border: 1px solid #9DC8EA;
