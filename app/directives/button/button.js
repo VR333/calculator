@@ -1,5 +1,6 @@
 (function(){
-  let app = angular.module('buttons', []);
+  const app = angular.module('buttons', []);
+  
   app.directive('button', function(){
     return {
       restrict: 'E',

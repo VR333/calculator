@@ -1,0 +1,62 @@
+ calculator {
+   position:relative;
+   top: 200px;
+   margin:auto;
+   display: block;
+   width: 322px;
+   height: 525px;
+   text-align: center;
+   border: 1px solid #278ad8;
+   background-color: #ededed;
+   box-shadow: 2px 2px 40px rgba(200, 200, 200, 1);
+ }
+
+ header {
+  padding: 0 0 5px 0;
+ }
+
+  /* windows */
+ #logo {
+   position: relative;
+   top: -12px;
+ }
+ header p {
+   text-align: left;
+   padding-left: 4%;
+   font-size: 13px;
+ }
+ header p img {
+   top: 7px;
+   position: relative;
+   right: -116px;
+ }
+
+nav {
+    font-size: 26px;
+    text-align: left;
+}
+
+nav  img {
+  padding-left: 4%;
+  position: relative;
+  top: 9px;
+  right: -87px;
+}
+ .menu {
+   display: inline-block;
+   padding: 4% 3%;
+   margin: 5px;
+   position: relative;
+   left: -4px;
+   top: 8px;
+ }
+
+ .menu:hover {
+   background-color: #DEDEDE;
+ }
+ .menu .line {
+   background-color: black;
+   width: 20px;
+   height: 1px;
+   margin: 4px;
+ }

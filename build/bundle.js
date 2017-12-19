@@ -34279,11 +34279,12 @@ $provide.value("$locale", {
 /***/ (function(module, exports) {
 
 (function(){
-  let app = angular.module('calculator', []);
+  const app = angular.module('calculator', []);
+  
   app.directive('calculator', function(){
     return {
       restrict: 'E',
-      templateUrl : './app/directives/calc-wrapper/calc-wrapper.html',
+      templateUrl : './app/directives/wrapper/wrapper.html',
       controllerAs: 'ctrl',
       controller: function($scope) {
         $scope.first = '0';
@@ -34313,7 +34314,8 @@ $provide.value("$locale", {
 /***/ (function(module, exports) {
 
 (function(){
-  let app = angular.module('display', []);
+  const app = angular.module('display', []);
+  
   app.directive('display', function(){
     return {
       restrict: 'E',
@@ -34322,7 +34324,7 @@ $provide.value("$locale", {
         second: '=',
         operator: '='
       },
-      templateUrl: './app/directives/calc-display/calc-display.html',
+      templateUrl: './app/directives/display/display.html',
       controller: function($scope) {},
       controllerAs: 'display'
     };
@@ -34335,12 +34337,12 @@ $provide.value("$locale", {
 /***/ (function(module, exports) {
 
 (function(){
-  let app = angular.module('keyboard', []);
+  const app = angular.module('keyboard', []);
 
   app.directive('keyboard', function(){
     return {
       restrict: 'E',
-      templateUrl : './app/directives/calc-keyboard/calc-keyboard.html',
+      templateUrl : './app/directives/keyboard/keyboard.html',
       controllerAs: 'keyboard',
       controller: function($scope) {}
     };
@@ -34353,7 +34355,8 @@ $provide.value("$locale", {
 /***/ (function(module, exports) {
 
 (function(){
-  let app = angular.module('buttons', []);
+  const app = angular.module('buttons', []);
+  
   app.directive('button', function(){
     return {
       restrict: 'E',

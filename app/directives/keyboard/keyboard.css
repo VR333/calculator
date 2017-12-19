@@ -1,0 +1,9 @@
+ /* keyboard */
+
+ keyboard {
+  display: block;
+  height: 313px;
+ }
+ .input {
+   height: 300px;
+ }

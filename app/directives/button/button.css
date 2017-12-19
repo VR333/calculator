@@ -1,0 +1,51 @@
+
+ button {
+   width: 23.3%;
+   margin: 1.5% 0 0 1.5%;
+   height: 15%;
+   background-color: #f4f4f4;
+   border: none;
+   padding: 2% 0;
+   float: left;
+ }
+
+ /* #first {
+   float: left;
+ } */
+ .m {
+   width: 100%;
+ }
+ .m button {
+   width: 16.5%;
+   display inline-block;
+   border: none;
+   margin: 0;
+   background-color: inherit;
+   color: #bdbdbd;
+   padding: 1% 0;
+ }
+
+ .m button.enabled {
+   color: black;
+ }
+
+ button.enabled:hover {
+   background-color: #DEDEDE;
+ }
+
+ button.numeric {
+   background-color: white;
+   font-weight: bold;
+   font-size: 20px;
+ }
+
+
+ button.arithmetic {
+  font-size: 28px;
+ }
+
+ button.arithmetic:hover {
+   background-color: #7DBBEA;
+   border: 1px solid #9DC8EA;
+   color: white;
+ }
