@@ -52,7 +52,7 @@
           this.setSecondOperand(value);
         };
 
-        // Set value for $scope.first variable
+        // Set value for this.first variable
 
         this.setFirstOperand = firstOperand => {
           if (this.first === '0') {
@@ -62,7 +62,7 @@
           this.first = this.first.concat(firstOperand);
         };
 
-        // Set value for $scope.second variable
+        // Set value for this.second variable
 
         this.setSecondOperand = secondOperand => {
           if (this.second == '' || this.second == '0') {
@@ -72,7 +72,7 @@
           this.second = this.second.concat(secondOperand);
         };
 
-        // Set value for $scope.operator variable and check $scope.first
+        // Set value for this.operator variable and check this.first
 
         this.setOperator = operator => {
           if ( this.checkForMinusNumber(operator) ) {
