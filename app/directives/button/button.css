@@ -1,4 +1,3 @@
-
  button {
    width: 23.3%;
    margin: 1.5% 0 0 1.5%;
@@ -9,14 +8,9 @@
    float: left;
  }
 
- /* #first {
-   float: left;
- } */
- .m {
-   width: 100%;
- }
  .m button {
    width: 16.5%;
+   height: 24px;
    display inline-block;
    border: none;
    margin: 0;

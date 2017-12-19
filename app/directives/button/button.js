@@ -5,9 +5,14 @@
     return {
       restrict: 'E',
       templateUrl: './app/directives/button/button.html',
+      bindToController: {
+        first: '=',
+        second: '=',
+        operator: '='
+      },
       transclude: true,
       controllerAs: 'button',
-      controller: function($scope) {
+      controller: function() {
         
         // switcher to cgange input to a second number
 
@@ -16,11 +21,11 @@
         // check for proper action if both operands and operator were chosen
 
         this.handleEquilButton = () => {
-          if ($scope.second === '.') {
-            $scope.second = '0';
+          if (this.second === '.') {
+            this.second = '0';
           }
-          if ($scope.operator && $scope.second) {
-            this.makeSomeMath($scope.operator);
+          if (this.operator && this.second) {
+            this.makeSomeMath(this.operator);
           }
 
         };
@@ -28,12 +33,12 @@
         // check for proper dot(.) usage..
 
         this.handleDecimalDot = dot => {
-          if ( this.toggle && !$scope.first.includes('.') ) {
-            $scope.first = $scope.first.concat(dot);
+          if ( this.toggle && !this.first.includes('.') ) {
+            this.first = this.first.concat(dot);
             return;
           }
-          if ( $scope.operator && !$scope.second.includes('.') ) {
-            $scope.second = $scope.second.concat(dot);
+          if ( this.operator && !this.second.includes('.') ) {
+            this.second = this.second.concat(dot);
           }
         };
 
@@ -50,21 +55,21 @@
         // Set value for $scope.first variable
 
         this.setFirstOperand = firstOperand => {
-          if ($scope.first === '0') {
-            $scope.first = firstOperand;
+          if (this.first === '0') {
+            this.first = firstOperand;
             return;
           }
-          $scope.first = $scope.first.concat(firstOperand);
+          this.first = this.first.concat(firstOperand);
         };
 
         // Set value for $scope.second variable
 
         this.setSecondOperand = secondOperand => {
-          if ($scope.second == '' || $scope.second == '0') {
-            $scope.second = secondOperand;
+          if (this.second == '' || this.second == '0') {
+            this.second = secondOperand;
             return;
           }
-          $scope.second = $scope.second.concat(secondOperand);
+          this.second = this.second.concat(secondOperand);
         };
 
         // Set value for $scope.operator variable and check $scope.first
@@ -74,15 +79,15 @@
             return;
           }
 
-          if ($scope.first === '-' || $scope.first === '-.') {
-            $scope.first = '0';
+          if (this.first === '-' || this.first === '-.') {
+            this.first = '0';
           }
 
-          if ($scope.second && $scope.operator) {
+          if (this.second && this.operator) {
             this.actionPlusChooseNextOperator(operator);
             return;
           }
-          $scope.operator = operator;
+          this.operator = operator;
           this.toggle = false;
         };
 
@@ -91,11 +96,11 @@
         this.checkForMinusNumber = minus => {
             const condition = minus === '-' &&
                 this.toggle &&
-                !$scope.first.toString().includes('-') &&
-                $scope.first === '0';
+                !this.first.toString().includes('-') &&
+                this.first === '0';
 
             if (condition) {
-                $scope.first = minus;
+                this.first = minus;
                 return;
             }
 
@@ -104,7 +109,7 @@
         // check operator and use proper action
 
         this.makeSomeMath = value => {
-          switch($scope.operator) {
+          switch(this.operator) {
             case '+':
                     this.add();
                     break;
@@ -121,8 +126,8 @@
                     this.module();
                     break;
             }
-            $scope.second = '';
-            $scope.operator = '';
+            this.second = '';
+            this.operator = '';
             this.toggle = true;
         };
         /*
@@ -131,34 +136,34 @@
         */
 
         this.actionPlusChooseNextOperator = operator => {
-          if ($scope.second === '.') {
-            $scope.second = '0';
+          if (this.second === '.') {
+            this.second = '0';
           }
           this.makeSomeMath(operator);
-          $scope.operator = operator;
+          this.operator = operator;
           this.toggle = false;
         };
 
         // arithmetic operations to be done with makeSomeMath() execution
 
         this.add = () => {
-          $scope.first = Number($scope.first) + Number($scope.second);
+          this.first = Number(this.first) + Number(this.second);
         };
 
         this.multiple = () => {
-          $scope.first = Number($scope.first) * Number($scope.second);
+          this.first = Number(this.first) * Number(this.second);
         };
 
         this.minus = () => {
-          $scope.first =  Number($scope.first) - Number($scope.second);
+          this.first =  Number(this.first) - Number(this.second);
         };
 
         this.divide = () => {
-          $scope.first = Number($scope.first) / Number($scope.second);
+          this.first = Number(this.first) / Number(this.second);
         };
 
         this.module = () => {
-          $scope.first = Number($scope.first) % Number($scope.second);
+          this.first = Number(this.first) % Number(this.second);
         };
 
         // Check if input value is non-digit one
@@ -166,9 +171,9 @@
         // clear calculator operands and operator
 
         this.reset = () => {
-          $scope.first = '0';
-          $scope.second = '';
-          $scope.operator = undefined;
+          this.first = '0';
+          this.second = '';
+          this.operator = undefined;
           this.toggle = true;
         };
 
@@ -176,19 +181,19 @@
 
         this.back = () => {
           if (this.toggle) {
-            if ($scope.first.length === 1) {
-              $scope.first = '0';
+            if (this.first.length === 1) {
+              this.first = '0';
               return;
             }
-            $scope.first = $scope.first.slice(0, -1);
+            this.first = this.first.slice(0, -1);
             return;
           }
 
-          if ($scope.second.length === 1) {
-              $scope.second = '';
+          if (this.second.length === 1) {
+              this.second = '';
               return;
           }
-          $scope.second = $scope.second.slice(0, -1);
+          this.second = this.second.slice(0, -1);
         };
       }
     };

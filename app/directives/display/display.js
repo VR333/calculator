@@ -4,13 +4,13 @@
   app.directive('display', function(){
     return {
       restrict: 'E',
-      bindings: {
+      bindToController: {
         first: '=',
         second: '=',
         operator: '='
       },
       templateUrl: './app/directives/display/display.html',
-      controller: function($scope) {},
+      controller: function() {},
       controllerAs: 'display'
     };
   });

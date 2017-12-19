@@ -6,34 +6,35 @@
   <button class='enabled'>MS</button>
   <button>M^</button>
 </div>
+
 <div class='input'>
-  <button class='enabled' id='first' ng-click="button.setOperator('%')">%</button>
+  <button class='enabled' id='first' ng-click="button.setOperator('%')" first='keyboard.first' second='keyboard.second' operator='keyboard.operator'>%</button>
   <button class='enabled'>#</button>
   <button class='enabled'>x2</button>
   <button class='enabled'>1/x</button>
 
-  <button class='enabled'  ng-click="button.reset()">CE</button>
-  <button class='enabled'  ng-click="button.back()">C</button>
+  <button class='enabled' ng-click="button.reset()" first='keyboard.first' second='keyboard.second' operator='keyboard.operator'>CE</button>
+  <button class='enabled' ng-click="button.back()" first='keyboard.first' second='keyboard.second' operator='keyboard.operator'>C</button>
   <button class='enabled'>B</button>
-  <button class='enabled arithmetic'  ng-click="button.setOperator('/')">&#247;</button>
+  <button class='enabled arithmetic'  ng-click="button.setOperator('/')" first='keyboard.first' second='keyboard.second' operator='keyboard.operator'>&#247;</button>
 
-  <button class='numeric enabled'  ng-click="button.setValue('7')">7</button>
-  <button class='numeric enabled'  ng-click="button.setValue('8')">8</button>
-  <button class='numeric enabled'  ng-click="button.setValue('9')">9</button>
-  <button class='enabled arithmetic'  ng-click="button.setOperator('*')">&#735;</button>
+  <button class='numeric enabled'  ng-click="button.setValue('7')" first='keyboard.first' second='keyboard.second' operator='keyboard.operator'>7</button>
+  <button class='numeric enabled'  ng-click="button.setValue('8')" first='keyboard.first' second='keyboard.second' operator='keyboard.operator'>8</button>
+  <button class='numeric enabled'  ng-click="button.setValue('9')" first='keyboard.first' second='keyboard.second' operator='keyboard.operator'>9</button>
+  <button class='enabled arithmetic'  ng-click="button.setOperator('*')" first='keyboard.first' second='keyboard.second' operator='keyboard.operator'>&#735;</button>
 
-  <button class='numeric enabled'  ng-click="button.setValue('4')">4</button>
-  <button class='numeric enabled'  ng-click="button.setValue('5')">5</button>
-  <button class='numeric enabled'  ng-click="button.setValue('6')">6</button>
-  <button class='enabled enabled arithmetic'  ng-click="button.setOperator('-')">-</button>
+  <button class='numeric enabled'  ng-click="button.setValue('4')" first='keyboard.first' second='keyboard.second' operator='keyboard.operator'>4</button>
+  <button class='numeric enabled'  ng-click="button.setValue('5')" first='keyboard.first' second='keyboard.second' operator='keyboard.operator'>5</button>
+  <button class='numeric enabled'  ng-click="button.setValue('6')" first='keyboard.first' second='keyboard.second' operator='keyboard.operator'>6</button>
+  <button class='enabled enabled arithmetic'  ng-click="button.setOperator('-')" first='keyboard.first' second='keyboard.second' operator='keyboard.operator'>-</button>
 
-  <button class='numeric enabled'  ng-click="button.setValue('1')">1</button>
-  <button class='numeric enabled'  ng-click="button.setValue('2')">2</button>
-  <button class='numeric enabled'  ng-click="button.setValue('3')">3</button>
-  <button class='enabled arithmetic'  ng-click="button.setOperator('+')">+</button>
+  <button class='numeric enabled'  ng-click="button.setValue('1')" first='keyboard.first' second='keyboard.second' operator='keyboard.operator'>1</button>
+  <button class='numeric enabled'  ng-click="button.setValue('2')" first='keyboard.first' second='keyboard.second' operator='keyboard.operator'>2</button>
+  <button class='numeric enabled'  ng-click="button.setValue('3')" first='keyboard.first' second='keyboard.second' operator='keyboard.operator'>3</button>
+  <button class='enabled arithmetic'  ng-click="button.setOperator('+')" first='keyboard.first' second='keyboard.second' operator='keyboard.operator'>+</button>
 
   <button class='enabled'>&#177;</button>
-  <button class='numeric enabled'  ng-click="button.setValue('0')">0</button>
-  <button class='numeric enabled'  ng-click="button.handleDecimalDot('.')">,</button>
-  <button class='enabled arithmetic'  ng-click="button.handleEquilButton()">=</button>
+  <button class='numeric enabled'  ng-click="button.setValue('0')" first='keyboard.first' second='keyboard.second' operator='keyboard.operator'>0</button>
+  <button class='numeric enabled'  ng-click="button.handleDecimalDot('.')" first='keyboard.first' second='keyboard.second' operator='keyboard.operator'>,</button>
+  <button class='enabled arithmetic'  ng-click="button.handleEquilButton()" first='keyboard.first' second='keyboard.second' operator='keyboard.operator'>=</button>
 </div>

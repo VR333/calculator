@@ -13,7 +13,7 @@
   </div>
 
   <ul>
-    <li class='title' id='roomless'>Calculator</li>
+    <li class='title'>Calculator</li>
     <li class='version'>Standard</li>
     <li class='version'>Scientific</li>
     <li class='version'>Prigrammer</li>
@@ -46,9 +46,15 @@
   <span id='logo'>Standard</span>
   <img src='clock.png' alt='time watcher'/>
 </nav>
+
 <display
-  first='$scope.first'
-  second='$scope.second'
-  operator='$scope.operator'>
+  first='ctrl.first'
+  second='ctrl.second'
+  operator='ctrl.operator'>
 </display>
-<keyboard></keyboard>
+
+<keyboard
+first='ctrl.first'
+second='ctrl.second'
+operator='ctrl.operator'>
+</keyboard>

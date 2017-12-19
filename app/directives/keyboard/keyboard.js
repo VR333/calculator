@@ -6,7 +6,12 @@
       restrict: 'E',
       templateUrl : './app/directives/keyboard/keyboard.html',
       controllerAs: 'keyboard',
-      controller: function($scope) {}
+      bindToController: {
+        first: '=',
+        second: '=',
+        operator: '='
+      },
+      controller: function() {}
     };
   });
 })();

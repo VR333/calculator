@@ -7,9 +7,9 @@
       templateUrl : './app/directives/wrapper/wrapper.html',
       controllerAs: 'ctrl',
       controller: function($scope) {
-        $scope.first = '0';
-        $scope.second = '';
-        $scope.operator = '';
+        this.first = '0';
+        this.second = '';
+        this.operator = '';
 
         this.toggle = 0;
 
