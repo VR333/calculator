@@ -5,16 +5,19 @@ aside {
     position: absolute;
     z-index: 10;
     padding-top: 14px;
+    height: 480px;
 }
 
 ul {
     text-align: left;
     list-style-type: none;
-    /* position: relative; */
-    /* left: 13px; */
-    width: 82%;
+    width: 100%;
     height: 300px;
     overflow: auto;
+}
+
+.calc-type {
+  height: 374px;
 }
 
 li.title {
@@ -22,10 +25,25 @@ li.title {
   font-size: 20px;
 }
 
+.calc-type li {
+  padding: 7%;
+}
+.calc-type li.active {
+  background-color: #7DBBEA;
+}
+.calc-type li.active:hover {
+  background-color: #73b0e2;
+}
+.calc-type li span{
+  position: relative;
+  left: 18%;
+}
+
 li {
   padding: 3%;
   cursor: default;
 }
+
 
 li.version:hover {
   background-color: #bdbdbd;
@@ -48,7 +66,18 @@ li.version:hover {
    margin: 4px;
  }
 
- .settings {
+ #roomless {
+   width: 82%;
+   height: 40px;
+ }
+
+ #roomless li {
+   position: relative;
+   top: 5px;
+   font-size: 20px;
+   font-weight: bold;
+ }
+ .about {
   padding: 3%;
   background-color: #ededed;
   width: 100%;
@@ -56,9 +85,8 @@ li.version:hover {
   text-align: left;
  }
 
- .settings li {
-  font-size: 20px;
-  font-weight: bold;
+ .about li {
+  font-size: 18px;
  }
 
  #hider {
