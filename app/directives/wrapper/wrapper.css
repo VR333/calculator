@@ -19,6 +19,7 @@
  #logo {
    position: relative;
    top: -12px;
+   cursor: default;
  }
  header div {
    text-align: left;
