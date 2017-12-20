@@ -34296,6 +34296,9 @@ $provide.value("$locale", {
         'Currency', 'Volume', 'Length','Weight and Mass','Temperature',
         'Energy','Area','Speed','Time','Power','Data','Pressure','Angle'
         ];
+
+        this.active = 'Standard'
+
         this.toggle = 0;
 
         this.changeToggle = (value) => {
@@ -34309,8 +34312,14 @@ $provide.value("$locale", {
 
         };
 
-        this.makeActiveTab = (e) => {
-          console.dir(e);
+        this.makeActiveTab = (event) => {
+          console.log(event.currentTarget.innerText);
+          if (event.currentTarget.className !== 'ng-scope title') {
+            document.getElementsByClassName('active')[0]
+                    .className = 'ng-scope version';
+            event.currentTarget.className = 'ng-scope version active';
+            this.active = event.currentTarget.innerText;
+          }
         };
       }
     };

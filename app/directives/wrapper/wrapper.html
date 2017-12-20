@@ -18,12 +18,13 @@
       </div>
       <ul id='roomless'><li>Calculator</li></ul>
     </li>
-    <li class='version active'><span>Standard</span></li>
+    <li class='version active' ng-click='ctrl.makeActiveTab($event)'><span>Standard</span></li>
     <li ng-repeat="item in ctrl.list"
         ng-class="{ 'version': item !== 'Converter',
                     'title': item === 'Converter'
-                  }">
-      <span>{{item}}<span>
+                  }"
+        ng-click='ctrl.makeActiveTab($event)'>
+      <span>{{item}}</span>
     </li>
   </ul>
 
@@ -40,7 +41,7 @@
     <div class='line'></div>
     <div class='line'></div>
   </div>
-  <span id='logo'>Standard</span>
+  <span id='logo'>{{ctrl.active}}</span>
   <img src='clock.png' alt='time watcher'/>
 </nav>
 

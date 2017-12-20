@@ -63,9 +63,9 @@ nav {
 
 nav  img {
   padding-left: 4%;
-  position: relative;
-  top: 9px;
-  right: -87px;
+  position: absolute;
+  top: 55px;
+  left: 254px;
 }
  .menu {
    display: inline-block;
