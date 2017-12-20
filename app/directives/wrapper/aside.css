@@ -10,14 +10,14 @@ aside {
 
 ul {
     text-align: left;
+    margin: 0;
     list-style-type: none;
     width: 100%;
-    height: 300px;
     overflow: auto;
 }
 
 .calc-type {
-  height: 374px;
+  height: 372px;
 }
 
 li.title {
@@ -46,7 +46,7 @@ li {
 
 
 li.version:hover {
-  background-color: #bdbdbd;
+  background-color: #DEDEDE;
 }
 
 .side {
@@ -77,16 +77,32 @@ li.version:hover {
    font-size: 20px;
    font-weight: bold;
  }
+
+ .separator {
+   border-bottom: 1px solid #aaa;
+   margin: auto;
+   margin-top: 5px;
+   width: 90%;
+ }
  .about {
-  padding: 3%;
   background-color: #ededed;
   width: 100%;
-  height: 52px;
+  height: 48px;
   text-align: left;
  }
 
  .about li {
   font-size: 18px;
+  height: 48px;
+  width: 100%;
+ }
+
+ .about li:hover {
+  background-color: #DEDEDE;
+ }
+
+ .about li img {
+  padding-top: 1%;
  }
 
  #hider {
