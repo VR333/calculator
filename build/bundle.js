@@ -34280,7 +34280,7 @@ $provide.value("$locale", {
 
 (function(){
   const app = angular.module('calculator', []);
-  
+
   app.directive('calculator', function(){
     return {
       restrict: 'E',
@@ -34291,6 +34291,11 @@ $provide.value("$locale", {
         this.second = '';
         this.operator = '';
 
+        this.list = [
+        'Scientific', 'Programmer', 'Date calculation', 'Converter',
+        'Currency', 'Volume', 'Length','Weight and Mass','Temperature',
+        'Energy','Area','Speed','Time','Power','Data','Pressure','Angle'
+        ];
         this.toggle = 0;
 
         this.changeToggle = (value) => {
