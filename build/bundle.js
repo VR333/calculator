@@ -34286,7 +34286,7 @@ $provide.value("$locale", {
       restrict: 'E',
       templateUrl : './app/directives/wrapper/wrapper.html',
       controllerAs: 'ctrl',
-      controller: function($scope) {
+      controller: function() {
         this.first = '0';
         this.second = '';
         this.operator = '';
@@ -34307,7 +34307,11 @@ $provide.value("$locale", {
             document.getElementById('hider').style.width = '0px';
           }
 
-        }
+        };
+
+        this.makeActiveTab = (e) => {
+          console.dir(e);
+        };
       }
     };
   });

@@ -1,8 +1,11 @@
 <header>
-  <p>
-    Calculator
-    <img src='cross.png' alt='edit window'/>
-  </p>
+  <div>Calculator
+    <div class='close'>
+      <div class='window-btn'>-</div>
+      <div class='window-btn'>&#9633;</div>
+      <div class='window-btn' id='cross'>&#10005;</div>
+    </div>
+  </div>
 </header>
 
 <aside id='hider'>
@@ -17,14 +20,16 @@
     </li>
     <li class='version active'><span>Standard</span></li>
     <li ng-repeat="item in ctrl.list"
-        ng-class="{ 'version': item !== 'Converter', 'title': item === 'Converter' }">
+        ng-class="{ 'version': item !== 'Converter',
+                    'title': item === 'Converter'
+                  }">
       <span>{{item}}<span>
     </li>
   </ul>
 
   <div class='separator'></div>
   <ul class='about'>
-    <li><img src='info.png' alt='info icon'/>About</li>
+    <li><span class='info'>&#128712;</span><span class='about-text'>About</span></li>
   </ul>
 </aside>
 

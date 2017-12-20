@@ -5,7 +5,7 @@ aside {
     position: absolute;
     z-index: 10;
     padding-top: 14px;
-    height: 480px;
+    height: 481px;
 }
 
 ul {
@@ -19,11 +19,6 @@ ul {
 .calc-type {
   height: 412px;
 }
-
-/* .calc-type::-webkit-scrollbar {
-  background-color: #aaa;
-  color: red;
-} */
 
 li.title {
   font-weight: bold;
@@ -97,13 +92,13 @@ li.version:hover {
  .about {
   background-color: #ededed;
   width: 100%;
-  height: 48px;
+  height: 49px;
   text-align: left;
  }
 
  .about li {
   font-size: 18px;
-  height: 48px;
+  height: 49px;
   width: 100%;
  }
 
@@ -111,8 +106,15 @@ li.version:hover {
   background-color: #DEDEDE;
  }
 
- .about li img {
-  padding-top: 1%;
+ .about li .info {
+  margin-right: 23px;
+  font-size: 25px;
+  font-weight: lighter;
+ }
+
+ .about-text {
+   position: relative;
+   top: -2px;
  }
 
  #hider {

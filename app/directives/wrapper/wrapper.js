@@ -6,7 +6,7 @@
       restrict: 'E',
       templateUrl : './app/directives/wrapper/wrapper.html',
       controllerAs: 'ctrl',
-      controller: function($scope) {
+      controller: function() {
         this.first = '0';
         this.second = '';
         this.operator = '';
@@ -26,8 +26,8 @@
           } else {
             document.getElementById('hider').style.width = '0px';
           }
+        };
 
-        }
       }
     };
   });
