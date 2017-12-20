@@ -17,8 +17,13 @@ ul {
 }
 
 .calc-type {
-  height: 372px;
+  height: 412px;
 }
+
+/* .calc-type::-webkit-scrollbar {
+  background-color: #aaa;
+  color: red;
+} */
 
 li.title {
   font-weight: bold;
@@ -39,6 +44,10 @@ li.title {
   left: 18%;
 }
 
+#first-option {
+  padding: 0;
+}
+
 li {
   padding: 3%;
   cursor: default;
@@ -50,7 +59,7 @@ li.version:hover {
 }
 
 .side {
-   display: inline;
+   display: inline-block;
    padding: 4% 3%;
    float: left;
    width: 18%;
@@ -61,19 +70,20 @@ li.version:hover {
  }
  .side .line {
    background-color: black;
-   width: 70%;
+   width: 80%;
    height: 1px;
    margin: 4px;
  }
 
  #roomless {
    width: 82%;
-   height: 40px;
+   height: 48px;
  }
 
  #roomless li {
    position: relative;
-   top: 5px;
+   top: -5px;
+   left: -5px;
    font-size: 20px;
    font-weight: bold;
  }
