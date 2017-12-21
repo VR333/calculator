@@ -3,7 +3,7 @@ aside {
     width: 0px;
     margin-top: 5px;
     position: absolute;
-    z-index: 10;
+    z-index: 1;
     padding-top: 14px;
     height: 481px;
 }
@@ -28,6 +28,11 @@ li.title {
 .calc-type li {
   padding: 7%;
 }
+
+.calc-type li.version {
+  padding: 7% 0% 7% 12%;
+}
+
 .calc-type li.active {
   background-color: #7DBBEA;
 }
@@ -47,6 +52,11 @@ li {
   padding: 3%;
   cursor: default;
 }
+
+/* li.version {
+  padding: 3% 3% 3% 3%;
+  cursor: default;
+} */
 
 
 li.version:hover {
@@ -72,7 +82,7 @@ li.version:hover {
 
  #roomless {
    width: 82%;
-   height: 48px;
+   height: 50px;
  }
 
  #roomless li {
@@ -81,6 +91,7 @@ li.version:hover {
    left: -5px;
    font-size: 20px;
    font-weight: bold;
+
  }
 
  .separator {
@@ -118,5 +129,5 @@ li.version:hover {
  }
 
  #hider {
-  transition: width .4s;
+  transition: width .1s;
  }
