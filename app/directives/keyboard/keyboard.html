@@ -13,9 +13,9 @@
   <button class='enabled' ng-click="button.bringToPower()" first='keyboard.first'>x2</button>
   <button class='enabled' ng-click="button.divideOneByFirst()" first='keyboard.first'>1/x</button>
 
-  <button class='enabled' ng-click="button.reset()" first='keyboard.first' second='keyboard.second' operator='keyboard.operator'>CE</button>
-  <button class='enabled' ng-click="button.back()" first='keyboard.first' second='keyboard.second' operator='keyboard.operator'>C</button>
-  <button class='enabled'>B</button>
+  <button class='enabled'>CE</button>
+  <button class='enabled'ng-click="button.reset()" first='keyboard.first' second='keyboard.second' operator='keyboard.operator'>C</button>
+  <button class='enabled' ng-click="button.back()" first='keyboard.first' second='keyboard.second' operator='keyboard.operator'>&#9003;</button>
   <button class='enabled arithmetic' ng-click="button.setOperator('/')" first='keyboard.first' second='keyboard.second' operator='keyboard.operator'>&#247;</button>
 
   <button class='numeric enabled' ng-click="button.setValue('7')" first='keyboard.first' second='keyboard.second' operator='keyboard.operator'>7</button>
