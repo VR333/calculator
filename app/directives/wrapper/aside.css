@@ -46,18 +46,13 @@ li.title {
 
 #first-option {
   padding: 0;
+  height: 38px;
 }
 
 li {
   padding: 3%;
   cursor: default;
 }
-
-/* li.version {
-  padding: 3% 3% 3% 3%;
-  cursor: default;
-} */
-
 
 li.version:hover {
   background-color: #DEDEDE;
@@ -82,7 +77,6 @@ li.version:hover {
 
  #roomless {
    width: 82%;
-   height: 50px;
  }
 
  #roomless li {
