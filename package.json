@@ -2,7 +2,7 @@
   "name": "calculator",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./app/index.js",
   "scripts": {
     "start": "webpack-dev-server --progress --port 3000",
     "test": "echo \"Error: no test specified\" && exit 1"

@@ -70,11 +70,8 @@
 (function(){
   __webpack_require__(1);
   __webpack_require__(2);
-  __webpack_require__(3);
-  __webpack_require__(4);
-  __webpack_require__(5);
 
-  const app = angular.module('calculator-app', ['calculator', 'keyboard', 'display', 'buttons']);
+  const app = angular.module('tester', ['calculator']);
 })();
 
 
@@ -34276,51 +34273,24 @@ $provide.value("$locale", {
 
 /***/ }),
 /* 2 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
 (function(){
-  const app = angular.module('calculator', []);
+  __webpack_require__(3);
+  __webpack_require__(4);
+  __webpack_require__(5);
+
+  const app = angular.module('calculator', ['keyboard', 'display', 'buttons']);
 
   app.directive('calculator', function(){
     return {
       restrict: 'E',
-      templateUrl : './app/directives/wrapper/wrapper.html',
+      templateUrl : './app/components/calculator/calculator.html',
       controllerAs: 'ctrl',
       controller: function() {
         this.first = '0';
         this.second = '';
         this.operator = '';
-
-        this.list = [
-        'Scientific', 'Programmer', 'Date calculation', 'Converter',
-        'Currency', 'Volume', 'Length','Weight and Mass','Temperature',
-        'Energy','Area','Speed','Time','Power','Data','Pressure','Angle'
-        ];
-
-        this.active = 'Standard'
-
-        this.toggle = 0;
-
-        this.changeToggle = (value) => {
-          this.toggle = value;
-
-          if (this.toggle) {
-            document.getElementById('hider').style.width = '250px';
-          } else {
-            document.getElementById('hider').style.width = '0px';
-          }
-
-        };
-
-        this.makeActiveTab = (event) => {
-          console.log(event.currentTarget.innerText);
-          if (event.currentTarget.className !== 'ng-scope title') {
-            document.getElementsByClassName('active')[0]
-                    .className = 'ng-scope version';
-            event.currentTarget.className = 'ng-scope version active';
-            this.active = event.currentTarget.innerText;
-          }
-        };
       }
     };
   });
@@ -34332,35 +34302,12 @@ $provide.value("$locale", {
 /***/ (function(module, exports) {
 
 (function(){
-  const app = angular.module('display', []);
-  
-  app.directive('display', function(){
-    return {
-      restrict: 'E',
-      bindToController: {
-        first: '=',
-        second: '=',
-        operator: '='
-      },
-      templateUrl: './app/directives/display/display.html',
-      controller: function() {},
-      controllerAs: 'display'
-    };
-  });
-})();
-
-
-/***/ }),
-/* 4 */
-/***/ (function(module, exports) {
-
-(function(){
   const app = angular.module('keyboard', []);
 
   app.directive('keyboard', function(){
     return {
       restrict: 'E',
-      templateUrl : './app/directives/keyboard/keyboard.html',
+      templateUrl : './app/components/calculator/diractives/keyboard/keyboard.html',
       controllerAs: 'keyboard',
       bindToController: {
         first: '=',
@@ -34374,16 +34321,16 @@ $provide.value("$locale", {
 
 
 /***/ }),
-/* 5 */
+/* 4 */
 /***/ (function(module, exports) {
 
 (function(){
   const app = angular.module('buttons', []);
-  
+
   app.directive('button', function(){
     return {
       restrict: 'E',
-      templateUrl: './app/directives/button/button.html',
+      templateUrl: './app/components/calculator/diractives/button/button.html',
       bindToController: {
         first: '=',
         second: '=',
@@ -34392,7 +34339,7 @@ $provide.value("$locale", {
       transclude: true,
       controllerAs: 'button',
       controller: function() {
-        
+
         // switcher to cgange input to a second number
 
         this.toggle = true;
@@ -34605,6 +34552,29 @@ $provide.value("$locale", {
           }
         };
       }
+    };
+  });
+})();
+
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports) {
+
+(function(){
+  const app = angular.module('display', []);
+
+  app.directive('display', function(){
+    return {
+      restrict: 'E',
+      bindToController: {
+        first: '=',
+        second: '=',
+        operator: '='
+      },
+      templateUrl: './app/components/calculator/diractives/display/display.html',
+      controller: function() {},
+      controllerAs: 'display'
     };
   });
 })();

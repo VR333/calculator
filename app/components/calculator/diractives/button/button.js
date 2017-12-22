@@ -1,10 +1,10 @@
 (function(){
   const app = angular.module('buttons', []);
-  
+
   app.directive('button', function(){
     return {
       restrict: 'E',
-      templateUrl: './app/directives/button/button.html',
+      templateUrl: './app/components/calculator/diractives/button/button.html',
       bindToController: {
         first: '=',
         second: '=',
@@ -13,7 +13,7 @@
       transclude: true,
       controllerAs: 'button',
       controller: function() {
-        
+
         // switcher to cgange input to a second number
 
         this.toggle = true;

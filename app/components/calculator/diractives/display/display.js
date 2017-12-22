@@ -1,6 +1,6 @@
 (function(){
   const app = angular.module('display', []);
-  
+
   app.directive('display', function(){
     return {
       restrict: 'E',
@@ -9,7 +9,7 @@
         second: '=',
         operator: '='
       },
-      templateUrl: './app/directives/display/display.html',
+      templateUrl: './app/components/calculator/diractives/display/display.html',
       controller: function() {},
       controllerAs: 'display'
     };

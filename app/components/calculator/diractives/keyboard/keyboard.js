@@ -4,7 +4,7 @@
   app.directive('keyboard', function(){
     return {
       restrict: 'E',
-      templateUrl : './app/directives/keyboard/keyboard.html',
+      templateUrl : './app/components/calculator/diractives/keyboard/keyboard.html',
       controllerAs: 'keyboard',
       bindToController: {
         first: '=',

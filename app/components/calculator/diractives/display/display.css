@@ -1,0 +1,17 @@
+/* screen */
+
+ display {
+   display: block;
+   margin: auto;
+   background-color: #ededed;
+   height: 100px;
+   overflow: auto;
+ }
+
+ #screen {
+   position: relative;
+   top: 34px;
+   font-size: 46px;
+   margin-right: 4%;
+   text-align: right;
+ }
