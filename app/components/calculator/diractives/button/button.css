@@ -1,22 +1,27 @@
  button {
-   width: 23.3%;
-   margin: 1.5% 0 0 1.5%;
-   height: 15%;
+   width: 25%;
+   height: 55px;
    background-color: #f4f4f4;
    border: none;
    padding: 2% 0;
    float: left;
+   font-size: 18px;
  }
+
+ button:focus {
+  outline: none;
+}
 
  .m-btn button {
    width: 16.5%;
-   height: 24px;
+   height: 29px;
    display inline-block;
    border: none;
    margin: 0;
    background-color: inherit;
    color: #bdbdbd;
    padding: 1% 0;
+   font-size: 13px;
  }
 
  .m-btn button.enabled {
@@ -48,7 +53,7 @@
 
 /* Show the tooltip text when you mouse over the tooltip container */
 .tooltip:hover .tooltiptext {
-    transition: opacity .5s, visibility .5s;
+    transition: opacity 2s, visibility 2s;
     transition-timing-function: ease-in;
     visibility: visible;
     opacity: 1;
@@ -62,17 +67,16 @@
  button.numeric {
    background-color: white;
    font-weight: bold;
-   font-size: 20px;
+   font-size: 24px;
  }
 
 
  button.arithmetic {
-  font-size: 28px;
+  font-size: 30px;
  }
 
  button.arithmetic:hover {
    background-color: #7DBBEA;
-   border: 1px solid #9DC8EA;
    color: white;
  }
 

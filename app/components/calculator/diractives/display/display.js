@@ -10,8 +10,8 @@
         operator: '='
       },
       templateUrl: './app/components/calculator/diractives/display/display.html',
+      controllerAs: 'display',
       controller: function() {},
-      controllerAs: 'display'
     };
   });
 })();

@@ -1,0 +1,24 @@
+<ul class='calc-type'>
+  <li id='first-option'>
+    <div class='side' ng-click='ctrl.changeToggle(0)'>
+        <div class='line'></div>
+        <div class='line'></div>
+        <div class='line'></div>
+    </div>
+    <ul id='roomless'><li>Calculator</li></ul>
+  </li>
+  <li class='version active' ng-click='ctrl.makeActiveTab($event)'><span>Standard</span></li>
+  <li ng-repeat="item in menu.list"
+      ng-class="{ 'version': item !== 'Converter',
+                  'title': item === 'Converter'
+                }"
+      ng-click='ctrl.makeActiveTab($event)'>
+    <span>{{item}}</span>
+  </li>
+</ul>
+
+<div class='separator'></div>
+
+<ul class='about'>
+  <li><span class='info'><i class="fa fa-info-circle" aria-hidden="true"></i></span><span class='about-text'>About</span></li>
+</ul>

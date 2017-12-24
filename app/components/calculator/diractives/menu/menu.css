@@ -1,0 +1,126 @@
+menu {
+    background-color: #ededed;
+    width: 250px;
+    left: -250px;
+    position: absolute;
+    z-index: 1;
+    display: block;
+    transition: left .2s;
+}
+
+menu ul {
+    text-align: left;
+    margin: 0;
+    list-style-type: none;
+    width: 100%;
+    overflow: auto;
+}
+
+.calc-type {
+  height: 445px;
+}
+
+li.title {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.calc-type li {
+  padding: 7%;
+}
+
+.calc-type li.version {
+  padding: 7% 0% 7% 12%;
+}
+
+.calc-type li.active {
+  background-color: #7DBBEA;
+}
+.calc-type li.active:hover {
+  background-color: #73b0e2;
+}
+.calc-type li span{
+  position: relative;
+  left: 18%;
+}
+
+#first-option {
+  padding: 0;
+  height: 38px;
+}
+
+li {
+  padding: 3%;
+  cursor: default;
+}
+
+li.version:hover {
+  background-color: #DEDEDE;
+}
+
+.side {
+   display: inline-block;
+   padding: 4% 5.7%;
+   float: left;
+   width: 22%;
+   font-size: 19px;
+ }
+
+ .side:hover {
+   background-color: #DEDEDE;
+ }
+ .side .line {
+   background-color: black;
+   width: 80%;
+   height: 1px;
+   margin: 4px;
+ }
+
+ #roomless {
+   width: 78%;
+ }
+
+ #roomless li {
+   position: relative;
+   top: -5px;
+   left: -5px;
+   font-size: 20px;
+   font-weight: bold;
+
+ }
+
+ .separator {
+   border-bottom: 1px solid #aaa;
+   margin: auto;
+   margin-top: 5px;
+   width: 90%;
+ }
+
+ .about {
+  background-color: #ededed;
+  width: 100%;
+  text-align: left;
+ }
+
+ .about li {
+    font-size: 18px;
+    height: 51px;
+    width: 100%;
+    padding-top: 16px;
+    padding-left: 14px;
+ }
+
+ .about li:hover {
+  background-color: #DEDEDE;
+ }
+
+ .about li .info {
+  margin-top: 10px;
+  margin-right: 23px;
+  font-weight: lighter;
+ }
+
+ .about-text {
+   position: relative;
+   top: -2px;
+ }

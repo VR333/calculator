@@ -1,0 +1,48 @@
+navigator {
+    display: block;
+}
+
+navigator  img {
+  position: absolute;
+  top: 52px;
+  left: 267px;
+}
+
+ #title {
+  text-align: left;
+  cursor: default;
+  font-weight: bold;
+  display: inline-block;
+  height: 20px;
+  position: relative;
+  top: 4px;
+  width: 60%; 
+}
+
+  .menu {
+    display: inline-block;
+    padding: 3% 4%;
+    margin: 5px;
+    position: relative;
+    left: -4px;
+    /* top: 8px; */
+    float: left;
+    margin-top: -1px;
+ }
+
+ .line {
+   background-color: black;
+   width: 20px;
+   height: 1px;
+   margin: 4px;
+ }
+
+ .menu:hover {
+   background-color: #DEDEDE;
+ }
+ .menu .line {
+   background-color: black;
+   width: 20px;
+   height: 1px;
+   margin: 4px;
+ }

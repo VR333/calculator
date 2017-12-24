@@ -5,13 +5,20 @@
    margin: auto;
    background-color: #ededed;
    height: 100px;
-   overflow: auto;
+   overflow: hidden;
+   width: 100%;
  }
 
- #screen {
+ .screen {
    position: relative;
    top: 34px;
    font-size: 46px;
    margin-right: 4%;
    text-align: right;
+ }
+
+ h1.first-operator {
+   font-size: 16px;
+   top: 0px;
+   color: #aaa;
  }

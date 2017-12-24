@@ -1,49 +1,8 @@
-<header>
-  <div>Calculator
-    <div class='close'>
-      <div class='window-btn'>-</div>
-      <div class='window-btn'>&#9633;</div>
-      <div class='window-btn' id='cross'>&#10005;</div>
-    </div>
-  </div>
-</header>
+<hat></hat>
 
-<aside id='hider'>
-  <ul class='calc-type'>
-    <li id='first-option'>
-      <div class='side' ng-click='ctrl.changeToggle(0)'>
-        <div class='line'></div>
-        <div class='line'></div>
-        <div class='line'></div>
-      </div>
-      <ul id='roomless'><li>Calculator</li></ul>
-    </li>
-    <li class='version active' ng-click='ctrl.makeActiveTab($event)'><span>Standard</span></li>
-    <li ng-repeat="item in ctrl.list"
-        ng-class="{ 'version': item !== 'Converter',
-                    'title': item === 'Converter'
-                  }"
-        ng-click='ctrl.makeActiveTab($event)'>
-      <span>{{item}}</span>
-    </li>
-  </ul>
+<menu id='hider'></menu>
 
-  <div class='separator'></div>
-  <ul class='about'>
-    <li><span class='info'>&#128712;</span><span class='about-text'>About</span></li>
-  </ul>
-</aside>
-
-
-<nav id='hiding'>
-  <div class='menu' ng-click='ctrl.changeToggle(1)'>
-    <div class='line'></div>
-    <div class='line'></div>
-    <div class='line'></div>
-  </div>
-  <span id='logo'>{{ctrl.active}}</span>
-  <img src='./app/components/calculator/clock.png' alt='time watcher'/>
-</nav>
+<navigator id='hiding'></navigator>
 
 <display
   first='ctrl.first'

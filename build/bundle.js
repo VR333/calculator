@@ -34279,8 +34279,11 @@ $provide.value("$locale", {
   __webpack_require__(3);
   __webpack_require__(4);
   __webpack_require__(5);
+  __webpack_require__(6);
+  __webpack_require__(7);
+  __webpack_require__(8);
 
-  const app = angular.module('calculator', ['keyboard', 'display', 'buttons']);
+  const app = angular.module('calculator', ['keyboard', 'display', 'buttons', 'hat', 'menu', 'navigator']);
 
   app.directive('calculator', function(){
     return {
@@ -34291,6 +34294,30 @@ $provide.value("$locale", {
         this.first = '0';
         this.second = '';
         this.operator = '';
+
+        this.toggle = 0;
+
+        this.changeToggle = (value) => {
+          this.toggle = value;
+
+          if (this.toggle) {
+            document.getElementById('hider').style.left = '0px';
+          } else {
+            document.getElementById('hider').style.left = '-250px';
+          }
+        };
+
+        this.active = 'Standard';
+
+        this.makeActiveTab = (event) => {
+          console.log(event.currentTarget.innerText);
+          if (event.currentTarget.className !== 'ng-scope title') {
+            document.getElementsByClassName('active')[0]
+                    .className = 'ng-scope version';
+            event.currentTarget.className = 'ng-scope version active';
+            this.active = event.currentTarget.innerText;
+          }
+        };
       }
     };
   });
@@ -34344,6 +34371,15 @@ $provide.value("$locale", {
 
         this.toggle = true;
 
+        // this.editHTML = () => {
+        //   if (this.toggle) {
+        //     document.getElementById('second-number').innerHTML = `${this.first} ${this.operator}`;
+        //   } else {
+        //     document.getElementById('operation').innerHTML = `${this.first} ${this.operator}`;
+        //     document.getElementById('second-number').innerHTML = `${this.second}`;
+        //   }
+        // };
+
         // check for proper action if both operands and operator were chosen
 
         this.handleEquilButton = () => {
@@ -34385,7 +34421,10 @@ $provide.value("$locale", {
             this.first = firstOperand;
             return;
           }
-          this.first = this.first.concat(firstOperand);
+
+          if (this.first.length < 9) {
+            this.first = this.first.concat(firstOperand);
+          }
         };
 
         // Set value for this.second variable
@@ -34395,7 +34434,9 @@ $provide.value("$locale", {
             this.second = secondOperand;
             return;
           }
-          this.second = this.second.concat(secondOperand);
+          if (this.first.length < 9) {
+            this.second = this.second.concat(secondOperand);
+          }
         };
 
         // Set value for this.operator variable and check this.first
@@ -34573,8 +34614,70 @@ $provide.value("$locale", {
         operator: '='
       },
       templateUrl: './app/components/calculator/diractives/display/display.html',
+      controllerAs: 'display',
       controller: function() {},
-      controllerAs: 'display'
+    };
+  });
+})();
+
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports) {
+
+(function(){
+  const app = angular.module('hat', []);
+
+  app.directive('hat', function(){
+    return {
+      restrict: 'E',
+      templateUrl: './app/components/calculator/diractives/hat/hat.html',
+      controllerAs: 'hat',
+      controller: function() {}
+    };
+  });
+})();
+
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports) {
+
+(function(){
+  const app = angular.module('menu', []);
+
+  app.directive('menu', function(){
+    return {
+      restrict: 'E',
+      templateUrl : './app/components/calculator/diractives/menu/menu.html',
+      controllerAs: 'menu',
+      controller: function() {
+      	
+
+      	this.list = [
+        'Scientific', 'Programmer', 'Date calculation', 'Converter',
+        'Currency', 'Volume', 'Length','Weight and Mass','Temperature',
+        'Energy','Area','Speed','Time','Power','Data','Pressure','Angle'
+        ];
+      }
+    };
+  });
+})();
+
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports) {
+
+(function(){
+  const app = angular.module('navigator', []);
+
+  app.directive('navigator', function(){
+    return {
+      restrict: 'E',
+      templateUrl : './app/components/calculator/diractives/navigator/navigator.html',
+      controllerAs: 'navigator',
+      controller: function() {}
     };
   });
 })();
