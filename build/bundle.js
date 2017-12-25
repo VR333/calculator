@@ -34283,7 +34283,7 @@ $provide.value("$locale", {
   __webpack_require__(7);
   __webpack_require__(8);
 
-  const app = angular.module('calculator', ['keyboard', 'display', 'buttons', 'hat', 'menu', 'navigator']);
+  const app = angular.module('calculator', ['keyboard', 'display', 'btn', 'hat', 'menu', 'navigator']);
 
   app.directive('calculator', function(){
     return {
@@ -34352,19 +34352,19 @@ $provide.value("$locale", {
 /***/ (function(module, exports) {
 
 (function(){
-  const app = angular.module('buttons', []);
+  const app = angular.module('btn', []);
 
-  app.directive('button', function(){
+  app.directive('btn', function(){
     return {
       restrict: 'E',
-      templateUrl: './app/components/calculator/diractives/button/button.html',
+      templateUrl: './app/components/calculator/diractives/btn/btn.html',
       bindToController: {
         first: '=',
         second: '=',
         operator: '='
       },
       transclude: true,
-      controllerAs: 'button',
+      controllerAs: 'btn',
       controller: function() {
 
         // switcher to cgange input to a second number

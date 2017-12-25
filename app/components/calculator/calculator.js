@@ -1,12 +1,12 @@
 (function(){
   require('./diractives/keyboard/keyboard.js');
-  require('./diractives/button/button.js');
+  require('./diractives/btn/btn.js');
   require('./diractives/display/display.js');
   require('./diractives/hat/hat.js');
   require('./diractives/menu/menu.js');
   require('./diractives/navigator/navigator.js');
 
-  const app = angular.module('calculator', ['keyboard', 'display', 'buttons', 'hat', 'menu', 'navigator']);
+  const app = angular.module('calculator', ['keyboard', 'display', 'btn', 'hat', 'menu', 'navigator']);
 
   app.directive('calculator', function(){
     return {
