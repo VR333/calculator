@@ -13,12 +13,12 @@
  .screen {
    position: relative;
    top: 24px;
-   font-size: 46px;
+   font-size: 51px;
    margin-right: 4%;
    text-align: right;
  }
 
- h1.first-operator {
+ h1.second-screen {
    font-size: 18px;
    top: 0px;
    color: #aaa;
