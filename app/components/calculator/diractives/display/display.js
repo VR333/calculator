@@ -11,7 +11,14 @@
       },
       templateUrl: './app/components/calculator/diractives/display/display.html',
       controllerAs: 'display',
-      controller: function() {},
+      controller: function() {
+        this.checkForDoubleScreenNeed = () => {
+          if (this.first && this.operator) {
+            return true;
+          }
+          return false;
+        };
+      },
     };
   });
 })();

@@ -34434,7 +34434,7 @@ $provide.value("$locale", {
             this.second = secondOperand;
             return;
           }
-          if (this.first.length < 9) {
+          if (this.second.length < 9) {
             this.second = this.second.concat(secondOperand);
           }
         };
@@ -34615,7 +34615,14 @@ $provide.value("$locale", {
       },
       templateUrl: './app/components/calculator/diractives/display/display.html',
       controllerAs: 'display',
-      controller: function() {},
+      controller: function() {
+        this.checkForDoubleScreenNeed = () => {
+          if (this.first && this.operator) {
+            return true;
+          }
+          return false;
+        };
+      },
     };
   });
 })();

@@ -81,7 +81,7 @@
             this.second = secondOperand;
             return;
           }
-          if (this.first.length < 9) {
+          if (this.second.length < 9) {
             this.second = this.second.concat(secondOperand);
           }
         };

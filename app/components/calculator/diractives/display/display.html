@@ -1,2 +1,9 @@
-<h1 class='screen first-operator' id='operation'></h1>
-<h1 class='screen' id='second-number'>{{display.first}} {{display.operator}} {{display.second}}</h1>
+<div ng-show='display.checkForDoubleScreenNeed()'>
+	<h1 class='screen first-operator' id='operation'>{{display.first | limitTo:9}} {{display.operator}}</h1>
+	<h1 class='screen' id='second-number'>{{display.second}}</h1>
+</div>
+
+<div ng-hide='display.checkForDoubleScreenNeed()'>
+	<h1 class='screen first-operator' id='operation'></h1>
+	<h1 class='screen' id='second-number'>{{display.first | limitTo:9}} {{display.operator}} {{display.second}}</h1>
+</div>

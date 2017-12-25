@@ -7,18 +7,19 @@
    height: 100px;
    overflow: hidden;
    width: 100%;
+   cursor: default;
  }
 
  .screen {
    position: relative;
-   top: 34px;
+   top: 24px;
    font-size: 46px;
    margin-right: 4%;
    text-align: right;
  }
 
  h1.first-operator {
-   font-size: 16px;
+   font-size: 18px;
    top: 0px;
    color: #aaa;
  }
