@@ -13,12 +13,16 @@
       restrict: 'E',
       templateUrl : './app/components/calculator/calculator.html',
       controllerAs: 'ctrl',
-      controller: function() {
+      controller: function($scope) {
         this.first = '0';
         this.second = '';
         this.operator = '';
 
         this.toggle = 0;
+
+        // $scope.$on('myevent', function(data){
+        //   alert(data);
+        // });
 
         this.changeToggle = (value) => {
           this.toggle = value;

@@ -1,4 +1,7 @@
 (function(){
+  // require('./../../servises/calculate.js');
+  // 'operationsService'
+
   const app = angular.module('btn', []);
 
   app.directive('btn', function(){
@@ -13,6 +16,11 @@
       transclude: true,
       controllerAs: 'btn',
       controller: function() {
+        // $scope, operationsService
+        // $scope.emitEvent = function() {
+        //   let data  = 5;
+        //   $scope.$emit('myevent', data);
+        // }
 
         // switcher to change input to a second number
 
