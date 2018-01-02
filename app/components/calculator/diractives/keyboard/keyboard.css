@@ -1,22 +1,24 @@
  /* keyboard */
 
  keyboard {
-  display: block;
+     display: block;
  }
 
  .m-btn {
- 	height: 24px;
+     height: 24px;
  }
 
  .btn-separator {
-   border-bottom: 1px solid #ddd;
-   margin-top: 5px;
+    border-color: #fff;
+    margin-top: 5px;
+    opacity: 0.4;
  }
 
  .input {
-   height: 330px;
+    height: 330px;
+    margin-top: -2px;
  }
 
-sup {
-	font-size: 11px;
-}
+ sup {
+    font-size: 11px;
+ }

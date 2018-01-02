@@ -67,12 +67,10 @@
 /* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
-(function(){
-  __webpack_require__(1);
-  __webpack_require__(2);
+__webpack_require__(1);
+__webpack_require__(2);
 
-  const app = angular.module('tester', ['calculator']);
-})();
+const app = angular.module('tester', ['calculator']);
 
 
 /***/ }),
@@ -34275,211 +34273,203 @@ $provide.value("$locale", {
 /* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
-(function(){
-  __webpack_require__(3);
-  __webpack_require__(4);
-  __webpack_require__(5);
-  __webpack_require__(6);
-  __webpack_require__(7);
-  __webpack_require__(8);
+__webpack_require__(3);
+__webpack_require__(4);
+__webpack_require__(5);
+__webpack_require__(6);
+__webpack_require__(7);
+__webpack_require__(8);
 
-  const app = angular.module('calculator', ['keyboard', 'display', 'btn', 'hat', 'menu', 'navigator']);
+const app = angular.module('calculator', ['keyboard', 'display', 'btn', 'hat', 'menu', 'navigator']);
 
-  app.directive('calculator', function(){
+app.directive('calculator', function(){
     return {
-      restrict: 'E',
-      templateUrl : './app/components/calculator/calculator.html',
-      controllerAs: 'ctrl',
-      controller: function($scope) {
-        this.first = '0';
-        this.second = '';
-        this.operator = '';
+        restrict: 'E',
+        templateUrl : './app/components/calculator/calculator.html',
+        controllerAs: 'ctrl',
+        controller: function($scope) {
+            this.first = '0';
+            this.second = '';
+            this.operator = '';
 
-        this.toggle = 0;
+            this.toggle = 0;
 
-        // $scope.$on('myevent', function(data){
-        //   alert(data);
-        // });
+            $scope.$on('myevent', function(data){
+                console.log(data);
+            });
 
-        this.changeToggle = (value) => {
-          this.toggle = value;
+            this.changeToggle = (value) => {
+                this.toggle = value;
 
-          if (this.toggle) {
-            document.getElementById('hider').style.left = '0px';
-          } else {
-            document.getElementById('hider').style.left = '-250px';
-          }
-        };
+                if (this.toggle) {
+                    document.getElementById('hider').style.left = '0px';
+                } else {
+                    document.getElementById('hider').style.left = '-250px';
+                }
+            };
 
-        this.active = 'Standard';
+            this.active = 'Standard';
 
-        this.makeActiveTab = (event) => {
-          console.log(event.currentTarget.innerText);
-          if (event.currentTarget.className !== 'ng-scope title') {
-            document.getElementsByClassName('active')[0]
-                    .className = 'ng-scope version';
-            event.currentTarget.className = 'ng-scope version active';
-            this.active = event.currentTarget.innerText;
-          }
-        };
-      }
+            this.makeActiveTab = (event) => {
+                console.log(event.currentTarget.innerText);
+                if (event.currentTarget.className !== 'ng-scope title') {
+                    document.getElementsByClassName('active')[0]
+                            .className = 'ng-scope version';
+                    event.currentTarget.className = 'ng-scope version active';
+                    this.active = event.currentTarget.innerText;
+                }
+            };
+        }
     };
-  });
-})();
+});
 
 
 /***/ }),
 /* 3 */
 /***/ (function(module, exports) {
 
-(function(){
-  const app = angular.module('keyboard', []);
+const app = angular.module('keyboard', []);
 
-  app.directive('keyboard', function(){
+app.directive('keyboard', function(){
     return {
-      restrict: 'E',
-      templateUrl : './app/components/calculator/diractives/keyboard/keyboard.html',
-      controllerAs: 'keyboard',
-      bindToController: {
-        first: '=',
-        second: '=',
-        operator: '='
-      },
-      controller: function() {}
+        restrict: 'E',
+        templateUrl : './app/components/calculator/diractives/keyboard/keyboard.html',
+        controllerAs: 'keyboard',
+        bindToController: {
+            first: '=',
+            second: '=',
+            operator: '='
+        },
+        controller: function() {}
     };
-  });
-})();
+});
 
 
 /***/ }),
 /* 4 */
 /***/ (function(module, exports) {
 
-(function(){
-  // require('./../../servises/calculate.js');
-  // 'operationsService'
+// require('./../../servises/calculate.js');
+// 'operationsService'
 
-  const app = angular.module('btn', []);
+const app = angular.module('btn', []);
 
-  app.directive('btn', function(){
-    return {
-      restrict: 'E',
-      templateUrl: './app/components/calculator/diractives/btn/btn.html',
-      bindToController: {
+app.directive('btn', function(){
+return {
+    restrict: 'E',
+    templateUrl: './app/components/calculator/diractives/btn/btn.html',
+    bindToController: {
         first: '=',
         second: '=',
         operator: '='
-      },
-      transclude: true,
-      controllerAs: 'btn',
-      controller: function() {
-        // $scope, operationsService
-        // $scope.emitEvent = function() {
-        //   let data  = 5;
-        //   $scope.$emit('myevent', data);
-        // }
-
-        // switcher to change input to a second number
+    },
+    transclude: true,
+    controllerAs: 'btn',
+    controller: function($scope) {
+    // $scope, operationsService
+        this.lol  = {x: 5};
+        $scope.$emit('myevent', {l : 'hmmm'});
+    // switcher to change input to a second number
 
         this.toggle = true;
 
-        // check for proper action if both operands and operator were chosen
+    // check for proper action if both operands and operator were chosen
 
         this.handleEquilButton = () => {
-          if (this.second === '.') {
-            this.second = '0';
-          }
-          if (this.operator && this.second) {
-            this.makeSomeMath(this.operator);
-          }
-
-        };
-
-        // check for proper dot(.) usage..
-
-        this.handleDecimalDot = dot => {
-          if ( this.toggle && !this.first.includes('.') ) {
-            this.first = this.first.concat(dot);
-            return;
-          }
-          if ( this.operator && !this.second.includes('.') ) {
-            this.second = this.second.concat(dot);
-          }
-        };
-
-        // find out: first or second operand is adding..
-
-        this.setValue = value => {
-          if (this.toggle) {
-            this.setFirstOperand(value);
-            return;
-          }
-          this.setSecondOperand(value);
-        };
-
-        // Set value for this.first variable
-
-        this.setFirstOperand = firstOperand => {
-          if (this.first === '0') {
-            this.first = firstOperand;
-            return;
-          }
-
-          if (this.first.length < 9) {
-            this.first = this.first.concat(firstOperand);
-          }
-        };
-
-        // Set value for this.second variable
-
-        this.setSecondOperand = secondOperand => {
-          if (this.second == '' || this.second == '0') {
-            this.second = secondOperand;
-            return;
-          }
-          if (this.second.length < 9) {
-            this.second = this.second.concat(secondOperand);
-          }
-        };
-
-        // Set value for this.operator variable and check this.first
-
-        this.setOperator = operator => {
-          if ( this.checkForMinusNumber(operator) ) {
-            return;
-          }
-
-          if (this.first === '-' || this.first === '-.') {
-            this.first = '0';
-          }
-
-          if (this.second && this.operator) {
-            this.actionPlusChooseNextOperator(operator);
-            return;
-          }
-          this.operator = operator;
-          this.toggle = false;
-        };
-
-        // check if user want to use minus number for operation
-
-        this.checkForMinusNumber = minus => {
-            const condition = minus === '-' &&
-                this.toggle &&
-                !this.first.toString().includes('-') &&
-                this.first === '0';
-
-            if (condition) {
-                this.first = minus;
-                return;
+            if (this.second === '.') {
+                this.second = '0';
+            }
+            if (this.operator && this.second) {
+                this.makeSomeMath(this.operator);
             }
 
         };
 
-        // check operator and use proper action
+    // check for proper dot(.) usage..
 
-        this.makeSomeMath = value => {
-          switch(this.operator) {
+        this.handleDecimalDot = dot => {
+            if ( this.toggle && !this.first.includes('.') ) {
+                this.first = this.first.concat(dot);
+                return;
+            }
+            if ( this.operator && !this.second.includes('.') ) {
+                this.second = this.second.concat(dot);
+            }
+        };
+
+    // find out: first or second operand is adding..
+
+        this.setValue = value => {
+            if (this.toggle) {
+                this.setFirstOperand(value);
+                return;
+            }
+            this.setSecondOperand(value);
+        };
+
+    // Set value for this.first variable
+
+        this.setFirstOperand = firstOperand => {
+            if (this.first === '0') {
+                this.first = firstOperand;
+                return;
+            }
+
+          if (this.first.length < 9) {
+              this.first = this.first.concat(firstOperand);
+          }
+        };
+
+    // Set value for this.second variable
+
+        this.setSecondOperand = secondOperand => {
+            if (this.second == '' || this.second == '0') {
+                this.second = secondOperand;
+                return;
+            }
+            if (this.second.length < 9) {
+                this.second = this.second.concat(secondOperand);
+            }
+        };
+
+    // Set value for this.operator variable and check this.first
+
+    this.setOperator = operator => {
+        if ( this.checkForMinusNumber(operator) ) {
+            return;
+        }
+
+        if (this.first === '-' || this.first === '-.') {
+          this.first = '0';
+        }
+
+        if (this.second && this.operator) {
+          this.actionPlusChooseNextOperator(operator);
+          return;
+        }
+        this.operator = operator;
+        this.toggle = false;
+    };
+
+    // check if user want to use minus number for operation
+
+    this.checkForMinusNumber = minus => {
+        const condition = minus === '-' &&
+            this.toggle &&
+            !this.first.toString().includes('-') &&
+            this.first === '0';
+
+        if (condition) {
+            this.first = minus;
+            return;
+        }
+
+    };
+
+    // check operator and use proper action
+
+    this.makeSomeMath = value => {
+        switch(this.operator) {
             case '+':
                     this.add();
                     break;
@@ -34495,202 +34485,190 @@ $provide.value("$locale", {
             case '%':
                     this.module();
                     break;
-            }
-            this.second = '';
-            this.operator = '';
-            this.toggle = true;
-        };
-        /*
-        * start makeSomeMath() when both operands and operator is present
-        * and choose clicked operator for next action
-        */
+        }
+        this.second = '';
+        this.operator = '';
+        this.toggle = true;
+    };
+    /*
+    * start makeSomeMath() when both operands and operator is present
+    * and choose clicked operator for next action
+    */
 
-        this.actionPlusChooseNextOperator = operator => {
-          if (this.second === '.') {
+    this.actionPlusChooseNextOperator = operator => {
+        if (this.second === '.') {
             this.second = '0';
-          }
-          this.makeSomeMath(operator);
-          this.operator = operator;
-          this.toggle = false;
-        };
+        }
+        this.makeSomeMath(operator);
+        this.operator = operator;
+        this.toggle = false;
+    };
 
-        // arithmetic operations to be done with makeSomeMath() execution
+    // arithmetic operations to be done with makeSomeMath() execution
 
-        this.add = () => {
-          this.first = Number(this.first) + Number(this.second);
-        };
+    this.add = () => {
+        this.first = Number(this.first) + Number(this.second);
+    };
 
-        this.multiple = () => {
-          this.first = Number(this.first) * Number(this.second);
-        };
+    this.multiple = () => {
+        this.first = Number(this.first) * Number(this.second);
+    };
 
-        this.minus = () => {
-          this.first =  Number(this.first) - Number(this.second);
-        };
+    this.minus = () => {
+        this.first =  Number(this.first) - Number(this.second);
+    };
 
-        this.divide = () => {
-          this.first = Number(this.first) / Number(this.second);
-        };
+    this.divide = () => {
+        this.first = Number(this.first) / Number(this.second);
+    };
 
-        this.module = () => {
-          this.first = Number(this.first) % Number(this.second);
-        };
+    this.module = () => {
+        this.first = Number(this.first) % Number(this.second);
+    };
 
-        // Check if input value is non-digit one
+    // Check if input value is non-digit one
 
-        // clear calculator operands and operator
+    // clear calculator operands and operator
 
-        this.reset = () => {
-          this.first = '0';
-          this.second = '';
-          this.operator = undefined;
-          this.toggle = true;
-        };
+    this.reset = () => {
+        this.first = '0';
+        this.second = '';
+        this.operator = undefined;
+        this.toggle = true;
+    };
 
-        // clear last symbol of a current operand
+    // clear last symbol of a current operand
 
-        this.back = () => {
-          if (this.toggle) {
+    this.back = () => {
+        if (this.toggle) {
             if (this.first.length === 1) {
-              this.first = '0';
-              return;
+                this.first = '0';
+                return;
             }
             this.first = this.first.slice(0, -1);
             return;
-          }
+        }
 
-          if (this.second.length === 1) {
-              this.second = '';
-              return;
-          }
-          this.second = this.second.slice(0, -1);
-        };
+        if (this.second.length === 1) {
+            this.second = '';
+            return;
+        }
+        this.second = this.second.slice(0, -1);
+    };
 
-        // Change minus to plus and Vice Versa
+    // Change minus to plus and Vice Versa
 
-        this.changeMinus = () => {
-          if (this.toggle) {
+    this.changeMinus = () => {
+        if (this.toggle) {
             this.first = (Number(this.first) * (-1)).toString();
             return;
-          }
-          this.second = (Number(this.second) * (-1)).toString();
-        };
-
-        this.bringToPower = () => {
-          if (this.toggle) {
-            this.first = Math.pow(Number(this.first), 2);
-          }
-        };
-
-        // Divide 1 by this.first
-
-        this.divideOneByFirst = () => {
-          if (this.toggle) {
-            this.first = 1 / Number(this.first);
-          }
-        };
-
-        this.getSquareRoot = () => {
-          if (this.toggle) {
-            this.first = Math.pow(Number(this.first), 0.5);
-          }
-        };
-      }
+        }
+        this.second = (Number(this.second) * (-1)).toString();
     };
-  });
-})();
+
+    this.bringToPower = () => {
+        if (this.toggle) {
+            this.first = Math.pow(Number(this.first), 2);
+        }
+    };
+
+    // Divide 1 by this.first
+
+    this.divideOneByFirst = () => {
+        if (this.toggle) {
+            this.first = 1 / Number(this.first);
+        }
+    };
+
+    this.getSquareRoot = () => {
+        if (this.toggle) {
+            this.first = Math.pow(Number(this.first), 0.5);
+        }
+    };
+  }
+};
+});
 
 
 /***/ }),
 /* 5 */
 /***/ (function(module, exports) {
 
-(function(){
-  const app = angular.module('display', []);
+const app = angular.module('display', []);
 
-  app.directive('display', function(){
+app.directive('display', function(){
     return {
-      restrict: 'E',
-      bindToController: {
-        first: '=',
-        second: '=',
-        operator: '='
-      },
-      templateUrl: './app/components/calculator/diractives/display/display.html',
-      controllerAs: 'display',
-      controller: function() { 
-        this.checkForDoubleScreenNeed = () => {
-          if (this.first && this.operator) {
-            return true;
-          }
-          return false;
-        };
-      },
+        restrict: 'E',
+        bindToController: {
+            first: '=',
+            second: '=',
+            operator: '='
+        },
+        templateUrl: './app/components/calculator/diractives/display/display.html',
+        controllerAs: 'display',
+        controller: function() {
+            this.checkForDoubleScreenNeed = () => {
+                if (this.first && this.operator) {
+                    return true;
+                }
+                return false;
+            };
+        },
     };
-  });
-})();
+});
 
 
 /***/ }),
 /* 6 */
 /***/ (function(module, exports) {
 
-(function(){
-  const app = angular.module('hat', []);
+const app = angular.module('hat', []);
 
-  app.directive('hat', function(){
+app.directive('hat', function(){
     return {
-      restrict: 'E',
-      templateUrl: './app/components/calculator/diractives/hat/hat.html',
-      controllerAs: 'hat',
-      controller: function() {}
+        restrict: 'E',
+        templateUrl: './app/components/calculator/diractives/hat/hat.html',
+        controllerAs: 'hat',
+        controller: function() {}
     };
-  });
-})();
+});
 
 
 /***/ }),
 /* 7 */
 /***/ (function(module, exports) {
 
-(function(){
-  const app = angular.module('menu', []);
+const app = angular.module('menu', []);
 
-  app.directive('menu', function(){
+app.directive('menu', function(){
     return {
-      restrict: 'E',
-      templateUrl : './app/components/calculator/diractives/menu/menu.html',
-      controllerAs: 'menu',
-      controller: function() {
-      	
+        restrict: 'E',
+        templateUrl : './app/components/calculator/diractives/menu/menu.html',
+        controllerAs: 'menu',
+        controller: function() {
 
-      	this.list = [
-        'Scientific', 'Programmer', 'Date calculation', 'Converter',
-        'Currency', 'Volume', 'Length','Weight and Mass','Temperature',
-        'Energy','Area','Speed','Time','Power','Data','Pressure','Angle'
-        ];
-      }
+      	this.list = ['Scientific', 'Programmer', 'Date calculation', 'Converter',
+        'Currency', 'Volume', 'Length', 'Weight and Mass', 'Temperature',
+        'Energy', 'Area', 'Speed', 'Time', 'Power', 'Data', 'Pressure', 'Angle'];
+        }
     };
-  });
-})();
+});
 
 
 /***/ }),
 /* 8 */
 /***/ (function(module, exports) {
 
-(function(){
-  const app = angular.module('navigator', []);
+const app = angular.module('navigator', []);
 
-  app.directive('navigator', function(){
+app.directive('navigator', function(){
     return {
-      restrict: 'E',
-      templateUrl : './app/components/calculator/diractives/navigator/navigator.html',
-      controllerAs: 'navigator',
-      controller: function() {}
+        restrict: 'E',
+        templateUrl : './app/components/calculator/diractives/navigator/navigator.html',
+        controllerAs: 'navigator',
+        controller: function() {}
     };
-  });
-})();
+});
 
 
 /***/ })

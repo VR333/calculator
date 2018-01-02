@@ -13,105 +13,103 @@ menu ul {
     overflow: auto;
 }
 
+li {
+    cursor: default;
+}
+
 .calc-type {
-  height: 445px;
+    height: 441px;
 }
 
 li.title {
-  font-weight: bold;
-  font-size: 20px;
+    font-weight: bold;
+    font-size: 20px;
 }
 
 .calc-type li {
-  padding: 7%;
+    padding: 14px;
 }
 
 .calc-type li.version {
-  padding: 7% 0% 7% 12%;
+    padding: 17px 0px 17px 30px;
 }
 
 .calc-type li.active {
-  background-color: #7DBBEA;
+    background-color: #7DBBEA;
 }
 
 .calc-type li.active:hover {
-  background-color: #73b0e2;
+    background-color: #73b0e2;
 }
 
 .calc-type li span{
-  position: relative;
-  left: 18%;
+    position: relative;
+    left: 40px;
 }
 
 #first-option {
-  padding: 0;
-  height: 38px;
-}
-
-li {
-  padding: 3%;
-  cursor: default;
+    padding: 0;
+    height: 38px;
 }
 
 li.version:hover {
-  background-color: #DEDEDE;
+    background-color: #DEDEDE;
 }
 
 .side {
-   display: inline-block;
-   padding: 4% 5.7%;
-   float: left;
-   width: 22%;
-   font-size: 19px;
+    display: inline-block;
+    padding: 9.5px 12px;
+    float: left;
+    width: 22%;
+    font-size: 19px;
  }
 
  .side:hover {
-   background-color: #DEDEDE;
+    background-color: #DEDEDE;
  }
 
  .side .line {
-   background-color: black;
-   width: 80%;
-   height: 1px;
-   margin: 4px;
+    background-color: black;
+    width: 80%;
+    height: 1px;
+    margin: 4px;
  }
 
  #roomless {
-   width: 78%;
+    width: 78%;
  }
 
  #roomless li {
-   position: relative;
-   top: -5px;
-   left: -5px;
-   font-size: 20px;
-   font-weight: bold;
+    position: relative;
+    top: -5px;
+    left: -5px;
+    font-size: 20px;
+    font-weight: bold;
  }
 
  .separator {
-   border-bottom: 1px solid #aaa;
-   margin: auto;
-   margin-top: 5px;
-   width: 90%;
+    margin: auto;
+    margin-top: 5px;
+    width: 90%;
  }
 
- .about li {
+ .about {
     font-size: 18px;
     height: 51px;
     padding-top: 16px;
     padding-left: 14px;
  }
 
- .about li:hover {
-  background-color: #DEDEDE;
+ .about:hover {
+    background-color: #DEDEDE;
  }
 
- .about li .info {
-  margin-top: 10px;
-  margin-right: 23px;
+ .about .info {
+    margin-top: 10px;
+    margin-right: 23px;
  }
 
  .about-text {
-   position: relative;
-   top: -2px;
+    position: relative;
+    top: -2px;
  }

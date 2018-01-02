@@ -1,51 +1,50 @@
  btn {
-   width: 25%;
-   height: 55px;
-   background-color: #f4f4f4;
-   padding: 2% 0;
-   float: left;
-   font-size: 18px;
-   cursor: default;
-   text-align: center;
+    width: 25%;
+    height: 55px;
+    background-color: #f4f4f4;
+    padding: 2% 0;
+    float: left;
+    font-size: 18px;
+    cursor: default;
+    text-align: center;
  }
 
  btn:focus {
-  outline: none;
-}
-
-btn.white {
-    background-color: white;
-}
- .m-btn btn {
-   width: 16.5%;
-   height: 29px;
-   display inline-block;
-   background-color: white;
-   color: #bdbdbd;
-   padding: 1% 0;
-   font-size: 12px;
+    outline: none;
  }
 
-.enabled span{
-  vertical-align: -54%;
-}
+ btn.white {
+    background-color: white;
+ }
+ .m-btn btn {
+    width: 16.5%;
+    height: 29px;
+    display inline-block;
+    background-color: white;
+    color: #bdbdbd;
+    padding: 1% 0;
+    font-size: 12px;
+ }
+
+ .enabled span{
+    vertical-align: -54%;
+ }
 
  .m-btn btn.enabled {
-   color: black;
+     color: black;
  }
 
-  .m-btn btn.enabled span {
-   vertical-align: 0%;
+ .m-btn btn.enabled span {
+     vertical-align: 0%;
  }
 
-.m-btn btn.tooltip {
+ .m-btn btn.tooltip {
     position: relative;
     display: inline-block;
-
-}
+ }
 
 /* Tooltip text */
-.tooltip .tooltiptext {
+ .tooltip .tooltiptext {
     visibility: hidden;
     width: 110px;
     background-color: #bdbdbd;
@@ -59,34 +58,33 @@ btn.white {
     transition: opacity .5s, visibility .5s;
     opacity: 0;
 
-}
+ }
 
 /* Show the tooltip text when you mouse over the tooltip container */
-.tooltip:hover .tooltiptext {
+ .tooltip:hover .tooltiptext {
     transition: opacity 2s, visibility 2s;
     transition-timing-function: ease-in;
     visibility: visible;
     opacity: 1;
-
-}
+ }
 
  btn.enabled:hover {
-   background-color: #DEDEDE;
+    background-color: #DEDEDE;
  }
 
  btn.numeric {
-   font-weight: bold;
-   font-size: 24px;
+    font-weight: bold;
+    font-size: 24px;
 
  }
 
  btn.numeric span{
-  vertical-align: -7px;
+    vertical-align: -7px;
 }
 
 
  btn.arithmetic {
-  font-size: 30px;
+    font-size: 30px;
  }
 
   btn.arithmetic span{
@@ -94,15 +92,18 @@ btn.white {
  }
 
  btn.arithmetic:hover {
-   background-color: #7DBBEA;
-   color: white;
+    color: white;
+ }
+
+ #equil:hover {
+     background-color: blue;
  }
 
  #multiple {
-   font-size: 18px;
-   font-weight: bold;
+    font-size: 18px;
+    font-weight: bold;
  }
 
  #multiple span {
-   vertical-align: -10px;
+    vertical-align: -10px;
  }

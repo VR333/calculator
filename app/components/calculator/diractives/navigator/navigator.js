@@ -1,12 +1,10 @@
-(function(){
-  const app = angular.module('navigator', []);
+const app = angular.module('navigator', []);
 
-  app.directive('navigator', function(){
+app.directive('navigator', function(){
     return {
-      restrict: 'E',
-      templateUrl : './app/components/calculator/diractives/navigator/navigator.html',
-      controllerAs: 'navigator',
-      controller: function() {}
+        restrict: 'E',
+        templateUrl : './app/components/calculator/diractives/navigator/navigator.html',
+        controllerAs: 'navigator',
+        controller: function() {}
     };
-  });
-})();
+});

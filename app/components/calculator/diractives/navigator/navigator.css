@@ -3,26 +3,26 @@ navigator {
 }
 
 navigator  img {
-  position: absolute;
-  top: 52px;
-  left: 267px;
+    position: absolute;
+    top: 52px;
+    left: 267px;
 }
 
  #title {
-  text-align: left;
-  cursor: default;
-  font-weight: bold;
-  display: inline-block;
-  height: 20px;
-  position: relative;
-  top: 4px;
-  width: 60%;
+    text-align: left;
+    cursor: default;
+    font-weight: bold;
+    display: inline-block;
+    height: 20px;
+    position: relative;
+    top: 4px;
+    width: 60%;
 }
 
   .menu {
     display: inline-block;
     padding: 3% 4%;
-    margin: 5px;
+    margin: 4px;
     position: relative;
     left: -4px;
     float: left;
@@ -30,11 +30,11 @@ navigator  img {
  }
 
  .menu:hover {
-   background-color: #DEDEDE;
+    background-color: #DEDEDE;
  }
  .menu .line {
-   background-color: black;
-   width: 20px;
-   height: 1px;
-   margin: 4px;
+    background-color: black;
+    width: 20px;
+    height: 1px;
+    margin: 4px;
  }
