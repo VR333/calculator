@@ -34367,18 +34367,9 @@ $provide.value("$locale", {
       controllerAs: 'btn',
       controller: function() {
 
-        // switcher to cgange input to a second number
+        // switcher to change input to a second number
 
         this.toggle = true;
-
-        // this.editHTML = () => {
-        //   if (this.toggle) {
-        //     document.getElementById('second-number').innerHTML = `${this.first} ${this.operator}`;
-        //   } else {
-        //     document.getElementById('operation').innerHTML = `${this.first} ${this.operator}`;
-        //     document.getElementById('second-number').innerHTML = `${this.second}`;
-        //   }
-        // };
 
         // check for proper action if both operands and operator were chosen
 

@@ -16,7 +16,7 @@ navigator  img {
   height: 20px;
   position: relative;
   top: 4px;
-  width: 60%; 
+  width: 60%;
 }
 
   .menu {
@@ -25,16 +25,8 @@ navigator  img {
     margin: 5px;
     position: relative;
     left: -4px;
-    /* top: 8px; */
     float: left;
     margin-top: -1px;
- }
-
- .line {
-   background-color: black;
-   width: 20px;
-   height: 1px;
-   margin: 4px;
  }
 
  .menu:hover {

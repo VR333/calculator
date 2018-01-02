@@ -9,10 +9,7 @@ menu {
 }
 
 menu ul {
-    text-align: left;
-    margin: 0;
     list-style-type: none;
-    width: 100%;
     overflow: auto;
 }
 
@@ -36,9 +33,11 @@ li.title {
 .calc-type li.active {
   background-color: #7DBBEA;
 }
+
 .calc-type li.active:hover {
   background-color: #73b0e2;
 }
+
 .calc-type li span{
   position: relative;
   left: 18%;
@@ -69,6 +68,7 @@ li.version:hover {
  .side:hover {
    background-color: #DEDEDE;
  }
+
  .side .line {
    background-color: black;
    width: 80%;
@@ -86,7 +86,6 @@ li.version:hover {
    left: -5px;
    font-size: 20px;
    font-weight: bold;
-
  }
 
  .separator {
@@ -96,16 +95,9 @@ li.version:hover {
    width: 90%;
  }
 
- .about {
-  background-color: #ededed;
-  width: 100%;
-  text-align: left;
- }
-
  .about li {
     font-size: 18px;
     height: 51px;
-    width: 100%;
     padding-top: 16px;
     padding-left: 14px;
  }
@@ -117,7 +109,6 @@ li.version:hover {
  .about li .info {
   margin-top: 10px;
   margin-right: 23px;
-  font-weight: lighter;
  }
 
  .about-text {

@@ -3,11 +3,9 @@ hat {
    display: block;
    font-size: 13px;
    cursor: default;
-   text-align: left;
  }
 
  .top {
-   display: inline-block;
    float: right;
    cursor: default;
    position: relative;
@@ -19,9 +17,6 @@ hat {
    margin: 0px -2px;
    font-size: 26px;
    display: inline-block;
-   background-color: inherit;
-   text-align: center;
-
  }
 
  .top-btn:hover {

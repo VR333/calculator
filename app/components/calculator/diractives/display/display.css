@@ -2,8 +2,6 @@
 
  display {
    display: block;
-   margin: auto;
-   background-color: #ededed;
    height: 100px;
    overflow: hidden;
    width: 100%;

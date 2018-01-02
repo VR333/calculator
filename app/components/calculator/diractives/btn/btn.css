@@ -2,7 +2,6 @@
    width: 25%;
    height: 55px;
    background-color: #f4f4f4;
-   border: none;
    padding: 2% 0;
    float: left;
    font-size: 18px;
@@ -14,14 +13,17 @@
   outline: none;
 }
 
+btn.white {
+    background-color: white;
+}
  .m-btn btn {
    width: 16.5%;
    height: 29px;
    display inline-block;
-   border: none;
+   background-color: white;
    color: #bdbdbd;
    padding: 1% 0;
-   font-size: 13px;
+   font-size: 12px;
  }
 
 .enabled span{
@@ -33,7 +35,7 @@
  }
 
   .m-btn btn.enabled span {
-   vertical-align: -30%;
+   vertical-align: 0%;
  }
 
 .m-btn btn.tooltip {
@@ -73,10 +75,9 @@
  }
 
  btn.numeric {
-   background-color: white;
    font-weight: bold;
    font-size: 24px;
-   
+
  }
 
  btn.numeric span{
