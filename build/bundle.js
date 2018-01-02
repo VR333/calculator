@@ -34290,12 +34290,16 @@ $provide.value("$locale", {
       restrict: 'E',
       templateUrl : './app/components/calculator/calculator.html',
       controllerAs: 'ctrl',
-      controller: function() {
+      controller: function($scope) {
         this.first = '0';
         this.second = '';
         this.operator = '';
 
         this.toggle = 0;
+
+        // $scope.$on('myevent', function(data){
+        //   alert(data);
+        // });
 
         this.changeToggle = (value) => {
           this.toggle = value;
@@ -34352,6 +34356,9 @@ $provide.value("$locale", {
 /***/ (function(module, exports) {
 
 (function(){
+  // require('./../../servises/calculate.js');
+  // 'operationsService'
+
   const app = angular.module('btn', []);
 
   app.directive('btn', function(){
@@ -34366,6 +34373,11 @@ $provide.value("$locale", {
       transclude: true,
       controllerAs: 'btn',
       controller: function() {
+        // $scope, operationsService
+        // $scope.emitEvent = function() {
+        //   let data  = 5;
+        //   $scope.$emit('myevent', data);
+        // }
 
         // switcher to change input to a second number
 
@@ -34606,7 +34618,7 @@ $provide.value("$locale", {
       },
       templateUrl: './app/components/calculator/diractives/display/display.html',
       controllerAs: 'display',
-      controller: function() {
+      controller: function() { 
         this.checkForDoubleScreenNeed = () => {
           if (this.first && this.operator) {
             return true;
