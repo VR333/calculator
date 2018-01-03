@@ -39,6 +39,19 @@ app.directive('btn', function(){
 
         };
 
+        this.addComa = (operand) => {
+            if (this.toggle) {
+                if ( this.first.replace(/,/g, '').length % 3 === 0 ) {
+                    this.first = this.first + ','
+                }
+                return;
+            }
+
+            if ( this.second.replace(/,/g, '').length % 3 === 0 ) {
+                this.second = this.second + ','
+            }
+        };
+
         // check for proper dot(.) usage..
 
         this.handleDecimalDot = dot => {
@@ -69,7 +82,8 @@ app.directive('btn', function(){
                 return;
             }
 
-          if (this.first.length < 9) {
+          if (this.first.replace(/,/g, '').length < 16) {
+              this.addComa();
               this.first = this.first.concat(firstOperand);
           }
         };
@@ -81,7 +95,8 @@ app.directive('btn', function(){
                 this.second = secondOperand;
                 return;
             }
-            if (this.second.length < 9) {
+            if (this.second.replace(/,/g, '').length < 16) {
+                this.addComa();
                 this.second = this.second.concat(secondOperand);
             }
         };
@@ -162,23 +177,23 @@ app.directive('btn', function(){
         // arithmetic operations to be done with makeSomeMath() execution
 
         this.add = () => {
-            this.first = Number(this.first) + Number(this.second);
+            this.first = ( Number(this.first.replace(/,/g, '')) + Number(this.second.replace(/,/g, '')) ).toString();
         };
 
         this.multiple = () => {
-            this.first = Number(this.first) * Number(this.second);
+            this.first = ( Number(this.first.replace(/,/g, '')) * Number(this.second.replace(/,/g, '')) ).toString();
         };
 
         this.minus = () => {
-            this.first =  Number(this.first) - Number(this.second);
+            this.first =  ( Number(this.first.replace(/,/g, '')) - Number(this.second.replace(/,/g, '')) ).toString();
         };
 
         this.divide = () => {
-            this.first = Number(this.first) / Number(this.second);
+            this.first = ( Number(this.first.replace(/,/g, '')) / Number(this.second.replace(/,/g, '')) ).toString();
         };
 
         this.module = () => {
-            this.first = Number(this.first) % Number(this.second);
+            this.first = ( Number(this.first.replace(/,/g, '')) % Number(this.second.replace(/,/g, '')) ).toString();
         };
 
         // clear calculator operands and operator
@@ -221,7 +236,7 @@ app.directive('btn', function(){
 
         this.bringToPower = () => {
             if (this.toggle) {
-                this.first = Math.pow(Number(this.first), 2);
+                this.first = ( Math.pow(Number(this.first), 2) ).toString();
             }
         };
 
@@ -229,13 +244,13 @@ app.directive('btn', function(){
 
         this.divideOneByFirst = () => {
             if (this.toggle) {
-                this.first = 1 / Number(this.first);
+                this.first = ( 1 / Number(this.first) ).toString();
             }
         };
 
         this.getSquareRoot = () => {
             if (this.toggle) {
-                this.first = Math.pow(Number(this.first), 0.5);
+                this.first = ( Math.pow(Number(this.first), 0.5) ).toString();
             }
         };
     }

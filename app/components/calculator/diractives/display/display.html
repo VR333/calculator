@@ -1,16 +1,28 @@
 <div ng-show='display.checkForDoubleScreenNeed()'>
-	<h1 class='screen second-screen'>{{display.first | limitTo:10}} {{display.operator}}</h1>
-	<h1 ng-class="{ 'font-size46': 5 <= display.second.length && display.second.length <= 7,
-					'font-size42': display.second.length > 7}"
+	<h1 class='screen second-screen'>{{display.first | limitTo:21}} {{display.operator}}</h1>
+	<h1 ng-class="{	'font-size46': display.second.length > 9,
+					'font-size42': display.second.length > 10,
+					'font-size38': display.second.length > 11,
+					'font-size36': display.second.length > 12,
+					'font-size34': display.second.length > 13,
+					'font-size32': display.second.length > 14,
+					'font-size30': display.second.length > 15,
+					'font-size27': display.second.length > 16 }"
 		class="screen">
 		{{display.second}}
     </h1>
 </div>
 
 <div ng-hide='display.checkForDoubleScreenNeed()'>
-	<h1 ng-class="{	'font-size46': 5 <= display.first.length && display.first.length <= 7 , 
-					'font-size42': display.first.length > 7 }"
+	<h1 ng-class="{	'font-size46': display.first.length > 9,
+					'font-size42': display.first.length > 10,
+					'font-size38': display.first.length > 11,
+					'font-size36': display.first.length > 12,
+					'font-size34': display.first.length > 13,
+					'font-size32': display.first.length > 14,
+					'font-size30': display.first.length > 15,
+					'font-size27': display.first.length > 16 }"
 		class="screen">
-		{{display.first | limitTo:10}} {{display.operator}}
+		{{display.first | limitTo:21}} {{display.operator}}
 	</h1>
 </div>

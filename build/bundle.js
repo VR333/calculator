@@ -34280,12 +34280,12 @@ __webpack_require__(6);
 __webpack_require__(7);
 __webpack_require__(8);
 
-const app = angular.module('calculator', ['keyboard', 'display', 'btn', 'hat', 'menu', 'navigator']);
+const app = angular.module('calculator', ['keyboard', 'display', 'btn', 'header', 'menu', 'navigator']);
 
 app.directive('calculator', function(){
     return {
         restrict: 'E',
-        templateUrl : './app/components/calculator/calculator.html',
+        templateUrl : './app/components/calculator/template.html',
         controllerAs: 'ctrl',
         controller: function($scope) {
             this.first = '0';
@@ -34382,6 +34382,19 @@ app.directive('btn', function(){
 
         };
 
+        this.addComa = (operand) => {
+            if (this.toggle) {
+                if ( this.first.replace(/,/g, '').length % 3 === 0 ) {
+                    this.first = this.first + ','
+                }
+                return;
+            }
+
+            if ( this.second.replace(/,/g, '').length % 3 === 0 ) {
+                this.second = this.second + ','
+            }
+        };
+
         // check for proper dot(.) usage..
 
         this.handleDecimalDot = dot => {
@@ -34412,7 +34425,8 @@ app.directive('btn', function(){
                 return;
             }
 
-          if (this.first.length < 9) {
+          if (this.first.replace(/,/g, '').length < 16) {
+              this.addComa();
               this.first = this.first.concat(firstOperand);
           }
         };
@@ -34424,7 +34438,8 @@ app.directive('btn', function(){
                 this.second = secondOperand;
                 return;
             }
-            if (this.second.length < 9) {
+            if (this.second.replace(/,/g, '').length < 16) {
+                this.addComa();
                 this.second = this.second.concat(secondOperand);
             }
         };
@@ -34505,23 +34520,23 @@ app.directive('btn', function(){
         // arithmetic operations to be done with makeSomeMath() execution
 
         this.add = () => {
-            this.first = Number(this.first) + Number(this.second);
+            this.first = ( Number(this.first.replace(/,/g, '')) + Number(this.second.replace(/,/g, '')) ).toString();
         };
 
         this.multiple = () => {
-            this.first = Number(this.first) * Number(this.second);
+            this.first = ( Number(this.first.replace(/,/g, '')) * Number(this.second.replace(/,/g, '')) ).toString();
         };
 
         this.minus = () => {
-            this.first =  Number(this.first) - Number(this.second);
+            this.first =  ( Number(this.first.replace(/,/g, '')) - Number(this.second.replace(/,/g, '')) ).toString();
         };
 
         this.divide = () => {
-            this.first = Number(this.first) / Number(this.second);
+            this.first = ( Number(this.first.replace(/,/g, '')) / Number(this.second.replace(/,/g, '')) ).toString();
         };
 
         this.module = () => {
-            this.first = Number(this.first) % Number(this.second);
+            this.first = ( Number(this.first.replace(/,/g, '')) % Number(this.second.replace(/,/g, '')) ).toString();
         };
 
         // clear calculator operands and operator
@@ -34564,7 +34579,7 @@ app.directive('btn', function(){
 
         this.bringToPower = () => {
             if (this.toggle) {
-                this.first = Math.pow(Number(this.first), 2);
+                this.first = ( Math.pow(Number(this.first), 2) ).toString();
             }
         };
 
@@ -34572,13 +34587,13 @@ app.directive('btn', function(){
 
         this.divideOneByFirst = () => {
             if (this.toggle) {
-                this.first = 1 / Number(this.first);
+                this.first = ( 1 / Number(this.first) ).toString();
             }
         };
 
         this.getSquareRoot = () => {
             if (this.toggle) {
-                this.first = Math.pow(Number(this.first), 0.5);
+                this.first = ( Math.pow(Number(this.first), 0.5) ).toString();
             }
         };
     }
@@ -34619,14 +34634,14 @@ app.directive('display', function(){
 /* 6 */
 /***/ (function(module, exports) {
 
-const app = angular.module('hat', []);
+const app = angular.module('header', []);
 
-app.directive('hat', function(){
+app.directive('header', function(){
     return {
         restrict: 'E',
-        controllerAs: 'hat',
+        controllerAs: 'header',
         controller: hatCtrl,
-        templateUrl: './app/components/calculator/diractives/hat/hat.html'
+        templateUrl: './app/components/calculator/diractives/header/header.html'
     };
 
     function hatCtrl() {}

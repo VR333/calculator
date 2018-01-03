@@ -34,10 +34,10 @@
      color: black;
  }
 
- .m-btn btn.enabled span {
-     vertical-align: 0%;
+ .m-btn btn span {
+     vertical-align: -40%;
  }
-
+ 
  .m-btn btn.tooltip {
     position: relative;
     display: inline-block;

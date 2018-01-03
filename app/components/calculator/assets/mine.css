@@ -9,4 +9,5 @@ calculator {
     background-color: white;
     box-shadow: 2px 2px 40px rgba(200, 200, 200, 1);
     font-family: Arial, Helvetica, sans-serif;
+    user-select: none;
  }

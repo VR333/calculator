@@ -1,19 +1,23 @@
-hat {
-    padding: 11px 0 12px 12px;
+header {
     display: block;
     font-size: 13px;
-    cursor: default;
+    height: 33px;
+    margin-bottom: 16px;
+ }
+
+ header span {
+    position: relative;
+    top: 12px;
+    left: 16px;
  }
 
  .top {
     float: right;
-    cursor: default;
-    position: relative;
-    top: -12px;
+    clear: fixed;
  }
 
  .top-btn {
-    padding: 1px 18px;
+    padding: 0px 18px;
     margin: 0px -2px;
     font-size: 26px;
     display: inline-block;
@@ -24,9 +28,15 @@ hat {
     color: white;
  }
 
+ .top-btn span {
+    position: relative;
+    top: -3px;
+    left: 0px;
+ }
+
  #cross {
     font-size: 16px;
-    padding: 7px 18px 4px 18px;
+    padding: 7px 19px 3px 18px;
  }
  #cross:hover {
     background-color: red;
