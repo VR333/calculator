@@ -8,10 +8,11 @@
         <ul id='roomless'><li>Calculator</li></ul>
     </li>
 
-    <li class='version active' ng-click='ctrl.makeActiveTab($event)'><span>Standard</span></li>
     <li ng-repeat="item in menu.list"
-        ng-class="{ 'version': item !== 'Converter', 'title': item === 'Converter'}"
-        ng-click='ctrl.makeActiveTab($event)'>
+        ng-class="{ 'active': item === 'Standard' ,
+                    'version': item !== 'Converter',
+                    'title': item === 'Converter'}"
+        ng-click='menu.makeActiveTab($event)'>
         <span>{{item}}</span>
     </li>
 </ul>

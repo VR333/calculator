@@ -34295,7 +34295,7 @@ app.directive('calculator', function(){
             this.toggle = 0;
 
             $scope.$on('myevent', function(data){
-                console.log(data);
+                // console.log(data);
             });
 
             this.changeToggle = (value) => {
@@ -34309,16 +34309,6 @@ app.directive('calculator', function(){
             };
 
             this.active = 'Standard';
-
-            this.makeActiveTab = (event) => {
-                console.log(event.currentTarget.innerText);
-                if (event.currentTarget.className !== 'ng-scope title') {
-                    document.getElementsByClassName('active')[0]
-                            .className = 'ng-scope version';
-                    event.currentTarget.className = 'ng-scope version active';
-                    this.active = event.currentTarget.innerText;
-                }
-            };
         }
     };
 });
@@ -34652,15 +34642,27 @@ const app = angular.module('menu', []);
 app.directive('menu', function(){
     return {
         restrict: 'E',
+        bindToController: {
+            active: '='
+        },
         controllerAs: 'menu',
         controller: menuCtrl,
         templateUrl : './app/components/calculator/diractives/menu/menu.html'
     };
 
     function menuCtrl() {
-        this.list = ['Scientific', 'Programmer', 'Date calculation', 'Converter',
+        this.list = ['Standard', 'Scientific', 'Programmer', 'Date calculation', 'Converter',
         'Currency', 'Volume', 'Length', 'Weight and Mass', 'Temperature',
         'Energy', 'Area', 'Speed', 'Time', 'Power', 'Data', 'Pressure', 'Angle'];
+
+        this.makeActiveTab = (event) => {
+            if (event.currentTarget.className !== 'ng-scope title') {
+                document.getElementsByClassName('active')[0]
+                        .className = 'ng-scope version';
+                event.currentTarget.className = 'ng-scope version active';
+                this.active = event.currentTarget.innerText;
+            }
+        };
     }
 });
 
