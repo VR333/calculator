@@ -34350,7 +34350,7 @@ app.directive('btn', function(){
 
     function btnCtrl($scope) {
         // $scope, operationsService
-
+        this.default = 0;
         this.lol  = {x: 5};
         $scope.$emit('myevent', {l : 'hmmm'});
 
@@ -34382,7 +34382,7 @@ app.directive('btn', function(){
             if (operand.includes('-') && operand.length === 4) {
                 return operand;
             }
-            
+
             operand = this.removeComa(operand);
             if ( operand.includes('.') ) {
                 return  this.reverseString(
@@ -34440,6 +34440,9 @@ app.directive('btn', function(){
         // Set value for this.second variable
 
         this.setSecondOperand = secondOperand => {
+            if (this.second === this.default) {
+                this.second = '';
+            }
             if (this.second == '' || this.second == '0') {
                 this.second = secondOperand;
                 return;
@@ -34466,6 +34469,8 @@ app.directive('btn', function(){
               return;
             }
             this.operator = operator;
+            this.default = this.first;
+            this.second = this.default;
             this.toggle = false;
         };
 
