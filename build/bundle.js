@@ -34340,8 +34340,7 @@ app.directive('btn', function(){
         bindToController: {
             first: '=',
             second: '=',
-            operator: '=',
-            type: '='
+            operator: '='
         },
         transclude: true,
         controllerAs: 'btn',
