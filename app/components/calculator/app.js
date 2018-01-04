@@ -17,23 +17,11 @@ app.directive('calculator', function(){
             this.second = '';
             this.operator = '';
 
-            this.toggle = 0;
+
 
             $scope.$on('myevent', function(data){
                 // console.log(data);
             });
-
-            this.changeToggle = (value) => {
-                this.toggle = value;
-
-                if (this.toggle) {
-                    document.getElementById('hider').style.left = '0px';
-                } else {
-                    document.getElementById('hider').style.left = '-250px';
-                }
-            };
-
-            this.active = 'Standard';
         }
     };
 });

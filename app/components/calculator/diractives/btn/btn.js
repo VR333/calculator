@@ -39,17 +39,35 @@ app.directive('btn', function(){
 
         };
 
+        this.reverseString = (str) => {
+            return str.split("").reverse().join("");
+        };
+
+        this.removeComa = (operand) => {
+                return operand.replace(/,/g, '');
+        };
+
         this.addComa = (operand) => {
-            if (this.toggle) {
-                if ( this.first.replace(/,/g, '').length % 3 === 0 ) {
-                    this.first = this.first + ','
-                }
-                return;
+            if (operand.includes('-') && operand.length === 4) {
+                return operand;
+            }
+            
+            operand = this.removeComa(operand);
+            if ( operand.includes('.') ) {
+                return  this.reverseString(
+                            this.reverseString(operand.split('.')[0])
+                            .match(/.{1,3}/g)
+                            .map( function(e) {return e + ','} )
+                            .join('')
+                        ).slice(1) + '.' + operand.split('.')[1];
             }
 
-            if ( this.second.replace(/,/g, '').length % 3 === 0 ) {
-                this.second = this.second + ','
-            }
+            return this.reverseString(
+                            this.reverseString(operand).match(/.{1,3}/g)
+                            .map( function(e) {return e + ','} )
+                            .join('')
+                    ).slice(1);
+
         };
 
         // check for proper dot(.) usage..
@@ -82,9 +100,9 @@ app.directive('btn', function(){
                 return;
             }
 
-          if (this.first.replace(/,/g, '').length < 16) {
-              this.addComa();
+          if ( (this.removeComa(this.first) ).length < 16) {
               this.first = this.first.concat(firstOperand);
+              this.first = this.addComa(this.first);
           }
         };
 
@@ -95,9 +113,9 @@ app.directive('btn', function(){
                 this.second = secondOperand;
                 return;
             }
-            if (this.second.replace(/,/g, '').length < 16) {
-                this.addComa();
+            if ( this.removeComa(this.second).length < 16) {
                 this.second = this.second.concat(secondOperand);
+                this.second = this.addComa(this.second);
             }
         };
 
@@ -178,22 +196,27 @@ app.directive('btn', function(){
 
         this.add = () => {
             this.first = ( Number(this.first.replace(/,/g, '')) + Number(this.second.replace(/,/g, '')) ).toString();
+            this.first = this.addComa(this.first);
         };
 
         this.multiple = () => {
             this.first = ( Number(this.first.replace(/,/g, '')) * Number(this.second.replace(/,/g, '')) ).toString();
+            this.first = this.addComa(this.first);
         };
 
         this.minus = () => {
             this.first =  ( Number(this.first.replace(/,/g, '')) - Number(this.second.replace(/,/g, '')) ).toString();
+            this.first = this.addComa(this.first);
         };
 
         this.divide = () => {
             this.first = ( Number(this.first.replace(/,/g, '')) / Number(this.second.replace(/,/g, '')) ).toString();
+            this.first = this.addComa(this.first);
         };
 
         this.module = () => {
             this.first = ( Number(this.first.replace(/,/g, '')) % Number(this.second.replace(/,/g, '')) ).toString();
+            this.first = this.addComa(this.first);
         };
 
         // clear calculator operands and operator
@@ -214,6 +237,7 @@ app.directive('btn', function(){
                     return;
                 }
                 this.first = this.first.slice(0, -1);
+                this.first = this.addComa(this.first)
                 return;
             }
 
@@ -222,21 +246,23 @@ app.directive('btn', function(){
                 return;
             }
             this.second = this.second.slice(0, -1);
+            this.second = this.addComa(this.second)
         };
 
         // Change minus to plus and Vice Versa
 
         this.changeMinus = () => {
             if (this.toggle) {
-                this.first = (Number(this.first) * (-1)).toString();
+                this.first = (Number( this.removeComa(this.first) ) * (-1)).toString();
                 return;
             }
-            this.second = (Number(this.second) * (-1)).toString();
+            this.second = (Number( this.removeComa(this.second) ) * (-1)).toString();
         };
 
         this.bringToPower = () => {
             if (this.toggle) {
-                this.first = ( Math.pow(Number(this.first), 2) ).toString();
+                this.first = ( Math.pow(Number( this.removeComa(this.first) ), 2) ).toString();
+                this.first = this.addComa(this.first);
             }
         };
 
@@ -244,13 +270,15 @@ app.directive('btn', function(){
 
         this.divideOneByFirst = () => {
             if (this.toggle) {
-                this.first = ( 1 / Number(this.first) ).toString();
+                this.first = ( 1 / Number( this.removeComa(this.first) )).toString();
+                this.first = this.addComa(this.first);
             }
         };
 
         this.getSquareRoot = () => {
             if (this.toggle) {
-                this.first = ( Math.pow(Number(this.first), 0.5) ).toString();
+                this.first = ( Math.pow(Number( this.removeComa(this.first) ), 0.5) ).toString();
+                this.first = this.addComa(this.first);
             }
         };
     }

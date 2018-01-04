@@ -17,37 +17,33 @@ li {
     cursor: default;
 }
 
-.calc-type {
+.menu-items {
     height: 441px;
 }
 
 li.title {
     font-weight: bold;
     font-size: 20px;
+    line-height: 40px;
+    height: 40px;
+    padding-left: 44px;
 }
 
-.calc-type li {
-    padding: 14px;
+.menu-items li.version {
+    height: 52px;
+    line-height: 52px;
+    padding-left: 65px;
 }
 
-.calc-type li.version {
-    padding: 17px 0px 17px 30px;
-}
-
-.calc-type li.active {
+.menu-items li.active {
     background-color: #7DBBEA;
 }
 
-.calc-type li.active:hover {
+.menu-items li.active:hover {
     background-color: #73b0e2;
 }
 
-.calc-type li span{
-    position: relative;
-    left: 40px;
-}
-
-#first-option {
+#menu-header {
     padding: 0;
     height: 38px;
 }
@@ -79,12 +75,12 @@ li.version:hover {
     width: 78%;
  }
 
- #roomless li {
+ #roomless {
     position: relative;
-    top: -5px;
-    left: -5px;
+    top: 10px;
     font-size: 20px;
     font-weight: bold;
+    z-index: -1;
  }
 
  .separator {
@@ -94,10 +90,10 @@ li.version:hover {
  }
 
  .about {
-    font-size: 18px;
-    height: 51px;
-    padding-top: 16px;
-    padding-left: 14px;
+     font-size: 18px;
+     height: 51px;
+     line-height: 51px;
+     padding-left: 14px;
  }
 
  .about:hover {
@@ -105,11 +101,5 @@ li.version:hover {
  }
 
  .about .info {
-    margin-top: 10px;
     margin-right: 23px;
- }
-
- .about-text {
-    position: relative;
-    top: -2px;
  }
