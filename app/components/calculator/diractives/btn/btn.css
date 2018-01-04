@@ -1,12 +1,15 @@
  btn {
     width: 25%;
-    height: 55px;
+    height: 16.6666%;
     background-color: #f4f4f4;
     padding: 2% 0;
     float: left;
     font-size: 18px;
     cursor: default;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column
  }
 
  btn:focus {
@@ -26,18 +29,18 @@
     font-size: 12px;
  }
 
- .enabled span{
-    vertical-align: -54%;
+ .m-btn btn:hover {
+     background-color: white;
  }
 
  .m-btn btn.enabled {
      color: black;
  }
 
- .m-btn btn span {
-     vertical-align: -40%;
+ .m-btn btn.enabled:hover {
+     background-color: #DEDEDE;
  }
- 
+
  .m-btn btn.tooltip {
     position: relative;
     display: inline-block;
@@ -68,7 +71,7 @@
     opacity: 1;
  }
 
- btn.enabled:hover {
+ btn:hover {
     background-color: #DEDEDE;
  }
 
@@ -78,17 +81,8 @@
 
  }
 
- btn.numeric span{
-    vertical-align: -7px;
-}
-
-
  btn.arithmetic {
     font-size: 30px;
- }
-
-  btn.arithmetic span{
-    vertical-align: -5px;
  }
 
  btn.arithmetic:hover {
@@ -106,4 +100,8 @@
 
  #multiple span {
     vertical-align: -10px;
+ }
+
+ btn:active {
+     background-color: #c8c8c8;
  }
