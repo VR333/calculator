@@ -9,11 +9,23 @@
  }
 
  .screen {
-    position: relative;
-    top: 24px;
-    font-size: 51px;
     margin-right: 4%;
     text-align: right;
+    position: relative;
+ }
+
+ .top-screen {
+    color: grey;
+    font-size: 16px;
+    top: 0px;
+    height: 20px;
+ }
+
+ .bot-screen {
+    font-size: 51px;
+    font-weight: bold;
+    bottom: -20px;
+    height: 60px;
  }
 
  h1.font-size46 {

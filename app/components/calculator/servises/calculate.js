@@ -6,6 +6,20 @@ app.service('operationsService', function() {
 
     this.default = 0;
 
+    this.topScreen = {value: ''};
+    this.botScreen = {value: `${this.first.value} ${this.operator.value}`};
+
+    this.checkWhatToDisplay = () => {
+        if (this.toggle) {
+          this.topScreen.value = '';
+          this.botScreen.value = `${this.first.value} ${this.operator.value}`;
+          return;
+        }
+
+        this.topScreen.value = `${this.first.value} ${this.operator.value}`;
+        this.botScreen.value = this.second.value;
+    };
+
     // switcher to change input to a second number
 
     this.toggle = true;
@@ -33,7 +47,7 @@ app.service('operationsService', function() {
                   this.changeMinus();
                   break;
           case '.':
-                  this.handleDecimalDot();
+                  this.handleDecimalDot('.');
                   break;
           case 'equil':
                   this.handleEquilButton();
@@ -89,10 +103,12 @@ app.service('operationsService', function() {
     this.handleDecimalDot = dot => {
         if ( this.toggle && !this.first.value.includes('.') ) {
             this.first.value = this.first.value.concat(dot);
+            this.checkWhatToDisplay();
             return;
         }
         if ( this.operator.value && !this.second.value.includes('.') ) {
             this.second.value = this.second.value.concat(dot);
+            this.checkWhatToDisplay();
         }
     };
 
@@ -101,9 +117,11 @@ app.service('operationsService', function() {
     this.setValue = value => {
         if (this.toggle) {
             this.setFirstOperand(value);
+            this.checkWhatToDisplay();
             return;
         }
         this.setSecondOperand(value);
+        this.checkWhatToDisplay();
     };
 
     // Set value for this.first variable
@@ -155,6 +173,7 @@ app.service('operationsService', function() {
         this.default = this.first.value;
         this.second.value = this.default;
         this.toggle = false;
+        this.checkWhatToDisplay();
     };
 
     // check if user want to use minus number for operation
@@ -175,7 +194,7 @@ app.service('operationsService', function() {
     // check operator and use proper action
 
     this.makeSomeMath = value => {
-        switch(this.operator) {
+        switch(this.operator.value) {
             case '+':
                     this.add();
                     break;
@@ -195,6 +214,7 @@ app.service('operationsService', function() {
         this.second.value = '';
         this.operator.value = '';
         this.toggle = true;
+        this.checkWhatToDisplay();
     };
 
     /*
@@ -209,6 +229,7 @@ app.service('operationsService', function() {
         this.makeSomeMath(operator);
         this.operator.value = operator;
         this.toggle = false;
+        this.checkWhatToDisplay();
     };
 
     // arithmetic operations to be done with makeSomeMath() execution
@@ -243,8 +264,9 @@ app.service('operationsService', function() {
     this.reset = () => {
         this.first.value = '0';
         this.second.value = '';
-        this.operator.value = undefined;
+        this.operator.value = '';
         this.toggle = true;
+        this.checkWhatToDisplay();
     };
 
     // clear last symbol of a current operand
@@ -253,19 +275,23 @@ app.service('operationsService', function() {
         if (this.toggle) {
             if (this.first.value.length === 1) {
                 this.first.value = '0';
+                this.checkWhatToDisplay();
                 return;
             }
             this.first.value = this.first.value.slice(0, -1);
-            this.first.value = this.addComa(this.first.value)
+            this.first.value = this.addComa(this.first.value);
+            this.checkWhatToDisplay();
             return;
         }
 
         if (this.second.value.length === 1) {
             this.second.value = '';
+            this.checkWhatToDisplay();
             return;
         }
         this.second.value = this.second.value.slice(0, -1);
-        this.second.value = this.addComa(this.second.value)
+        this.second.value = this.addComa(this.second.value);
+        this.checkWhatToDisplay();
     };
 
     // Change minus to plus and Vice Versa
@@ -273,9 +299,11 @@ app.service('operationsService', function() {
     this.changeMinus = () => {
         if (this.toggle) {
             this.first.value = (Number( this.removeComa(this.first.value) ) * (-1)).toString();
+            this.checkWhatToDisplay();
             return;
         }
         this.second.value = (Number( this.removeComa(this.second.value) ) * (-1)).toString();
+        this.checkWhatToDisplay();
     };
 
     this.bringToPower = () => {
@@ -283,6 +311,7 @@ app.service('operationsService', function() {
             this.first.value = ( Math.pow(Number( this.removeComa(this.first.value) ), 2) ).toString();
             this.first.value = this.addComa(this.first.value);
         }
+        this.checkWhatToDisplay();
     };
 
     // Divide 1 by this.first
@@ -292,6 +321,7 @@ app.service('operationsService', function() {
             this.first.value = ( 1 / Number( this.removeComa(this.first.value) )).toString();
             this.first.value = this.addComa(this.first.value);
         }
+        this.checkWhatToDisplay();
     };
 
     this.getSquareRoot = () => {
@@ -299,5 +329,6 @@ app.service('operationsService', function() {
             this.first.value = ( Math.pow(Number( this.removeComa(this.first.value) ), 0.5) ).toString();
             this.first.value = this.addComa(this.first.value);
         }
+        this.checkWhatToDisplay();
     };
 });

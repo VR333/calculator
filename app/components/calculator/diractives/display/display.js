@@ -13,9 +13,8 @@ app.directive('display', function(){
     };
 
     function displayCtrl($scope, operationsService) {
-        $scope.first = operationsService.first;
-        $scope.second = operationsService.second;
-        $scope.operator = operationsService.operator;
+        $scope.topScreen = operationsService.topScreen;
+        $scope.botScreen = operationsService.botScreen;
 
         $scope.$on('btnEvent', function (event, data) {
             switch (data.inputType) {
@@ -29,15 +28,6 @@ app.directive('display', function(){
                                 operationsService.checkOperation(data.inputData);
                                 break;
             }
-
-            // console.log(data.inputData);
         });
-
-        this.checkForDoubleScreenNeed = () => {
-            if ($scope.first.value && $scope.operator.value) {
-                return true;
-            }
-            return false;
-        };
     }
 });

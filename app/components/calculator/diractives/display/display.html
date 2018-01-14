@@ -1,28 +1,15 @@
-<div ng-show='display.checkForDoubleScreenNeed()'>
-	<h1 class='screen second-screen'>{{first.value | limitTo:21}} {{operator.value}}</h1>
-	<h1 ng-class="{	'font-size46': display.second.length > 9,
-					'font-size42': display.second.length > 10,
-					'font-size38': display.second.length > 11,
-					'font-size36': display.second.length > 12,
-					'font-size34': display.second.length > 13,
-					'font-size32': display.second.length > 14,
-					'font-size30': display.second.length > 15,
-					'font-size27': display.second.length > 16 }"
-		class="screen">
-		{{second.value}}
-    </h1>
-</div>
-
-<div ng-hide='display.checkForDoubleScreenNeed()'>
-	<h1 ng-class="{	'font-size46': display.first.length > 9,
-					'font-size42': display.first.length > 10,
-					'font-size38': display.first.length > 11,
-					'font-size36': display.first.length > 12,
-					'font-size34': display.first.length > 13,
-					'font-size32': display.first.length > 14,
-					'font-size30': display.first.length > 15,
-					'font-size27': display.first.length > 16 }"
-		class="screen">
-		{{first.value | limitTo:21}} {{operator.value}}
-	</h1>
+<div>
+	<h1 class='screen top-screen' 
+	>{{topScreen.value}}</h1>
+	<h1 class='screen bot-screen' ng-class= "{
+											'font-size46': botScreen.value.length > 9,
+											'font-size42': botScreen.value.length > 10,
+											'font-size38': botScreen.value.length > 11,
+											'font-size36': botScreen.value.length > 12,
+											'font-size34': botScreen.value.length > 13,
+											'font-size32': botScreen.value.length > 14,
+											'font-size30': botScreen.value.length > 15,
+											'font-size27': botScreen.value.length > 16 
+											}"
+	>{{botScreen.value}}</h1>
 </div>
