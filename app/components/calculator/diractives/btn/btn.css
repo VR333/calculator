@@ -1,11 +1,8 @@
  btn {
     width: 25%;
     height: 16.6666%;
-    background-color: #f4f4f4;
-    padding: 2% 0;
     float: left;
     font-size: 18px;
-    cursor: default;
     text-align: center;
     display: flex;
     justify-content: center;
@@ -22,7 +19,6 @@
  .m-btn btn {
     width: 16.5%;
     height: 29px;
-    display inline-block;
     background-color: white;
     color: #bdbdbd;
     padding: 1% 0;
@@ -37,18 +33,9 @@
     background-color: #DEDEDE;
  }
 
- .m-btn btn {
-     color: black;
- }
-
- .m-btn btn.enabled:hover {
-     background-color: #DEDEDE;
- }
-
  .m-btn btn.tooltip {
     position: relative;
-    display: inline-block;
-    font-weight: bold;
+    color: black;
  }
 
 /* Tooltip text */
@@ -56,8 +43,6 @@
     visibility: hidden;
     width: 110px;
     background-color: #bdbdbd;
-    color: black;
-    text-align: center;
     padding: 5px 0;
     position: absolute;
     z-index: 1;
@@ -65,7 +50,6 @@
     right: -33px;
     transition: opacity .5s, visibility .5s;
     opacity: 0;
-
  }
 
 /* Show the tooltip text when you mouse over the tooltip container */
@@ -83,7 +67,6 @@
  btn.numeric {
     font-weight: bold;
     font-size: 24px;
-
  }
 
  btn.arithmetic {
@@ -105,8 +88,4 @@
 
  btn:active {
     background-color: #c8c8c8;
- }
-
- btn:active {
-     background-color: #c8c8c8;
  }
