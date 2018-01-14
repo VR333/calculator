@@ -1,5 +1,5 @@
 <div ng-show='display.checkForDoubleScreenNeed()'>
-	<h1 class='screen second-screen'>{{display.first | limitTo:21}} {{display.operator}}</h1>
+	<h1 class='screen second-screen'>{{first.value | limitTo:21}} {{operator.value}}</h1>
 	<h1 ng-class="{	'font-size46': display.second.length > 9,
 					'font-size42': display.second.length > 10,
 					'font-size38': display.second.length > 11,
@@ -9,7 +9,7 @@
 					'font-size30': display.second.length > 15,
 					'font-size27': display.second.length > 16 }"
 		class="screen">
-		{{display.second}}
+		{{second.value}}
     </h1>
 </div>
 
@@ -23,6 +23,6 @@
 					'font-size30': display.first.length > 15,
 					'font-size27': display.first.length > 16 }"
 		class="screen">
-		{{display.first | limitTo:21}} {{display.operator}}
+		{{first.value | limitTo:21}} {{operator.value}}
 	</h1>
 </div>

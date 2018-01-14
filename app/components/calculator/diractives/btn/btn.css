@@ -9,7 +9,7 @@
     text-align: center;
     display: flex;
     justify-content: center;
-    flex-direction: column
+    flex-direction: column;
  }
 
  btn:focus {
@@ -30,10 +30,14 @@
  }
 
  .m-btn btn:hover {
-     background-color: white;
+    background-color: white;
  }
 
- .m-btn btn.enabled {
+  .m-btn btn.tooltip:hover {
+    background-color: #DEDEDE;
+ }
+
+ .m-btn btn {
      color: black;
  }
 
@@ -44,6 +48,7 @@
  .m-btn btn.tooltip {
     position: relative;
     display: inline-block;
+    font-weight: bold;
  }
 
 /* Tooltip text */
@@ -98,8 +103,8 @@
     font-weight: bold;
  }
 
- #multiple span {
-    vertical-align: -10px;
+ btn:active {
+    background-color: #c8c8c8;
  }
 
  btn:active {
