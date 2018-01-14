@@ -13,15 +13,6 @@ app.directive('calculator', function(){
         templateUrl : './app/components/calculator/template.html',
         controllerAs: 'ctrl',
         controller: function($scope) {
-            this.first = '0';
-            this.second = '';
-            this.operator = '';
-
-            this.toggle = 0;
-
-            $scope.$on('myevent', function(data){
-                // console.log(data);
-            });
 
             this.changeToggle = (value) => {
                 this.toggle = value;
