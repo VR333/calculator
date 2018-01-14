@@ -1,6 +1,6 @@
 <div>
 	<h1 class='screen top-screen' 
-	>{{topScreen.value}}</h1>
+	>{{topScreen.value | limitTo:23}}</h1>
 	<h1 class='screen bot-screen' ng-class= "{
 											'font-size46': botScreen.value.length > 9,
 											'font-size42': botScreen.value.length > 10,
@@ -11,5 +11,5 @@
 											'font-size30': botScreen.value.length > 15,
 											'font-size27': botScreen.value.length > 16 
 											}"
-	>{{botScreen.value}}</h1>
+	>{{botScreen.value | limitTo:21}}</h1>
 </div>
