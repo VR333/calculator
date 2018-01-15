@@ -10,7 +10,6 @@ app.directive('btn', function(){
     };
 
     function btnCtrl($scope) {
-
         this.handleEmit = (type, data) => {
             $scope.$emit('btnEvent', {inputType: type, inputData: data});
         };
