@@ -34598,6 +34598,7 @@ app.service('operationsService', function() {
                     this.module();
                     break;
         }
+        this.first.value = this.addComa(this.first.value);
         this.second.value = '';
         this.operator.value = '';
         this.toggle = true;
@@ -34623,27 +34624,22 @@ app.service('operationsService', function() {
 
     this.add = () => {
         this.first.value = ( Number(this.first.value.replace(/,/g, '')) + Number(this.second.value.replace(/,/g, '')) ).toString();
-        this.first.value = this.addComa(this.first.value);
     };
 
     this.multiple = () => {
         this.first.value = ( Number(this.first.value.replace(/,/g, '')) * Number(this.second.value.replace(/,/g, '')) ).toString();
-        this.first.value = this.addComa(this.first.value);
     };
 
     this.minus = () => {
         this.first.value =  ( Number(this.first.value.replace(/,/g, '')) - Number(this.second.value.replace(/,/g, '')) ).toString();
-        this.first.value = this.addComa(this.first.value);
     };
 
     this.divide = () => {
         this.first.value = ( Number(this.first.value.replace(/,/g, '')) / Number(this.second.value.replace(/,/g, '')) ).toString();
-        this.first.value = this.addComa(this.first.value);
     };
 
     this.module = () => {
         this.first.value = ( Number(this.first.value.replace(/,/g, '')) % Number(this.second.value.replace(/,/g, '')) ).toString();
-        this.first.value = this.addComa(this.first.value);
     };
 
     // clear calculator operands and operator
