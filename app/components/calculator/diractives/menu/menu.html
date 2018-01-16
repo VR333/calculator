@@ -1,16 +1,8 @@
 <ul class='menu-items'>
-    <li id='menu-header'>
-        <div class='side' ng-click='navigator.changeToggle(0)'>
-            <div class='line'></div>
-            <div class='line'></div>
-            <div class='line'></div>
-        </div>
-        <div id='roomless'>Calculator</div>
-    </li>
-
     <li ng-repeat="item in menu.list"
         ng-class="{ 'active': item === 'Standard' ,
-                    'version': item !== 'Converter',
+                    'roomless': item === 'Calculator' ,
+                    'version': item !== 'Converter' && item !== 'Calculator',
                     'title': item === 'Converter'}"
         ng-click='menu.makeActiveTab($event)'>
             {{item}}

@@ -16,8 +16,7 @@ header .options {
 header .btn {
     width: 46px;
     height: 31px;
-    display: inline-block;
-    cursor: default;
+    margin-right: -1px;
     text-align: center;
     line-height: 31px;
 }

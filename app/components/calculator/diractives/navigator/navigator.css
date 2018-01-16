@@ -8,31 +8,32 @@ navigator  img {
     right: 10px;
 }
 
- #title {
-    text-align: left;
-    cursor: default;
-    font-weight: bold;
-    display: inline-block;
-    height: 20px;
-    position: relative;
-    top: 4px;
-    width: 60%;
+ navigator div.title {
+     line-height: 48px;
+     font-size: 19px;
+     display: inline-block;
+     margin-left: 55px;
 }
 
-  .menu {
-    display: inline-block;
-    padding: 3% 4%;
-    margin: 4px;
-    position: relative;
-    left: -4px;
-    float: left;
-    margin-top: -1px;
+ navigator .menu-btn {
+     margin-bottom: -15px;
+     position: absolute;
+     z-index: 2;
  }
 
- .menu:hover {
+ .menu-btn {
+     height: 48px;
+     width: 55px;
+     display: inline-block;
+     padding-top: 15px;
+     padding-left: 13px;
+ }
+
+ .menu-btn:hover {
     background-color: #DEDEDE;
  }
- .menu .line {
+
+ .menu-btn .line {
     background-color: black;
     width: 20px;
     height: 1px;

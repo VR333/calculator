@@ -34754,12 +34754,12 @@ app.directive('menu', function(){
             active: '='
         },
         controllerAs: 'menu',
-        controller: menuCtrl,
+        controller: ctrl,
         templateUrl : './app/components/calculator/diractives/menu/menu.html'
     };
 
-    function menuCtrl() {
-        this.list = ['Standard', 'Scientific', 'Programmer', 'Date calculation', 'Converter',
+    function ctrl() {
+        this.list = ['Calculator','Standard', 'Scientific', 'Programmer', 'Date calculation', 'Converter',
         'Currency', 'Volume', 'Length', 'Weight and Mass', 'Temperature',
         'Energy', 'Area', 'Speed', 'Time', 'Power', 'Data', 'Pressure', 'Angle'];
 
@@ -34785,16 +34785,20 @@ app.directive('navigator', function(){
     return {
         restrict: 'E',
         controllerAs: 'navigator',
-        controller: navigateCtrl,
+        controller: ctrl,
         templateUrl : './app/components/calculator/diractives/navigator/navigator.html'
     };
 
-    function navigateCtrl() {
+    function ctrl() {
         this.toggle = 0;
         this.active = "Standard";
 
-        this.changeToggle = (value) => {
-            this.toggle = value;
+        this.changeToggle = () => {
+            if (this.toggle) {
+                this.toggle = 0;
+            } else {
+                this.toggle = 1;
+            }
 
             if (this.toggle) {
                 document.getElementById('hider').style.left = '0px';

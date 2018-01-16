@@ -4,34 +4,31 @@ menu {
     left: -250px;
     position: absolute;
     z-index: 1;
-    display: block;
     transition: left .2s;
 }
 
-menu ul {
-    list-style-type: none;
-    overflow: auto;
-}
-
-li {
-    cursor: default;
-}
-
 .menu-items {
-    height: 441px;
+    height: 450px;
+    overflow: auto;
+    list-style-type: none;
 }
 
-li.title {
+ .menu-items li.roomless {
+    margin-left: 55px;
+    line-height: 48px;
+    font-size: 20px;
+    font-weight: bold;
+ }
+
+.menu-items li.title {
     font-weight: bold;
     font-size: 20px;
     line-height: 40px;
-    height: 40px;
     padding-left: 44px;
 }
 
 .menu-items li.version {
-    height: 52px;
-    line-height: 52px;
+    line-height: 51px;
     padding-left: 65px;
 }
 
@@ -43,45 +40,9 @@ li.title {
     background-color: #73b0e2;
 }
 
-#menu-header {
-    padding: 0;
-    height: 38px;
-}
-
 li.version:hover {
     background-color: #DEDEDE;
 }
-
-.side {
-    display: inline-block;
-    padding: 9.5px 12px;
-    float: left;
-    width: 22%;
-    font-size: 19px;
- }
-
- .side:hover {
-    background-color: #DEDEDE;
- }
-
- .side .line {
-    background-color: black;
-    width: 80%;
-    height: 1px;
-    margin: 4px;
- }
-
- #roomless {
-    width: 78%;
- }
-
- #roomless {
-    position: relative;
-    top: 10px;
-    font-size: 20px;
-    font-weight: bold;
-    z-index: -1;
- }
 
  .separator {
     margin: auto;
@@ -91,7 +52,6 @@ li.version:hover {
 
  .about {
      font-size: 18px;
-     height: 51px;
      line-height: 51px;
      padding-left: 14px;
  }

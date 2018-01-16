@@ -1,11 +1,11 @@
-<div class='menu' ng-click='navigator.changeToggle(1)'>
+<menu id='hider' active='navigator.active'></menu>
+
+<div class='menu-btn' ng-click='navigator.changeToggle()'>
 	<div class='line'></div>
 	<div class='line'></div>
 	<div class='line'></div>
 </div>
 
-<menu id='hider' active='navigator.active'></menu>
-
-<div id='title'>{{navigator.active | uppercase}}</div>
+<div class='title'>{{navigator.active | uppercase}}</div>
 
 <img src='./app/components/calculator/assets/clock.png' alt='time watcher'/>

@@ -7,14 +7,15 @@ app.directive('menu', function(){
             active: '='
         },
         controllerAs: 'menu',
-        controller: menuCtrl,
+        controller: ctrl,
         templateUrl : './app/components/calculator/diractives/menu/menu.html'
     };
 
-    function menuCtrl() {
-        this.list = ['Standard', 'Scientific', 'Programmer', 'Date calculation', 'Converter',
-        'Currency', 'Volume', 'Length', 'Weight and Mass', 'Temperature',
-        'Energy', 'Area', 'Speed', 'Time', 'Power', 'Data', 'Pressure', 'Angle'];
+    function ctrl() {
+        this.list = ['Calculator','Standard', 'Scientific', 'Programmer',
+        'Date calculation', 'Converter','Currency', 'Volume', 'Length',
+        'Weight and Mass', 'Temperature', 'Energy', 'Area', 'Speed', 'Time',
+         'Power', 'Data', 'Pressure', 'Angle'];
 
         this.makeActiveTab = (event) => {
             if (event.currentTarget.className !== 'ng-scope title') {
