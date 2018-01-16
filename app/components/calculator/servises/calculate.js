@@ -54,6 +54,9 @@ app.service('operationsService', function() {
                     this.handleEquilButton();
                     break;
         }
+        this.first.value = this.addComa(this.first.value);
+        this.second.value = this.addComa(this.second.value);
+        this.checkWhatToDisplay();
     };
 
     // check for proper action if both operands and operator were chosen
@@ -72,29 +75,44 @@ app.service('operationsService', function() {
     };
 
     this.removeComa = (operand) => {
+        if (operand === '') {
+            return '';
+        }
+
         return operand.replace(/,/g, '');
     };
 
+    // add coma each 3 symbol, minus will be handled properly
+
     this.addComa = (operand) => {
+        if (operand === '') {
+            return '';
+        }
+
         if (operand.includes('-') && operand.length === 4) {
             return operand;
         }
 
         operand = this.removeComa(operand);
         if ( operand.includes('.') ) {
+            if (operand.includes('-')) {
+                operand = operand.slice(1);
+                return '-' + this.reverseString(
+                            this.reverseString(operand.split('.')[0])
+                            .match(/.{1,3}/g).join(',')
+                        ) + '.' + operand.split('.')[1];
+            }
             return  this.reverseString(
                         this.reverseString(operand.split('.')[0])
-                        .match(/.{1,3}/g)
-                        .map( (a) => a + ',' )
-                        .join('')
-                    ).slice(1) + '.' + operand.split('.')[1];
+                        .match(/.{1,3}/g).join(',')
+                    ) + '.' + operand.split('.')[1];
         }
 
-        return this.reverseString(
-                        this.reverseString(operand).match(/.{1,3}/g)
-                        .map( (a) => a + ',' )
-                        .join('')
-                ).slice(1);
+        if (operand.includes('-')) {
+            operand = operand.slice(1);
+            return '-' + this.reverseString(this.reverseString(operand).match(/.{1,3}/g).join(','));
+        }
+        return this.reverseString(this.reverseString(operand).match(/.{1,3}/g).join(','));
     };
 
     // check for proper dot(.) usage..
@@ -102,12 +120,10 @@ app.service('operationsService', function() {
     this.handleDecimalDot = dot => {
         if ( this.toggle && !this.first.value.includes('.') ) {
             this.first.value = this.first.value.concat(dot);
-            this.checkWhatToDisplay();
             return;
         }
         if ( this.operator.value && !this.second.value.includes('.') ) {
             this.second.value = this.second.value.concat(dot);
-            this.checkWhatToDisplay();
         }
     };
 
@@ -258,7 +274,6 @@ app.service('operationsService', function() {
         this.second.value = '';
         this.operator.value = '';
         this.toggle = true;
-        this.checkWhatToDisplay();
     };
 
     // clear last symbol of a current operand
@@ -267,23 +282,17 @@ app.service('operationsService', function() {
         if (this.toggle) {
             if (this.first.value.length === 1) {
                 this.first.value = '0';
-                this.checkWhatToDisplay();
                 return;
             }
             this.first.value = this.first.value.slice(0, -1);
-            this.first.value = this.addComa(this.first.value);
-            this.checkWhatToDisplay();
             return;
         }
 
         if (this.second.value.length === 1) {
             this.second.value = '';
-            this.checkWhatToDisplay();
             return;
         }
         this.second.value = this.second.value.slice(0, -1);
-        this.second.value = this.addComa(this.second.value);
-        this.checkWhatToDisplay();
     };
 
     // Change minus to plus and Vice Versa
@@ -291,11 +300,9 @@ app.service('operationsService', function() {
     this.changeMinus = () => {
         if (this.toggle) {
             this.first.value = (Number( this.removeComa(this.first.value) ) * (-1)).toString();
-            this.checkWhatToDisplay();
             return;
         }
         this.second.value = (Number( this.removeComa(this.second.value) ) * (-1)).toString();
-        this.checkWhatToDisplay();
     };
 
     // bring to power a number
@@ -303,9 +310,7 @@ app.service('operationsService', function() {
     this.bringToPower = () => {
         if (this.toggle) {
             this.first.value = ( Math.pow(Number( this.removeComa(this.first.value) ), 2) ).toString();
-            this.first.value = this.addComa(this.first.value);
         }
-        this.checkWhatToDisplay();
     };
 
     // Divide 1 by this.first
@@ -313,9 +318,7 @@ app.service('operationsService', function() {
     this.divideOneByFirst = () => {
         if (this.toggle) {
             this.first.value = ( 1 / Number( this.removeComa(this.first.value) )).toString();
-            this.first.value = this.addComa(this.first.value);
         }
-        this.checkWhatToDisplay();
     };
 
     // get square root of a Number
@@ -323,8 +326,7 @@ app.service('operationsService', function() {
     this.getSquareRoot = () => {
         if (this.toggle) {
             this.first.value = ( Math.pow(Number( this.removeComa(this.first.value) ), 0.5) ).toString();
-            this.first.value = this.addComa(this.first.value);
         }
-        this.checkWhatToDisplay();
     };
+
 });

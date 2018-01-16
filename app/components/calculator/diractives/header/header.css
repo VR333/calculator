@@ -1,43 +1,32 @@
 header {
-    display: block;
-    font-size: 13px;
-    height: 33px;
-    margin-bottom: 16px;
- }
+    font-size: 14px;
+}
 
- header span {
-    position: relative;
-    top: 12px;
-    left: 16px;
- }
-
- .top {
-    float: right;
-    clear: fixed;
- }
-
- .top-btn {
-    padding: 0px 18px;
-    margin: 0px -2px;
-    font-size: 26px;
+header .title {
     display: inline-block;
- }
+    margin-left: 10px;
+    line-height: 31px;
+}
 
- .top-btn:hover {
+header .options {
+    display: inline-block;
+    float: right;
+}
+
+header .btn {
+    width: 46px;
+    height: 31px;
+    display: inline-block;
+    cursor: default;
+    text-align: center;
+    line-height: 31px;
+}
+
+header .btn:hover {
     background-color: #DEDEDE;
-    color: white;
- }
+}
 
- .top-btn span {
-    position: relative;
-    top: -3px;
-    left: 0px;
- }
-
- #cross {
-    font-size: 16px;
-    padding: 7px 19px 3px 18px;
- }
- #cross:hover {
+header .btn.close:hover {
     background-color: red;
- }
+    color: white;
+}

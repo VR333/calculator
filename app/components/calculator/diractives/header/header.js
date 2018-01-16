@@ -4,9 +4,9 @@ app.directive('header', function(){
     return {
         restrict: 'E',
         controllerAs: 'header',
-        controller: hatCtrl,
+        controller: ctrl,
         templateUrl: './app/components/calculator/diractives/header/header.html'
     };
 
-    function hatCtrl() {}
+    function ctrl() {}
 });
