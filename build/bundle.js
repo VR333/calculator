@@ -34352,8 +34352,6 @@ app.directive('btn', function(){
 
 __webpack_require__(6);
 
-// 'operationsService'
-
 const app = angular.module('display', ['operationsService']);
 
 app.directive('display', function(){
@@ -34398,7 +34396,7 @@ app.service('operationsService', function() {
     this.default = 0;
 
     this.topScreen = {value: ''};
-    this.botScreen = {value: `${this.first.value} ${this.operator.value}`};
+    this.botScreen = {value: this.first.value};
 
     // switcher to change input to a second number
 
@@ -34409,7 +34407,7 @@ app.service('operationsService', function() {
     this.checkWhatToDisplay = () => {
         if (this.toggle) {
             this.topScreen.value = '';
-            this.botScreen.value = `${this.first.value} ${this.operator.value}`;
+            this.botScreen.value = this.first.value;
             return;
         }
         this.topScreen.value = `${this.first.value} ${this.operator.value}`;
@@ -34546,7 +34544,7 @@ app.service('operationsService', function() {
     // Set value for this.second variable
 
     this.setSecondOperand = secondOperand => {
-        if (this.second.value === this.default) {
+        if (this.second.value === this.default && this.removeComa(this.second.value).length < 16) {
             this.second.value = '';
         }
         if (this.second.value == '' || this.second.value == '0') {
@@ -34759,9 +34757,10 @@ app.directive('menu', function(){
     };
 
     function ctrl() {
-        this.list = ['Calculator','Standard', 'Scientific', 'Programmer', 'Date calculation', 'Converter',
-        'Currency', 'Volume', 'Length', 'Weight and Mass', 'Temperature',
-        'Energy', 'Area', 'Speed', 'Time', 'Power', 'Data', 'Pressure', 'Angle'];
+        this.list = ['Calculator','Standard', 'Scientific', 'Programmer',
+        'Date calculation', 'Converter','Currency', 'Volume', 'Length',
+        'Weight and Mass', 'Temperature', 'Energy', 'Area', 'Speed', 'Time',
+         'Power', 'Data', 'Pressure', 'Angle'];
 
         this.makeActiveTab = (event) => {
             if (event.currentTarget.className !== 'ng-scope title') {

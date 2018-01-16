@@ -1,7 +1,5 @@
 require('./../../servises/calculate.js');
 
-// 'operationsService'
-
 const app = angular.module('display', ['operationsService']);
 
 app.directive('display', function(){

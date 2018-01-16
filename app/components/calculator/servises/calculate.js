@@ -7,7 +7,7 @@ app.service('operationsService', function() {
     this.default = 0;
 
     this.topScreen = {value: ''};
-    this.botScreen = {value: `${this.first.value} ${this.operator.value}`};
+    this.botScreen = {value: this.first.value};
 
     // switcher to change input to a second number
 
@@ -18,7 +18,7 @@ app.service('operationsService', function() {
     this.checkWhatToDisplay = () => {
         if (this.toggle) {
             this.topScreen.value = '';
-            this.botScreen.value = `${this.first.value} ${this.operator.value}`;
+            this.botScreen.value = this.first.value;
             return;
         }
         this.topScreen.value = `${this.first.value} ${this.operator.value}`;
@@ -154,6 +154,7 @@ app.service('operationsService', function() {
 
     // Set value for this.second variable
 
+    // && this.removeComa(this.second.value).length < 16) BAG BAG BAG rewrite!!!
     this.setSecondOperand = secondOperand => {
         if (this.second.value === this.default) {
             this.second.value = '';
