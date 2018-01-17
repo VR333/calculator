@@ -13,6 +13,22 @@ app.service('operationsService', function() {
 
     this.toggle = true;
 
+    // accept user click and choose proper function
+
+    this.btnClick = (inputType, inputData) => {
+        switch (inputType) {
+            case 'number':
+                            this.setValue(inputData);
+                            break;
+            case 'operator':
+                            this.setOperator(inputData);
+                            break;
+            case 'operation':
+                            this.checkOperation(inputData);
+                            break;
+        }
+    };
+
     // make top and bot screens display proper values
 
     this.checkWhatToDisplay = () => {

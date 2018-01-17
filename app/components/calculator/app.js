@@ -4,8 +4,9 @@ require('./diractives/display/display.js');
 require('./diractives/header/header.js');
 require('./diractives/menu/menu.js');
 require('./diractives/navigator/navigator.js');
+require('./servises/calculate.js');
 
-const app = angular.module('calculator', ['keyboard', 'display', 'btn', 'header', 'menu', 'navigator']);
+const app = angular.module('calculator', ['operationsService','keyboard', 'display', 'btn', 'header', 'menu', 'navigator']);
 
 app.directive('calculator', function(){
     return {

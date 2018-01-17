@@ -5,13 +5,13 @@ app.directive('btn', function(){
         restrict: 'E',
         transclude: true,
         controllerAs: 'btn',
-        controller: btnCtrl,
+        controller: ctrl,
         templateUrl: './app/components/calculator/diractives/btn/btn.html'
     };
 
-    function btnCtrl($scope) {
-        this.handleEmit = (type, data) => {
-            $scope.$emit('btnEvent', {inputType: type, inputData: data});
+    function ctrl(operationsService) {
+        this.handleClick = (type, data) => {
+            operationsService.btnClick(type, data);
         };
     }
 });

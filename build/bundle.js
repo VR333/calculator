@@ -34276,11 +34276,12 @@ $provide.value("$locale", {
 __webpack_require__(3);
 __webpack_require__(4);
 __webpack_require__(5);
+__webpack_require__(6);
 __webpack_require__(7);
 __webpack_require__(8);
 __webpack_require__(9);
 
-const app = angular.module('calculator', ['keyboard', 'display', 'btn', 'header', 'menu', 'navigator']);
+const app = angular.module('calculator', ['operationsService','keyboard', 'display', 'btn', 'header', 'menu', 'navigator']);
 
 app.directive('calculator', function(){
     return {
@@ -34334,13 +34335,13 @@ app.directive('btn', function(){
         restrict: 'E',
         transclude: true,
         controllerAs: 'btn',
-        controller: btnCtrl,
+        controller: ctrl,
         templateUrl: './app/components/calculator/diractives/btn/btn.html'
     };
 
-    function btnCtrl($scope) {
-        this.handleEmit = (type, data) => {
-            $scope.$emit('btnEvent', {inputType: type, inputData: data});
+    function ctrl(operationsService) {
+        this.handleClick = (type, data) => {
+            operationsService.btnClick(type, data);
         };
     }
 });
@@ -34348,43 +34349,116 @@ app.directive('btn', function(){
 
 /***/ }),
 /* 5 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-__webpack_require__(6);
-
-const app = angular.module('display', ['operationsService']);
+const app = angular.module('display', []);
 
 app.directive('display', function(){
     return {
         restrict: 'E',
         controllerAs: 'display',
-        controller: displayCtrl,
+        controller: ctrl,
         templateUrl: './app/components/calculator/diractives/display/display.html'
     };
 
-    function displayCtrl($scope, operationsService) {
+    function ctrl($scope, operationsService) {
         $scope.topScreen = operationsService.topScreen;
         $scope.botScreen = operationsService.botScreen;
-
-        $scope.$on('btnEvent', function (event, data) {
-            switch (data.inputType) {
-                case 'number':
-                                operationsService.setValue(data.inputData);
-                                break;
-                case 'operator':
-                                operationsService.setOperator(data.inputData);
-                                break;
-                case 'operation':
-                                operationsService.checkOperation(data.inputData);
-                                break;
-            }
-        });
     }
 });
 
 
 /***/ }),
 /* 6 */
+/***/ (function(module, exports) {
+
+const app = angular.module('header', []);
+
+app.directive('header', function(){
+    return {
+        restrict: 'E',
+        controllerAs: 'header',
+        controller: ctrl,
+        templateUrl: './app/components/calculator/diractives/header/header.html'
+    };
+
+    function ctrl() {}
+});
+
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports) {
+
+const app = angular.module('menu', []);
+
+app.directive('menu', function(){
+    return {
+        restrict: 'E',
+        bindToController: {
+            active: '='
+        },
+        controllerAs: 'menu',
+        controller: ctrl,
+        templateUrl : './app/components/calculator/diractives/menu/menu.html'
+    };
+
+    function ctrl() {
+        this.list = ['Calculator','Standard', 'Scientific', 'Programmer',
+        'Date calculation', 'Converter','Currency', 'Volume', 'Length',
+        'Weight and Mass', 'Temperature', 'Energy', 'Area', 'Speed', 'Time',
+         'Power', 'Data', 'Pressure', 'Angle'];
+
+        this.makeActiveTab = (event) => {
+            if (event.currentTarget.className !== 'ng-scope title') {
+                document.getElementsByClassName('active')[0]
+                        .className = 'ng-scope version';
+                event.currentTarget.className = 'ng-scope version active';
+                this.active = event.currentTarget.innerText;
+            }
+        };
+    }
+});
+
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports) {
+
+const app = angular.module('navigator', []);
+
+app.directive('navigator', function(){
+    return {
+        restrict: 'E',
+        controllerAs: 'navigator',
+        controller: ctrl,
+        templateUrl : './app/components/calculator/diractives/navigator/navigator.html'
+    };
+
+    function ctrl() {
+        this.toggle = 0;
+        this.active = "Standard";
+
+        this.changeToggle = () => {
+            if (this.toggle) {
+                this.toggle = 0;
+            } else {
+                this.toggle = 1;
+            }
+
+            if (this.toggle) {
+                document.getElementById('hider').style.left = '0px';
+            } else {
+                document.getElementById('hider').style.left = '-250px';
+            }
+        };
+
+    }
+});
+
+
+/***/ }),
+/* 9 */
 /***/ (function(module, exports) {
 
 const app = angular.module('operationsService', []);
@@ -34401,6 +34475,22 @@ app.service('operationsService', function() {
     // switcher to change input to a second number
 
     this.toggle = true;
+
+    // accept user click and choose proper function
+
+    this.btnClick = (inputType, inputData) => {
+        switch (inputType) {
+            case 'number':
+                            this.setValue(inputData);
+                            break;
+            case 'operator':
+                            this.setOperator(inputData);
+                            break;
+            case 'operation':
+                            this.checkOperation(inputData);
+                            break;
+        }
+    };
 
     // make top and bot screens display proper values
 
@@ -34543,8 +34633,9 @@ app.service('operationsService', function() {
 
     // Set value for this.second variable
 
+    // && this.removeComa(this.second.value).length < 16) BAG BAG BAG rewrite!!!
     this.setSecondOperand = secondOperand => {
-        if (this.second.value === this.default && this.removeComa(this.second.value).length < 16) {
+        if (this.second.value === this.default) {
             this.second.value = '';
         }
         if (this.second.value == '' || this.second.value == '0') {
@@ -34718,95 +34809,6 @@ app.service('operationsService', function() {
         }
     };
 
-});
-
-
-/***/ }),
-/* 7 */
-/***/ (function(module, exports) {
-
-const app = angular.module('header', []);
-
-app.directive('header', function(){
-    return {
-        restrict: 'E',
-        controllerAs: 'header',
-        controller: ctrl,
-        templateUrl: './app/components/calculator/diractives/header/header.html'
-    };
-
-    function ctrl() {}
-});
-
-
-/***/ }),
-/* 8 */
-/***/ (function(module, exports) {
-
-const app = angular.module('menu', []);
-
-app.directive('menu', function(){
-    return {
-        restrict: 'E',
-        bindToController: {
-            active: '='
-        },
-        controllerAs: 'menu',
-        controller: ctrl,
-        templateUrl : './app/components/calculator/diractives/menu/menu.html'
-    };
-
-    function ctrl() {
-        this.list = ['Calculator','Standard', 'Scientific', 'Programmer',
-        'Date calculation', 'Converter','Currency', 'Volume', 'Length',
-        'Weight and Mass', 'Temperature', 'Energy', 'Area', 'Speed', 'Time',
-         'Power', 'Data', 'Pressure', 'Angle'];
-
-        this.makeActiveTab = (event) => {
-            if (event.currentTarget.className !== 'ng-scope title') {
-                document.getElementsByClassName('active')[0]
-                        .className = 'ng-scope version';
-                event.currentTarget.className = 'ng-scope version active';
-                this.active = event.currentTarget.innerText;
-            }
-        };
-    }
-});
-
-
-/***/ }),
-/* 9 */
-/***/ (function(module, exports) {
-
-const app = angular.module('navigator', []);
-
-app.directive('navigator', function(){
-    return {
-        restrict: 'E',
-        controllerAs: 'navigator',
-        controller: ctrl,
-        templateUrl : './app/components/calculator/diractives/navigator/navigator.html'
-    };
-
-    function ctrl() {
-        this.toggle = 0;
-        this.active = "Standard";
-
-        this.changeToggle = () => {
-            if (this.toggle) {
-                this.toggle = 0;
-            } else {
-                this.toggle = 1;
-            }
-
-            if (this.toggle) {
-                document.getElementById('hider').style.left = '0px';
-            } else {
-                document.getElementById('hider').style.left = '-250px';
-            }
-        };
-
-    }
 });
 
 
