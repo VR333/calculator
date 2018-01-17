@@ -3,9 +3,9 @@ const app = angular.module('btn', []);
 app.directive('btn', function(){
     return {
         restrict: 'E',
-        transclude: true,
         controllerAs: 'btn',
         controller: ctrl,
+        transclude: true,
         templateUrl: './app/components/calculator/diractives/btn/btn.html'
     };
 

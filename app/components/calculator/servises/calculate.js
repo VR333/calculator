@@ -27,6 +27,40 @@ app.service('operationsService', function() {
                             this.checkOperation(inputData);
                             break;
         }
+        this.first.value = this.addComa(this.first.value);
+        this.second.value = this.addComa(this.second.value);
+        this.checkWhatToDisplay();
+    };
+
+    // check for operation
+
+    this.checkOperation = (operation) => {
+        switch (operation) {
+            case '√':
+                    this.getSquareRoot();
+                    break;
+            case 'x²':
+                    this.bringToPower();
+                    break;
+            case '⅟':
+                    this.divideOneByFirst();
+                    break;
+            case 'reset':
+                    this.reset();
+                    break;
+            case '⌫':
+                    this.back();
+                    break;
+            case '±':
+                    this.changeMinus();
+                    break;
+            case '.':
+                    this.handleDecimalDot('.');
+                    break;
+            case '=':
+                    this.handleEquilButton();
+                    break;
+        }
     };
 
     // make top and bot screens display proper values
@@ -39,40 +73,6 @@ app.service('operationsService', function() {
         }
         this.topScreen.value = `${this.first.value} ${this.operator.value}`;
         this.botScreen.value = this.second.value;
-    };
-
-    // check for operation
-
-    this.checkOperation = (operation) => {
-        switch (operation) {
-            case '√':
-                    this.getSquareRoot();
-                    break;
-            case '**':
-                    this.bringToPower();
-                    break;
-            case '1/x':
-                    this.divideOneByFirst();
-                    break;
-            case 'reset':
-                    this.reset();
-                    break;
-            case 'back':
-                    this.back();
-                    break;
-            case 'minus':
-                    this.changeMinus();
-                    break;
-            case '.':
-                    this.handleDecimalDot('.');
-                    break;
-            case 'equil':
-                    this.handleEquilButton();
-                    break;
-        }
-        this.first.value = this.addComa(this.first.value);
-        this.second.value = this.addComa(this.second.value);
-        this.checkWhatToDisplay();
     };
 
     // check for proper action if both operands and operator were chosen
@@ -103,6 +103,10 @@ app.service('operationsService', function() {
     this.addComa = (operand) => {
         if (operand === '') {
             return '';
+        }
+
+        if (operand.includes('Infinity')) {
+            return operand;
         }
 
         if (operand.includes('-') && operand.length === 4) {
@@ -148,11 +152,9 @@ app.service('operationsService', function() {
     this.setValue = value => {
         if (this.toggle) {
             this.setFirstOperand(value);
-            this.checkWhatToDisplay();
             return;
         }
         this.setSecondOperand(value);
-        this.checkWhatToDisplay();
     };
 
     // Set value for this.first variable
@@ -164,7 +166,6 @@ app.service('operationsService', function() {
         }
         if ( (this.removeComa(this.first.value) ).length < 16) {
             this.first.value = this.first.value.concat(firstOperand);
-            this.first.value = this.addComa(this.first.value);
         }
     };
 
@@ -181,7 +182,6 @@ app.service('operationsService', function() {
         }
         if ( this.removeComa(this.second.value).length < 16) {
             this.second.value = this.second.value.concat(secondOperand);
-            this.second.value = this.addComa(this.second.value);
         }
     };
 
@@ -203,7 +203,6 @@ app.service('operationsService', function() {
         this.default = this.first.value;
         this.second.value = this.default;
         this.toggle = false;
-        this.checkWhatToDisplay();
     };
 
     // check if user want to use minus number for operation
@@ -227,24 +226,22 @@ app.service('operationsService', function() {
             case '+':
                     this.add();
                     break;
-            case '*':
+            case '✕':
                     this.multiple();
                     break;
-            case '-':
+            case '–':
                     this.minus();
                     break;
-            case '/':
+            case '÷':
                     this.divide();
                     break;
             case '%':
                     this.module();
                     break;
         }
-        this.first.value = this.addComa(this.first.value);
         this.second.value = '';
         this.operator.value = '';
         this.toggle = true;
-        this.checkWhatToDisplay();
     };
 
     /*
@@ -259,7 +256,6 @@ app.service('operationsService', function() {
         this.makeSomeMath(operator);
         this.operator.value = operator;
         this.toggle = false;
-        this.checkWhatToDisplay();
     };
 
     // arithmetic operations to be done with makeSomeMath() execution

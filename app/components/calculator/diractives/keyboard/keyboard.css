@@ -1,24 +1,10 @@
- /* keyboard */
-
  keyboard {
      display: block;
  }
 
- .m-btn {
-     height: 24px;
- }
-
- .btn-separator {
+ keyboard .btn-separator {
+    width: 100%;
     border-color: #fff;
-    margin-top: 5px;
+    margin-bottom: -2px;
     opacity: 0.4;
- }
-
- .input {
-    height: 330px;
-    margin-top: -2px;
- }
-
- sup {
-    font-size: 11px;
  }
