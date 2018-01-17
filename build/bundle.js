@@ -34632,9 +34632,8 @@ app.service('operationsService', function() {
     // Set value for this.second variable
 
     // && this.removeComa(this.second.value).length < 16) BUG BUG BUG rewrite!!!
-    this.fail = 1;
+
     this.setSecondOperand = secondOperand => {
-        if ( this.removeComa(this.second.value).length < 16)
         if (this.second.value === this.default && this.fail) {
             this.second.value = '';
         }
@@ -34645,7 +34644,6 @@ app.service('operationsService', function() {
         if ( this.removeComa(this.second.value).length < 16) {
             this.second.value = this.second.value.concat(secondOperand);
         }
-        this.fail = 0;
     };
 
     // Set value for this.operator variable and check this.first
@@ -34653,7 +34651,7 @@ app.service('operationsService', function() {
     this.setOperator = operator => {
         if ( this.checkForMinusNumber(operator) ) {
             return;
-        }
+        }s
         if (this.first.value === '-' || this.first.value === '-.') {
           this.first.value = '0';
         }
