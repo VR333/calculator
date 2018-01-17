@@ -34289,18 +34289,15 @@ app.directive('calculator', function(){
         templateUrl : './app/components/calculator/template.html',
         controllerAs: 'ctrl',
         controller: function($scope) {
-
             this.changeToggle = (value) => {
                 this.toggle = value;
 
                 if (this.toggle) {
                     document.getElementById('hider').style.left = '0px';
-                } else {
-                    document.getElementById('hider').style.left = '-250px';
+                    return;
                 }
+                document.getElementById('hider').style.left = '-250px';
             };
-
-            this.active = 'Standard';
         }
     };
 });
@@ -34634,9 +34631,11 @@ app.service('operationsService', function() {
 
     // Set value for this.second variable
 
-    // && this.removeComa(this.second.value).length < 16) BAG BAG BAG rewrite!!!
+    // && this.removeComa(this.second.value).length < 16) BUG BUG BUG rewrite!!!
+    this.fail = 1;
     this.setSecondOperand = secondOperand => {
-        if (this.second.value === this.default) {
+        if ( this.removeComa(this.second.value).length < 16)
+        if (this.second.value === this.default && this.fail) {
             this.second.value = '';
         }
         if (this.second.value == '' || this.second.value == '0') {
@@ -34646,6 +34645,7 @@ app.service('operationsService', function() {
         if ( this.removeComa(this.second.value).length < 16) {
             this.second.value = this.second.value.concat(secondOperand);
         }
+        this.fail = 0;
     };
 
     // Set value for this.operator variable and check this.first

@@ -9,6 +9,10 @@
     flex-direction: column;
  }
 
+ btn.btn-separator {
+     border-top: 1px solid rgba(199,199,199,0.4);
+ }
+
  btn:hover {
     background-color: #DEDEDE;
  }

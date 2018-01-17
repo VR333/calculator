@@ -14,18 +14,15 @@ app.directive('calculator', function(){
         templateUrl : './app/components/calculator/template.html',
         controllerAs: 'ctrl',
         controller: function($scope) {
-
             this.changeToggle = (value) => {
                 this.toggle = value;
 
                 if (this.toggle) {
                     document.getElementById('hider').style.left = '0px';
-                } else {
-                    document.getElementById('hider').style.left = '-250px';
+                    return;
                 }
+                document.getElementById('hider').style.left = '-250px';
             };
-
-            this.active = 'Standard';
         }
     };
 });
