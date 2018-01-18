@@ -7,36 +7,36 @@ menu {
     transition: left .2s;
 }
 
-.menu-items {
+menu .menu-items {
     height: 450px;
     overflow: auto;
     list-style-type: none;
 }
 
- .menu-items li.roomless {
+ menu .menu-items li.roomless {
     margin-left: 55px;
     line-height: 48px;
     font-size: 20px;
     font-weight: bold;
  }
 
-.menu-items li.title {
+menu .menu-items li.title {
     font-weight: bold;
     font-size: 20px;
     line-height: 40px;
     padding-left: 44px;
 }
 
-.menu-items li.version {
+menu .menu-items li.version {
     line-height: 51px;
     padding-left: 65px;
 }
 
-.menu-items li.active {
+menu .menu-items li.active {
     background-color: #7DBBEA;
 }
 
-.menu-items li.active:hover {
+menu .menu-items li.active:hover {
     background-color: #73b0e2;
 }
 
@@ -44,22 +44,22 @@ li.version:hover {
     background-color: #DEDEDE;
 }
 
- .separator {
+ menu hr.separator {
     margin: auto;
     margin-top: 5px;
     width: 90%;
  }
 
- .about {
+ menu .about {
      font-size: 18px;
      line-height: 51px;
      padding-left: 14px;
  }
 
- .about:hover {
+ menu .about:hover {
     background-color: #DEDEDE;
  }
 
- .about .info {
+ menu .about .info {
     margin-right: 23px;
  }

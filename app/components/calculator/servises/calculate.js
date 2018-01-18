@@ -45,7 +45,10 @@ app.service('operationsService', function() {
             case '⅟':
                     this.divideOneByFirst();
                     break;
-            case 'reset':
+            case 'C':
+                    this.reset();
+                    break;
+            case 'CE':
                     this.reset();
                     break;
             case '⌫':
@@ -73,6 +76,65 @@ app.service('operationsService', function() {
         }
         this.topScreen.value = `${this.first.value} ${this.operator.value}`;
         this.botScreen.value = this.second.value;
+    };
+
+    // find out: first or second operand is adding..
+
+    this.setValue = value => {
+        if (this.toggle) {
+            this.setFirstOperand(value);
+            return;
+        }
+        this.setSecondOperand(value);
+    };
+
+    // Set value for this.first variable
+
+    this.setFirstOperand = firstOperand => {
+        if (this.first.value === '0') {
+            this.first.value = firstOperand;
+            return;
+        }
+        if ( (this.removeComa(this.first.value) ).length < 16) {
+            this.first.value = this.first.value.concat(firstOperand);
+        }
+    };
+
+    // Set value for this.second variable
+
+    // && this.removeComa(this.second.value).length < 16) BUG BUG BUG rewrite!!!
+
+    this.setSecondOperand = secondOperand => {
+        if (this.second.value === this.default) {
+            this.second.value = '';
+        }
+        if (this.second.value == '' || this.second.value == '0') {
+            this.second.value = secondOperand;
+            return;
+        }
+        if ( this.removeComa(this.second.value).length < 16) {
+            this.second.value = this.second.value.concat(secondOperand);
+        }
+    };
+
+    // Set value for this.operator variable and check this.first
+
+    this.setOperator = operator => {
+        if ( this.checkForMinusNumber(operator) ) {
+            return;
+        }
+        if (this.first.value === '-' || this.first.value === '-.') {
+          this.first.value = '0';
+        }
+
+        if (this.second.value && this.operator.value) {
+          this.actionPlusChooseNextOperator(operator);
+          return;
+        }
+        this.operator.value = operator;
+        this.default = this.first.value;
+        this.second.value = this.default;
+        this.toggle = false;
     };
 
     // check for proper action if both operands and operator were chosen
@@ -115,7 +177,7 @@ app.service('operationsService', function() {
 
         operand = this.removeComa(operand);
         if ( operand.includes('.') ) {
-            if (operand.includes('-')) {
+            if (operand.startsWith('-')) {
                 operand = operand.slice(1);
                 return '-' + this.reverseString(
                             this.reverseString(operand.split('.')[0])
@@ -145,65 +207,6 @@ app.service('operationsService', function() {
         if ( this.operator.value && !this.second.value.includes('.') ) {
             this.second.value = this.second.value.concat(dot);
         }
-    };
-
-    // find out: first or second operand is adding..
-
-    this.setValue = value => {
-        if (this.toggle) {
-            this.setFirstOperand(value);
-            return;
-        }
-        this.setSecondOperand(value);
-    };
-
-    // Set value for this.first variable
-
-    this.setFirstOperand = firstOperand => {
-        if (this.first.value === '0') {
-            this.first.value = firstOperand;
-            return;
-        }
-        if ( (this.removeComa(this.first.value) ).length < 16) {
-            this.first.value = this.first.value.concat(firstOperand);
-        }
-    };
-
-    // Set value for this.second variable
-
-    // && this.removeComa(this.second.value).length < 16) BUG BUG BUG rewrite!!!
-
-    this.setSecondOperand = secondOperand => {
-        if (this.second.value === this.default && this.fail) {
-            this.second.value = '';
-        }
-        if (this.second.value == '' || this.second.value == '0') {
-            this.second.value = secondOperand;
-            return;
-        }
-        if ( this.removeComa(this.second.value).length < 16) {
-            this.second.value = this.second.value.concat(secondOperand);
-        }
-    };
-
-    // Set value for this.operator variable and check this.first
-
-    this.setOperator = operator => {
-        if ( this.checkForMinusNumber(operator) ) {
-            return;
-        }s
-        if (this.first.value === '-' || this.first.value === '-.') {
-          this.first.value = '0';
-        }
-
-        if (this.second.value && this.operator.value) {
-          this.actionPlusChooseNextOperator(operator);
-          return;
-        }
-        this.operator.value = operator;
-        this.default = this.first.value;
-        this.second.value = this.default;
-        this.toggle = false;
     };
 
     // check if user want to use minus number for operation

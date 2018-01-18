@@ -1,36 +1,36 @@
-<btn class='m-btn'>MC</btn>
-<btn class='m-btn'>MR</btn>
-<btn class='m-btn tooltip'>M+<span class="tooltiptext">Memory add</span></btn>
-<btn class='m-btn tooltip'>M-<span class="tooltiptext">Memory subtract</span></btn>
-<btn class='m-btn tooltip'>MS<span class="tooltiptext">Memory store</span></btn>
-<btn class='m-btn'>M^</btn>
+<btn data='MC' class='m-btn'></btn>
+<btn data='MR' class='m-btn'></btn>
+<btn data='M+' class='m-btn tooltip'></btn>
+<btn data='M-' class='m-btn tooltip'></btn>
+<btn data='MS' class='m-btn tooltip'></btn>
+<btn data='M^' class='m-btn'></btn>
 
-<btn class='btn-separator' ng-click="btn.handleClick('operator', '%')">%</btn>
-<btn class='btn-separator' ng-click="btn.handleClick('operation', '√')">√</btn>
-<btn class='btn-separator' ng-click="btn.handleClick('operation', 'x²')">x²</btn>
-<btn class='btn-separator' ng-click="btn.handleClick('operation', '⅟')">⅟</btn>
+<btn type='operator' data='%' class='btn-separator'></btn>
+<btn type='operation' data='√' class='btn-separator'></btn>
+<btn type='operation' data='x²' class='btn-separator'></btn>
+<btn type='operation' data='⅟' class='btn-separator'></btn>
 
-<btn ng-click="btn.handleClick('operation', 'reset')">CE</btn>
-<btn ng-click="btn.handleClick('operation', 'reset')">C</btn>
-<btn ng-click="btn.handleClick('operation', '⌫')">⌫</btn>
-<btn class='operators' ng-click="btn.handleClick('operator', '÷')">÷</btn>
+<btn type='operation' data='CE'></btn>
+<btn type='operation' data='C'></btn>
+<btn type='operation' data='⌫' ng-click='btn.handleClick()' ></btn>
+<btn type='operator' data='÷' class='operators'></btn>
 
-<btn class='numbers' ng-click="btn.handleClick('number', '7')">7</btn>
-<btn class='numbers' ng-click="btn.handleClick('number', '8')">8</btn>
-<btn class='numbers' ng-click="btn.handleClick('number', '9')">9</btn>
-<btn class='operators multiple' ng-click="btn.handleClick('operator', '✕')">✕</btn>
+<btn type='number' data='7'class='numbers'></btn>
+<btn type='number' data='8'class='numbers'></btn>
+<btn type='number' data='9'class='numbers'></btn>
+<btn type='operator' data='✕'class='operators multiple'></btn>
 
-<btn class='numbers' ng-click="btn.handleClick('number', '4')">4</btn>
-<btn class='numbers' ng-click="btn.handleClick('number', '5')">5</btn>
-<btn class='numbers' ng-click="btn.handleClick('number', '6')">6</btn>
-<btn class='operators' ng-click="btn.handleClick('operator', '–')">–</btn>
+<btn type='number' data='4'class='numbers'></btn>
+<btn type='number' data='5'class='numbers'></btn>
+<btn type='number' data='6'class='numbers'></btn>
+<btn type='operator' data='–'class='operators'></btn>
 
-<btn class='numbers' ng-click="btn.handleClick('number', '1')">1</btn>
-<btn class='numbers' ng-click="btn.handleClick('number', '2')">2</btn>
-<btn class='numbers' ng-click="btn.handleClick('number', '3')">3</btn>
-<btn class='operators' ng-click="btn.handleClick('operator', '+')">+</btn>
+<btn type='number' data='1'class='numbers'></btn>
+<btn type='number' data='2'class='numbers'></btn>
+<btn type='number' data='3'class='numbers'></btn>
+<btn type='operator' data='+'class='operators'></btn>
 
-<btn ng-click="btn.handleClick('operation', '±')">±</btn>
-<btn class='numbers' ng-click="btn.handleClick('number', '0')">0</btn>
-<btn class='numbers' ng-click="btn.handleClick('operation', '.')">.</btn>
-<btn class='operators equil' ng-click="btn.handleClick('operation', '=')">=</btn>
+<btn type='operation' data='±'></btn>
+<btn type='number' data='0' class='numbers'></btn>
+<btn type='operation' data='.' class='numbers'></btn>
+<btn type='operation' data='=' class='operators equil'></btn>
