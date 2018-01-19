@@ -1,4 +1,4 @@
-require('../bower_components/angular/angular.js');
-require('./components/calculator/app.js');
+import '../bower_components/angular/angular.js';
 
-const app = angular.module('tester', ['calculator']);
+const app = angular.module('tester', []);
+require ('./components/calculator/app.js')(app);

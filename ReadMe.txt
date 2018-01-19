@@ -8,7 +8,7 @@ Enter following command to install webpack-dev-server:
 This will install webpack and webpack-dev-server globally due to -g flag.
 
 Next thing to do is navigate to the folder with a project in command line and run following commands:
-1. webpack (actually no need to do this, just for insurance)
+1. npm run build (actually no need to do this, just for insurance)
 The output will be like this:
 C:\Users\rvakh\Desktop\calculator>webpack
 Hash: 3f58a41ea1b9ebd45d1e
@@ -23,4 +23,5 @@ bundle.js  1.29 MB       0  [emitted]  [big]  main
    [5] ./app/directives/button/button.js 2.96 kB {0} [built]
     + 1 hidden module
 
-2. webpack-dev-server (this will run server locally on 8080 port by default). So then you need only browser to view a page.
+2. npm run watch
+3. npm run start (this will run server locally on 8080 port by default). So then you need only browser to view a page.
