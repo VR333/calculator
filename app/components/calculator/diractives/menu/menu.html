@@ -1,11 +1,9 @@
 <ul class='menu-items'>
-    <li ng-repeat="item in menu.list"
-        ng-class="{ 'active': item === 'Standard' ,
-                    'roomless': item === 'Calculator' ,
-                    'version': item !== 'Converter' && item !== 'Calculator',
-                    'title': item === 'Converter'}"
-        ng-click='menu.makeActiveTab($event)'>
-            {{item}}
+    <li ng-repeat="item in ctrl.list"
+        ng-class="{ 'active': item.name === ctrl.active}"
+        class="{{item.type}}"
+        ng-click='ctrl.makeActiveTab(item.name)'>
+        {{item.name}}
     </li>
 </ul>
 

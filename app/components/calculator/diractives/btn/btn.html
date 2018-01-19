@@ -1,1 +1,9 @@
-<div>{{ctrl.data}}</div>
+<div class="btn {{ctrl.type}}"
+	ng-class="{ 'tooltip': '{{ctrl.tooltip}}',
+				'multiple' : ctrl.value === '✕',
+				'module' : ctrl.value === '%',
+				'equil operator' : ctrl.value === '=',
+				'font-size30' : ctrl.value === '.'}"
+	ng-click="ctrl.handleClick()">
+	{{ctrl.value}}
+</div>

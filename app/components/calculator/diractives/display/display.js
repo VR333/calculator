@@ -1,15 +1,16 @@
 module.exports = function (app) {
     app.directive('display', function(){
         return {
+            scope: true,
             restrict: 'E',
-            controllerAs: 'display',
+            controllerAs: 'ctrl',
             controller: ctrl,
             templateUrl: './app/components/calculator/diractives/display/display.html'
         };
 
         function ctrl($scope, operationsService) {
-            $scope.topScreen = operationsService.topScreen;
-            $scope.botScreen = operationsService.botScreen;
+            this.topScreen = operationsService.topScreen;
+            this.botScreen = operationsService.botScreen;
         }
     });
 }

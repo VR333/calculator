@@ -1,4 +1,4 @@
-<menu id='hider' active='navigator.active'></menu>
+<menu active='navigator.active' ng-class="navigator.toggle ? 'move-right' : 'move-left'"></menu>
 
 <div class='menu-btn' ng-click='navigator.changeToggle()'>
 	<div class='line'></div>
@@ -8,4 +8,4 @@
 
 <div class='title'>{{navigator.active | uppercase}}</div>
 
-<img src='./app/components/calculator/assets/clock.png' alt='time watcher'/>
+<img class='clock-img' src='./app/components/calculator/assets/clock.png' alt='time watcher'/>

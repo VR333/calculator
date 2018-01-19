@@ -1,10 +1,17 @@
 menu {
     background-color: #ededed;
     width: 250px;
-    left: -250px;
     position: absolute;
     z-index: 1;
     transition: left .2s;
+}
+
+menu.move-left {
+    left: -250px;
+}
+
+menu.move-right {
+    left: 0px;
 }
 
 menu .menu-items {
@@ -14,7 +21,7 @@ menu .menu-items {
 }
 
  menu .menu-items li.roomless {
-    margin-left: 55px;
+    margin-left: 65px;
     line-height: 48px;
     font-size: 20px;
     font-weight: bold;

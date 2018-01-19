@@ -1,8 +1,9 @@
 module.exports = function (app) {
     app.directive('header', function(){
         return {
+            scope: true,
             restrict: 'E',
-            controllerAs: 'header',
+            controllerAs: 'ctrl',
             controller: ctrl,
             templateUrl: './app/components/calculator/diractives/header/header.html'
         };

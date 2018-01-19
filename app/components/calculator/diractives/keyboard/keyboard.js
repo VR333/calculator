@@ -1,8 +1,9 @@
 module.exports = function (app) {
     app.directive('keyboard', function(){
         return {
+            scope: true,
             restrict: 'E',
-            controllerAs: 'keyboard',
+            controllerAs: 'ctrl',
             controller: ctrl,
             templateUrl : './app/components/calculator/diractives/keyboard/keyboard.html'
         };

@@ -1,52 +1,54 @@
- btn {
-    width: 25%;
-    height: 55px;
-    float: left;
-    font-size: 18px;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
+ .btn {
+     width: 25%;
+     height: 55px;
+     float: left;
+     font-size: 18px;
+     text-align: center;
+     display: flex;
+     justify-content: center;
+     flex-direction: column;
  }
 
- btn.btn-separator {
-     border-top: 1px solid rgba(199,199,199,0.4);
+ .btn-separator {
+     width: 100%;
+     border-color: rgba(199,199,199,0.4);
+     margin-bottom: -1px;
  }
 
- btn:hover {
+ .btn:hover {
     background-color: #DEDEDE;
  }
 
- btn:active {
+ .btn:active {
     background-color: #c8c8c8;
  }
 
- btn:focus {
+ .btn:focus {
     outline: none;
  }
 
- btn.m-btn {
+ .m .memory {
     width: 16.5%;
     height: 29px;
     color: #bdbdbd;
     font-size: 12px;
  }
 
- btn.m-btn:hover {
+ .m .memory:hover {
     background-color: white;
  }
 
- btn.tooltip:hover {
-    background-color: #DEDEDE;
- }
-
- btn.tooltip {
+ div.m div.tooltip {
     position: relative;
     color: black;
  }
 
+ div.m div.tooltip:hover {
+    background-color: #DEDEDE;
+ }
+
 /* Tooltip text */
- .tooltip .tooltiptext {
+ div.tooltip .tooltiptext {
     visibility: hidden;
     width: 110px;
     background-color: #bdbdbd;
@@ -60,30 +62,42 @@
  }
 
 /* Show the tooltip text when you mouse over the tooltip container */
- .tooltip:hover .tooltiptext {
+ div.m div.tooltip:hover .tooltiptext {
     transition: opacity .5s;
     transition-timing-function: ease-in;
     visibility: visible;
     opacity: 1;
  }
 
- btn.numbers {
+ btn div.number {
     font-weight: bold;
     font-size: 24px;
  }
 
- btn.operators {
+ div.operator {
     font-size: 30px;
  }
 
- btn.operators:hover {
+ div.operator:hover {
     color: white;
  }
 
- btn.equil:hover {
+ btn div.module {
+     font-size: 18px;
+ }
+
+ btn div.module:hover {
+     color: black;
+ }
+
+ btn div.equil:hover {
      background-color: #0078d7;
  }
 
- btn.multiple {
+ btn div.multiple {
     font-size: 18px;
+ }
+
+ .font-size30 {
+     font-size: 30px;
  }

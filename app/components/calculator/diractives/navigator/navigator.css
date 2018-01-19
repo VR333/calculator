@@ -2,7 +2,7 @@ navigator {
     display: block;
 }
 
-navigator  img {
+navigator  .clock-img {
     position: absolute;
     top: 50px;
     right: 10px;
@@ -16,17 +16,12 @@ navigator  img {
 }
 
  navigator .menu-btn {
-     margin-bottom: -15px;
      position: absolute;
      z-index: 2;
- }
-
- .menu-btn {
      height: 48px;
      width: 55px;
      display: inline-block;
-     padding-top: 15px;
-     padding-left: 13px;
+     padding-top: 5%;
  }
 
  .menu-btn:hover {
@@ -37,5 +32,5 @@ navigator  img {
     background-color: black;
     width: 20px;
     height: 1px;
-    margin: 4px;
+    margin: 4px auto;
  }

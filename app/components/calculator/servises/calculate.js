@@ -296,20 +296,8 @@ module.exports = function (app) {
         // clear last symbol of a current operand
 
         this.back = () => {
-            if (this.toggle) {
-                if (this.first.value.length === 1) {
-                    this.first.value = '0';
-                    return;
-                }
-                this.first.value = this.first.value.slice(0, -1);
-                return;
-            }
-
-            if (this.second.value.length === 1) {
-                this.second.value = '';
-                return;
-            }
-            this.second.value = this.second.value.slice(0, -1);
+           var obj = this.toggle ? this.first : this.second;
+           obj.value = obj.value.length === 1 ? '0' : obj.value.slice(0, -1);
         };
 
         // Change minus to plus and Vice Versa

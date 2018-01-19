@@ -34315,8 +34315,9 @@ module.exports = function (app) {
 module.exports = function (app) {
     app.directive('keyboard', function(){
         return {
+            scope: true,
             restrict: 'E',
-            controllerAs: 'keyboard',
+            controllerAs: 'ctrl',
             controller: ctrl,
             templateUrl : './app/components/calculator/diractives/keyboard/keyboard.html'
         };
@@ -34333,31 +34334,28 @@ module.exports = function (app) {
 module.exports = function (app) {
     app.directive('btn', function(){
         return {
+            scope: true,
+            bindToController: {
+                type: '@',
+                value: '@',
+                tooltip: '@'
+            },
             restrict: 'E',
-            controllerAs: 'btn',
+            controllerAs: 'ctrl',
             controller: ctrl,
             templateUrl: './app/components/calculator/diractives/btn/btn.html'
         };
 
-        function ctrl($element, operationsService, $scope) {
-            this.type = $element.attr('type');
-            this.data = $element.attr('data');
-            this.$scope = $scope;
-            $element[0].innerText = $element.attr('data');
+        function ctrl(operationsService, $scope) {
+            this.tip = document.getElementsByClassName('tooltip');
+            console.dir(this.tip);
+            // this.tip[0].innerHTML = 'M+<span class="tooltiptext">Memory add</span>';
+            // this.tip[1].innerHTML = 'M-<span class="tooltiptext">Memory subtract</span>';
+            // this.tip[2].innerHTML = 'MS<span class="tooltiptext">Memory store</span>';
 
-            this.tooltip = document.getElementsByClassName('m-btn tooltip');
-            this.tooltip[0].innerHTML = 'M+<span class="tooltiptext">Memory add</span>';
-            this.tooltip[1].innerHTML = 'M-<span class="tooltiptext">Memory subtract</span>';
-            this.tooltip[2].innerHTML = 'MS<span class="tooltiptext">Memory store</span>';
-
-            $element.on('click', () => {
-                operationsService.btnClick(this.type, this.data);
-                this.$scope.$apply();
-            });
-
-            // this.handleClick = () => {
-            //     operationsService.btnClick('', '');
-            // };
+            this.handleClick = () => {
+                operationsService.btnClick(this.type, this.value);
+            };
         }
     });
 }
@@ -34370,15 +34368,16 @@ module.exports = function (app) {
 module.exports = function (app) {
     app.directive('display', function(){
         return {
+            scope: true,
             restrict: 'E',
-            controllerAs: 'display',
+            controllerAs: 'ctrl',
             controller: ctrl,
             templateUrl: './app/components/calculator/diractives/display/display.html'
         };
 
         function ctrl($scope, operationsService) {
-            $scope.topScreen = operationsService.topScreen;
-            $scope.botScreen = operationsService.botScreen;
+            this.topScreen = operationsService.topScreen;
+            this.botScreen = operationsService.botScreen;
         }
     });
 }
@@ -34391,8 +34390,9 @@ module.exports = function (app) {
 module.exports = function (app) {
     app.directive('header', function(){
         return {
+            scope: true,
             restrict: 'E',
-            controllerAs: 'header',
+            controllerAs: 'ctrl',
             controller: ctrl,
             templateUrl: './app/components/calculator/diractives/header/header.html'
         };
@@ -34409,28 +34409,98 @@ module.exports = function (app) {
 module.exports = function (app) {
     app.directive('menu', function(){
         return {
+            scope: true,
             restrict: 'E',
             bindToController: {
-                active: '='
+                active: '=',
             },
-            controllerAs: 'menu',
+            controllerAs: 'ctrl',
             controller: ctrl,
             templateUrl : './app/components/calculator/diractives/menu/menu.html'
         };
 
         function ctrl() {
-            this.list = ['Calculator','Standard', 'Scientific', 'Programmer',
-            'Date calculation', 'Converter','Currency', 'Volume', 'Length',
-            'Weight and Mass', 'Temperature', 'Energy', 'Area', 'Speed', 'Time',
-             'Power', 'Data', 'Pressure', 'Angle'];
-
-            this.makeActiveTab = (event) => {
-                if (event.currentTarget.className !== 'ng-scope title') {
-                    document.getElementsByClassName('active')[0]
-                            .className = 'ng-scope version';
-                    event.currentTarget.className = 'ng-scope version active';
-                    this.active = event.currentTarget.innerText;
+            this.list = [
+                {
+                    name: 'Calculator',
+                    type: 'roomless'
+                },
+                {
+                    name: 'Standard',
+                    type: 'version'
+                },
+                {
+                    name: 'Scientific',
+                    type: 'version'
+                },
+                {
+                    name: 'Programmer',
+                    type: 'version'
+                },
+                {
+                    name: 'Date calculation',
+                    type: 'version'
+                },
+                {
+                    name: 'Converter',
+                    type: 'title'
+                },
+                {
+                    name: 'Currency',
+                    type: 'version'
+                },
+                {
+                    name: 'Volume',
+                    type: 'version'
+                },
+                {
+                    name: 'Length',
+                    type: 'version'
+                },
+                {
+                    name: 'Weight and Mass',
+                    type: 'version'
+                },
+                {
+                    name: 'Temperature',
+                    type: 'version'
+                },
+                {
+                    name: 'Energy',
+                    type: 'version'
+                },
+                {
+                    name: 'Area',
+                    type: 'version'
+                },
+                {
+                    name: 'Speed',
+                    type: 'version'
+                },
+                {
+                    name: 'Time',
+                    type: 'version'
+                },
+                {
+                    name: 'Power',
+                    type: 'version'
+                },
+                {
+                    name: 'Data',
+                    type: 'version'
+                },
+                {
+                    name: 'Pressure',
+                    type: 'version'
+                },
+                {
+                    name: 'Angle',
+                    type: 'version'
                 }
+            ];
+
+            this.makeActiveTab = (item) => {
+                this.active = item;
             };
         }
     });
@@ -34444,6 +34514,7 @@ module.exports = function (app) {
 module.exports = function (app) {
     app.directive('navigator', function(){
         return {
+            scope: true,
             restrict: 'E',
             controllerAs: 'navigator',
             controller: ctrl,
@@ -34451,21 +34522,11 @@ module.exports = function (app) {
         };
 
         function ctrl() {
-            this.toggle = 0;
+            this.toggle = false;
             this.active = "Standard";
 
             this.changeToggle = () => {
-                if (this.toggle) {
-                    this.toggle = 0;
-                } else {
-                    this.toggle = 1;
-                }
-
-                if (this.toggle) {
-                    document.getElementById('hider').style.left = '0px';
-                } else {
-                    document.getElementById('hider').style.left = '-250px';
-                }
+                this.toggle = !this.toggle;
             };
 
         }
@@ -34775,20 +34836,8 @@ module.exports = function (app) {
         // clear last symbol of a current operand
 
         this.back = () => {
-            if (this.toggle) {
-                if (this.first.value.length === 1) {
-                    this.first.value = '0';
-                    return;
-                }
-                this.first.value = this.first.value.slice(0, -1);
-                return;
-            }
-
-            if (this.second.value.length === 1) {
-                this.second.value = '';
-                return;
-            }
-            this.second.value = this.second.value.slice(0, -1);
+           var obj = this.toggle ? this.first : this.second;
+           obj.value = obj.value.length === 1 ? '0' : obj.value.slice(0, -1);
         };
 
         // Change minus to plus and Vice Versa
