@@ -72,20 +72,16 @@ module.exports = function (app) {
             if (this.toggle) {
                 this.topScreen.value = '';
                 this.botScreen.value = this.first.value;
-                return;
+            } else {
+                this.topScreen.value = `${this.first.value} ${this.operator.value}`;
+                this.botScreen.value = this.second.value;
             }
-            this.topScreen.value = `${this.first.value} ${this.operator.value}`;
-            this.botScreen.value = this.second.value;
         };
 
         // find out: first or second operand is adding..
 
         this.setValue = value => {
-            if (this.toggle) {
-                this.setFirstOperand(value);
-                return;
-            }
-            this.setSecondOperand(value);
+            return this.toggle ? this.setFirstOperand(value) : this.setSecondOperand(value);
         };
 
         // Set value for this.first variable
@@ -93,26 +89,17 @@ module.exports = function (app) {
         this.setFirstOperand = firstOperand => {
             if (this.first.value === '0') {
                 this.first.value = firstOperand;
-                return;
-            }
-            if ( (this.removeComa(this.first.value) ).length < 16) {
+            } else if ( (this.removeComa(this.first.value)).length < 16 ) {
                 this.first.value = this.first.value.concat(firstOperand);
             }
         };
 
         // Set value for this.second variable
-
         // && this.removeComa(this.second.value).length < 16) BUG BUG BUG rewrite!!!
-
         this.setSecondOperand = secondOperand => {
-            if (this.second.value === this.default) {
-                this.second.value = '';
-            }
-            if (this.second.value == '' || this.second.value == '0') {
+            if (this.second.value == '' || this.second.value == '0' || this.second.value === this.default) {
                 this.second.value = secondOperand;
-                return;
-            }
-            if ( this.removeComa(this.second.value).length < 16) {
+            } else if ( this.removeComa(this.second.value).length < 16) {
                 this.second.value = this.second.value.concat(secondOperand);
             }
         };
@@ -120,106 +107,52 @@ module.exports = function (app) {
         // Set value for this.operator variable and check this.first
 
         this.setOperator = operator => {
-            if ( this.checkForMinusNumber(operator) ) {
-                return;
-            }
-            if (this.first.value === '-' || this.first.value === '-.') {
-              this.first.value = '0';
-            }
-
             if (this.second.value && this.operator.value) {
               this.actionPlusChooseNextOperator(operator);
-              return;
+            } else {
+                this.operator.value = operator;
+                this.default = this.first.value;
+                this.second.value = this.default;
+                this.toggle = false;
             }
-            this.operator.value = operator;
-            this.default = this.first.value;
-            this.second.value = this.default;
-            this.toggle = false;
         };
 
         // check for proper action if both operands and operator were chosen
 
         this.handleEquilButton = () => {
-            if (this.second.value === '.') {
-                this.second.value = '0';
-            }
             if (this.operator.value && this.second.value) {
                 this.makeSomeMath(this.operator.value);
             }
         };
 
-        this.reverseString = (str) => {
-            return str.split("").reverse().join("");
-        };
+        // remove comas from a string
 
         this.removeComa = (operand) => {
-            if (operand === '') {
-                return '';
+            if (operand !== '') {
+                return operand.replace(/,/g, '');
             }
-
-            return operand.replace(/,/g, '');
         };
 
-        // add coma each 3 symbol, minus will be handled properly
+        // add coma each 3 symbol, minus and dot will be handled properly
 
         this.addComa = (operand) => {
-            if (operand === '') {
-                return '';
-            }
+            let includesDot = operand.endsWith('.');
 
             if (operand.includes('Infinity')) {
                 return operand;
             }
 
-            if (operand.includes('-') && operand.length === 4) {
-                return operand;
-            }
-
-            operand = this.removeComa(operand);
-            if ( operand.includes('.') ) {
-                if (operand.startsWith('-')) {
-                    operand = operand.slice(1);
-                    return '-' + this.reverseString(
-                                this.reverseString(operand.split('.')[0])
-                                .match(/.{1,3}/g).join(',')
-                            ) + '.' + operand.split('.')[1];
-                }
-                return  this.reverseString(
-                            this.reverseString(operand.split('.')[0])
-                            .match(/.{1,3}/g).join(',')
-                        ) + '.' + operand.split('.')[1];
-            }
-
-            if (operand.includes('-')) {
-                operand = operand.slice(1);
-                return '-' + this.reverseString(this.reverseString(operand).match(/.{1,3}/g).join(','));
-            }
-            return this.reverseString(this.reverseString(operand).match(/.{1,3}/g).join(','));
+            operand = Number(this.removeComa(operand)).toLocaleString('En-us', { maximumFractionDigits: 17 });
+            return includesDot ? operand.concat('.') : operand;
         };
 
         // check for proper dot(.) usage..
 
         this.handleDecimalDot = dot => {
-            if ( this.toggle && !this.first.value.includes('.') ) {
-                this.first.value = this.first.value.concat(dot);
-                return;
-            }
-            if ( this.operator.value && !this.second.value.includes('.') ) {
-                this.second.value = this.second.value.concat(dot);
-            }
-        };
+            let floatNumber = this.toggle ? this.first : this.second;
 
-        // check if user want to use minus number for operation
-
-        this.checkForMinusNumber = minus => {
-            const condition = minus === '-' &&
-                this.toggle &&
-                !this.first.value.toString().includes('-') &&
-                this.first.value === '0';
-
-            if (condition) {
-                this.first.value = minus;
-                return;
+            if ( !floatNumber.value.includes('.') ) {
+                floatNumber.value = floatNumber.value.concat(dot);
             }
         };
 
@@ -254,34 +187,37 @@ module.exports = function (app) {
         */
 
         this.actionPlusChooseNextOperator = operator => {
-            if (this.second.value === '.') {
-                this.second.value = '0';
-            }
             this.makeSomeMath(operator);
             this.operator.value = operator;
             this.toggle = false;
         };
 
+        // remove commas and change data type to Number
+
+        this.prepareForMath = (operand) => {
+            return Number(this.removeComa(operand));
+        };
+
         // arithmetic operations to be done with makeSomeMath() execution
 
         this.add = () => {
-            this.first.value = ( Number(this.first.value.replace(/,/g, '')) + Number(this.second.value.replace(/,/g, '')) ).toString();
+            this.first.value = ( this.prepareForMath(this.first.value) + this.prepareForMath(this.second.value) ).toString();
         };
 
         this.multiple = () => {
-            this.first.value = ( Number(this.first.value.replace(/,/g, '')) * Number(this.second.value.replace(/,/g, '')) ).toString();
+            this.first.value = ( this.prepareForMath(this.first.value) * this.prepareForMath(this.second.value) ).toString();
         };
 
         this.minus = () => {
-            this.first.value =  ( Number(this.first.value.replace(/,/g, '')) - Number(this.second.value.replace(/,/g, '')) ).toString();
+            this.first.value =  ( this.prepareForMath(this.first.value) - this.prepareForMath(this.second.value) ).toString();
         };
 
         this.divide = () => {
-            this.first.value = ( Number(this.first.value.replace(/,/g, '')) / Number(this.second.value.replace(/,/g, '')) ).toString();
+            this.first.value = ( this.prepareForMath(this.first.value) / this.prepareForMath(this.second.value) ).toString();
         };
 
         this.module = () => {
-            this.first.value = ( Number(this.first.value.replace(/,/g, '')) % Number(this.second.value.replace(/,/g, '')) ).toString();
+            this.first.value = ( this.prepareForMath(this.first.value) % this.prepareForMath(this.second.value) ).toString();
         };
 
         // clear calculator operands and operator
@@ -303,18 +239,15 @@ module.exports = function (app) {
         // Change minus to plus and Vice Versa
 
         this.changeMinus = () => {
-            if (this.toggle) {
-                this.first.value = (Number( this.removeComa(this.first.value) ) * (-1)).toString();
-                return;
-            }
-            this.second.value = (Number( this.removeComa(this.second.value) ) * (-1)).toString();
+            let operand = this.toggle ? this.first : this.second;
+            operand.value = (this.prepareForMath(operand.value) * (-1)).toString();
         };
 
         // bring to power a number
 
         this.bringToPower = () => {
             if (this.toggle) {
-                this.first.value = ( Math.pow(Number( this.removeComa(this.first.value) ), 2) ).toString();
+                this.first.value = ( Math.pow(this.prepareForMath(this.first.value), 2) ).toString();
             }
         };
 
@@ -322,7 +255,7 @@ module.exports = function (app) {
 
         this.divideOneByFirst = () => {
             if (this.toggle) {
-                this.first.value = ( 1 / Number( this.removeComa(this.first.value) )).toString();
+                this.first.value = ( 1 / this.prepareForMath(this.first.value)).toString();
             }
         };
 
@@ -330,9 +263,8 @@ module.exports = function (app) {
 
         this.getSquareRoot = () => {
             if (this.toggle) {
-                this.first.value = ( Math.pow(Number( this.removeComa(this.first.value) ), 0.5) ).toString();
+                this.first.value = ( Math.pow(this.prepareForMath(this.first.value), 0.5) ).toString();
             }
         };
-
     });
 }
