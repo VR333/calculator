@@ -1,15 +1,14 @@
 module.exports = function (app) {
     app.service('operationsService', function() {
-        this.first = {value:'0'};
-        this.second = {value:''};
+        this.firstOperand = {value:'0'};
+        this.secondOperand = {value:''};
         this.operator = {value:''};
-
-        this.default = 0;
+        this.defaultOperand = 0;
 
         this.topScreen = {value: ''};
-        this.botScreen = {value: this.first.value};
+        this.botScreen = {value: this.firstOperand.value};
 
-        // switcher to change input to a second number
+        // switcher to change input to a secondOperand number
 
         this.toggle = true;
 
@@ -27,8 +26,8 @@ module.exports = function (app) {
                                 this.checkOperation(inputData);
                                 break;
             }
-            this.first.value = this.addComa(this.first.value);
-            this.second.value = this.addComa(this.second.value);
+            this.firstOperand.value = this.addComa(this.firstOperand.value);
+            this.secondOperand.value = this.addComa(this.secondOperand.value);
             this.checkWhatToDisplay();
         };
 
@@ -43,7 +42,7 @@ module.exports = function (app) {
                         this.bringToPower();
                         break;
                 case '⅟':
-                        this.divideOneByFirst();
+                        this.divideOneByfirstOperand();
                         break;
                 case 'C':
                         this.reset();
@@ -71,48 +70,48 @@ module.exports = function (app) {
         this.checkWhatToDisplay = () => {
             if (this.toggle) {
                 this.topScreen.value = '';
-                this.botScreen.value = this.first.value;
+                this.botScreen.value = this.firstOperand.value;
             } else {
-                this.topScreen.value = `${this.first.value} ${this.operator.value}`;
-                this.botScreen.value = this.second.value;
+                this.topScreen.value = `${this.firstOperand.value} ${this.operator.value}`;
+                this.botScreen.value = this.secondOperand.value;
             }
         };
 
-        // find out: first or second operand is adding..
+        // find out: firstOperand or secondOperand operand is adding..
 
         this.setValue = value => {
-            return this.toggle ? this.setFirstOperand(value) : this.setSecondOperand(value);
+            return this.toggle ? this.setfirstOperandOperand(value) : this.setsecondOperandOperand(value);
         };
 
-        // Set value for this.first variable
+        // Set value for this.firstOperand variable
 
-        this.setFirstOperand = firstOperand => {
-            if (this.first.value === '0') {
-                this.first.value = firstOperand;
-            } else if ( (this.removeComa(this.first.value)).length < 16 ) {
-                this.first.value = this.first.value.concat(firstOperand);
+        this.setfirstOperandOperand = firstOperandOperand => {
+            if (this.firstOperand.value === '0') {
+                this.firstOperand.value = firstOperandOperand;
+            } else if ( (this.removeComa(this.firstOperand.value)).length < 16 ) {
+                this.firstOperand.value = this.firstOperand.value.concat(firstOperandOperand);
             }
         };
 
-        // Set value for this.second variable
-        // && this.removeComa(this.second.value).length < 16) BUG BUG BUG rewrite!!!
-        this.setSecondOperand = secondOperand => {
-            if (this.second.value == '' || this.second.value == '0' || this.second.value === this.default) {
-                this.second.value = secondOperand;
-            } else if ( this.removeComa(this.second.value).length < 16) {
-                this.second.value = this.second.value.concat(secondOperand);
+        // Set value for this.secondOperand variable
+        // && this.removeComa(this.secondOperand.value).length < 16) BUG BUG BUG rewrite!!!
+        this.setsecondOperandOperand = secondOperandOperand => {
+            if (this.secondOperand.value == '' || this.secondOperand.value == '0' || this.secondOperand.value === this.defaultOperand) {
+                this.secondOperand.value = secondOperandOperand;
+            } else if ( this.removeComa(this.secondOperand.value).length < 16) {
+                this.secondOperand.value = this.secondOperand.value.concat(secondOperandOperand);
             }
         };
 
-        // Set value for this.operator variable and check this.first
+        // Set value for this.operator variable and check this.firstOperand
 
         this.setOperator = operator => {
-            if (this.second.value && this.operator.value) {
+            if (this.secondOperand.value && this.operator.value) {
               this.actionPlusChooseNextOperator(operator);
             } else {
                 this.operator.value = operator;
-                this.default = this.first.value;
-                this.second.value = this.default;
+                this.defaultOperand = this.firstOperand.value;
+                this.secondOperand.value = this.defaultOperand;
                 this.toggle = false;
             }
         };
@@ -120,7 +119,7 @@ module.exports = function (app) {
         // check for proper action if both operands and operator were chosen
 
         this.handleEquilButton = () => {
-            if (this.operator.value && this.second.value) {
+            if (this.operator.value && this.secondOperand.value) {
                 this.makeSomeMath(this.operator.value);
             }
         };
@@ -149,7 +148,7 @@ module.exports = function (app) {
         // check for proper dot(.) usage..
 
         this.handleDecimalDot = dot => {
-            let floatNumber = this.toggle ? this.first : this.second;
+            let floatNumber = this.toggle ? this.firstOperand : this.secondOperand;
 
             if ( !floatNumber.value.includes('.') ) {
                 floatNumber.value = floatNumber.value.concat(dot);
@@ -176,7 +175,7 @@ module.exports = function (app) {
                         this.module();
                         break;
             }
-            this.second.value = '';
+            this.secondOperand.value = '';
             this.operator.value = '';
             this.toggle = true;
         };
@@ -201,30 +200,30 @@ module.exports = function (app) {
         // arithmetic operations to be done with makeSomeMath() execution
 
         this.add = () => {
-            this.first.value = ( this.prepareForMath(this.first.value) + this.prepareForMath(this.second.value) ).toString();
+            this.firstOperand.value = ( this.prepareForMath(this.firstOperand.value) + this.prepareForMath(this.secondOperand.value) ).toString();
         };
 
         this.multiple = () => {
-            this.first.value = ( this.prepareForMath(this.first.value) * this.prepareForMath(this.second.value) ).toString();
+            this.firstOperand.value = ( this.prepareForMath(this.firstOperand.value) * this.prepareForMath(this.secondOperand.value) ).toString();
         };
 
         this.minus = () => {
-            this.first.value =  ( this.prepareForMath(this.first.value) - this.prepareForMath(this.second.value) ).toString();
+            this.firstOperand.value =  ( this.prepareForMath(this.firstOperand.value) - this.prepareForMath(this.secondOperand.value) ).toString();
         };
 
         this.divide = () => {
-            this.first.value = ( this.prepareForMath(this.first.value) / this.prepareForMath(this.second.value) ).toString();
+            this.firstOperand.value = ( this.prepareForMath(this.firstOperand.value) / this.prepareForMath(this.secondOperand.value) ).toString();
         };
 
         this.module = () => {
-            this.first.value = ( this.prepareForMath(this.first.value) % this.prepareForMath(this.second.value) ).toString();
+            this.firstOperand.value = ( this.prepareForMath(this.firstOperand.value) % this.prepareForMath(this.secondOperand.value) ).toString();
         };
 
         // clear calculator operands and operator
 
         this.reset = () => {
-            this.first.value = '0';
-            this.second.value = '';
+            this.firstOperand.value = '0';
+            this.secondOperand.value = '';
             this.operator.value = '';
             this.toggle = true;
         };
@@ -232,14 +231,14 @@ module.exports = function (app) {
         // clear last symbol of a current operand
 
         this.back = () => {
-           var obj = this.toggle ? this.first : this.second;
+           var obj = this.toggle ? this.firstOperand : this.secondOperand;
            obj.value = obj.value.length === 1 ? '0' : obj.value.slice(0, -1);
         };
 
         // Change minus to plus and Vice Versa
 
         this.changeMinus = () => {
-            let operand = this.toggle ? this.first : this.second;
+            let operand = this.toggle ? this.firstOperand : this.secondOperand;
             operand.value = (this.prepareForMath(operand.value) * (-1)).toString();
         };
 
@@ -247,15 +246,15 @@ module.exports = function (app) {
 
         this.bringToPower = () => {
             if (this.toggle) {
-                this.first.value = ( Math.pow(this.prepareForMath(this.first.value), 2) ).toString();
+                this.firstOperand.value = ( Math.pow(this.prepareForMath(this.firstOperand.value), 2) ).toString();
             }
         };
 
-        // Divide 1 by this.first
+        // Divide 1 by this.firstOperand
 
-        this.divideOneByFirst = () => {
+        this.divideOneByfirstOperand = () => {
             if (this.toggle) {
-                this.first.value = ( 1 / this.prepareForMath(this.first.value)).toString();
+                this.firstOperand.value = ( 1 / this.prepareForMath(this.firstOperand.value)).toString();
             }
         };
 
@@ -263,7 +262,7 @@ module.exports = function (app) {
 
         this.getSquareRoot = () => {
             if (this.toggle) {
-                this.first.value = ( Math.pow(this.prepareForMath(this.first.value), 0.5) ).toString();
+                this.firstOperand.value = ( Math.pow(this.prepareForMath(this.firstOperand.value), 0.5) ).toString();
             }
         };
     });
