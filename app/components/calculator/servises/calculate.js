@@ -156,7 +156,7 @@ module.exports = function (app) {
             if (operand.includes('Infinity')) {
                 return operand;
             }
-
+            // Number() removes dot, need to recheck
             operand = Number(this.removeComa(operand)).toLocaleString('En-us', { maximumFractionDigits: 17 });
             return includesDot ? operand.concat('.') : operand;
         };
