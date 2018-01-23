@@ -1,7 +1,6 @@
 module.exports = function (app) {
     app.directive('display', function(){
         return {
-            scope: true,
             restrict: 'E',
             controllerAs: 'ctrl',
             controller: ctrl,
@@ -9,8 +8,13 @@ module.exports = function (app) {
         };
 
         function ctrl($scope, operationsService) {
-            this.topScreen = operationsService.topScreen;
-            this.botScreen = operationsService.botScreen;
+            this.topScreen = operationsService.getTopScreen();
+            this.botScreen = operationsService.getBotScreen();
+
+            $scope.$on('btnClick', (event) => {
+                this.topScreen = operationsService.getTopScreen();
+                this.botScreen = operationsService.getBotScreen();
+            });
         }
     });
 }

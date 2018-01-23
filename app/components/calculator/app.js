@@ -10,19 +10,11 @@ module.exports = function (app) {
     app.directive('calculator', function(){
         return {
             restrict: 'E',
-            templateUrl : './app/components/calculator/template.html',
             controllerAs: 'ctrl',
-            controller: function($scope) {
-                this.changeToggle = (value) => {
-                    this.toggle = value;
-
-                    if (this.toggle) {
-                        document.getElementById('hider').style.left = '0px';
-                        return;
-                    }
-                    document.getElementById('hider').style.left = '-250px';
-                };
-            }
+            controller: ctrl,
+            templateUrl : './app/components/calculator/template.html'
         };
+
+        function ctrl($scope) {}
     });
 }

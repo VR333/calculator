@@ -1,13 +1,13 @@
-<h1 class='screen top-screen'>{{ctrl.topScreen.value | limitTo:23}}</h1>
+<h1 class='screen top-screen'>{{ctrl.topScreen | limitTo:23}}</h1>
 
 <h1 class='screen bot-screen'
-	ng-class= "{'font-size46': ctrl.botScreen.value.length == 10,
-				'font-size42': ctrl.botScreen.value.length == 11,
-				'font-size38': ctrl.botScreen.value.length == 12,
-				'font-size36': ctrl.botScreen.value.length == 13,
-				'font-size34': ctrl.botScreen.value.length == 14,
-				'font-size32': ctrl.botScreen.value.length == 15,
-				'font-size30': ctrl.botScreen.value.length == 16,
-				'font-size27': ctrl.botScreen.value.length >= 17}">
-	{{ctrl.botScreen.value | limitTo:23}}
+	ng-class= "{'font-size46': ctrl.botScreen.length == 10,
+				'font-size42': ctrl.botScreen.length == 11,
+				'font-size38': ctrl.botScreen.length == 12,
+				'font-size36': ctrl.botScreen.length == 13,
+				'font-size34': ctrl.botScreen.length == 14,
+				'font-size32': ctrl.botScreen.length == 15,
+				'font-size30': ctrl.botScreen.length == 16,
+				'font-size27': ctrl.botScreen.length >= 17}">
+	{{ctrl.botScreen | limitTo:23}}
 </h1>

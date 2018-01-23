@@ -27,23 +27,23 @@
     outline: none;
  }
 
- .m .memory {
+ .m-buttons .memory {
     width: 16.5%;
     height: 29px;
     color: #bdbdbd;
     font-size: 12px;
  }
 
- .m .memory:hover {
+ .m-buttons .memory:hover {
     background-color: white;
  }
 
- div.m div.tooltip {
+ div.m-buttons div.tooltip {
     position: relative;
     color: black;
  }
 
- div.m div.tooltip:hover {
+ div.m-buttons div.tooltip:hover {
     background-color: #DEDEDE;
  }
 
@@ -62,7 +62,7 @@
  }
 
 /* Show the tooltip text when you mouse over the tooltip container */
- div.m div.tooltip:hover .tooltiptext {
+ div.m-buttons div.tooltip:hover .tooltiptext {
     transition: opacity .5s;
     transition-timing-function: ease-in;
     visibility: visible;

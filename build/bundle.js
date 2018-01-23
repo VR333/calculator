@@ -34290,20 +34290,12 @@ module.exports = function (app) {
     app.directive('calculator', function(){
         return {
             restrict: 'E',
-            templateUrl : './app/components/calculator/template.html',
             controllerAs: 'ctrl',
-            controller: function($scope) {
-                this.changeToggle = (value) => {
-                    this.toggle = value;
-
-                    if (this.toggle) {
-                        document.getElementById('hider').style.left = '0px';
-                        return;
-                    }
-                    document.getElementById('hider').style.left = '-250px';
-                };
-            }
+            controller: ctrl,
+            templateUrl : './app/components/calculator/template.html'
         };
+
+        function ctrl($scope) {}
     });
 }
 
@@ -34347,14 +34339,9 @@ module.exports = function (app) {
         };
 
         function ctrl(operationsService, $scope) {
-            // this.tip = document.getElementsByClassName('tooltip');
-
-            // this.tip[0].innerHTML = 'M+<span class="tooltiptext">Memory add</span>';
-            // this.tip[1].innerHTML = 'M-<span class="tooltiptext">Memory subtract</span>';
-            // this.tip[2].innerHTML = 'MS<span class="tooltiptext">Memory store</span>';
-
             this.handleClick = () => {
                 operationsService.btnClick(this.type, this.value);
+                $scope.$emit('btnClick');
             };
         }
     });
@@ -34368,7 +34355,6 @@ module.exports = function (app) {
 module.exports = function (app) {
     app.directive('display', function(){
         return {
-            scope: true,
             restrict: 'E',
             controllerAs: 'ctrl',
             controller: ctrl,
@@ -34376,8 +34362,13 @@ module.exports = function (app) {
         };
 
         function ctrl($scope, operationsService) {
-            this.topScreen = operationsService.topScreen;
-            this.botScreen = operationsService.botScreen;
+            this.topScreen = operationsService.getTopScreen();
+            this.botScreen = operationsService.getBotScreen();
+
+            $scope.$on('btnClick', (event) => {
+                this.topScreen = operationsService.getTopScreen();
+                this.botScreen = operationsService.getBotScreen();
+            });
         }
     });
 }
@@ -34552,6 +34543,16 @@ module.exports = function (app) {
 
         this.toggle = true;
 
+        // get top and bot screens
+
+        this.getTopScreen = () => {
+            return this.topScreen.value;
+        };
+
+        this.getBotScreen = () => {
+            return this.botScreen.value;
+        };
+
         // accept user click and choose proper function
 
         this.btnClick = (inputType, inputData) => {
@@ -34620,12 +34621,12 @@ module.exports = function (app) {
         // find out: firstOperand or secondOperand operand is adding..
 
         this.setValue = value => {
-            return this.toggle ? this.setfirstOperandOperand(value) : this.setsecondOperandOperand(value);
+            return this.toggle ? this.setFirstOperand(value) : this.setSecondOperand(value);
         };
 
         // Set value for this.firstOperand variable
 
-        this.setfirstOperandOperand = firstOperandOperand => {
+        this.setFirstOperand = firstOperandOperand => {
             if (this.firstOperand.value === '0') {
                 this.firstOperand.value = firstOperandOperand;
             } else if ( (this.removeComa(this.firstOperand.value)).length < 16 ) {
@@ -34635,7 +34636,7 @@ module.exports = function (app) {
 
         // Set value for this.secondOperand variable
         // && this.removeComa(this.secondOperand.value).length < 16) BUG BUG BUG rewrite!!!
-        this.setsecondOperandOperand = secondOperandOperand => {
+        this.setSecondOperand = secondOperandOperand => {
             if (this.secondOperand.value == '' || this.secondOperand.value == '0' || this.secondOperand.value === this.defaultOperand) {
                 this.secondOperand.value = secondOperandOperand;
             } else if ( this.removeComa(this.secondOperand.value).length < 16) {
@@ -34649,11 +34650,11 @@ module.exports = function (app) {
             if (this.secondOperand.value && this.operator.value) {
               this.actionPlusChooseNextOperator(operator);
             } else {
-                this.operator.value = operator;
-                this.defaultOperand = this.firstOperand.value;
-                this.secondOperand.value = this.defaultOperand;
                 this.toggle = false;
             }
+            this.operator.value = operator;
+            this.defaultOperand = this.firstOperand.value;
+            this.secondOperand.value = this.defaultOperand;
         };
 
         // check for proper action if both operands and operator were chosen
@@ -34667,9 +34668,7 @@ module.exports = function (app) {
         // remove comas from a string
 
         this.removeComa = (operand) => {
-            if (operand !== '') {
-                return operand.replace(/,/g, '');
-            }
+            return operand.replace(/,/g, '');
         };
 
         // add coma each 3 symbol, minus and dot will be handled properly
@@ -34727,7 +34726,6 @@ module.exports = function (app) {
 
         this.actionPlusChooseNextOperator = operator => {
             this.makeSomeMath(operator);
-            this.operator.value = operator;
             this.toggle = false;
         };
 

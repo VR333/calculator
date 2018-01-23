@@ -6,4 +6,7 @@
 				'font-size30' : ctrl.value === '.'}"
 	ng-click="ctrl.handleClick()">
 	{{ctrl.value}}
+	<span ng-if='ctrl.value === "M+"' class="tooltiptext">Memory add</span>
+	<span ng-if='ctrl.value === "M-"' class="tooltiptext">Memory subtract</span>
+	<span ng-if='ctrl.value === "MS"' class="tooltiptext">Memory store</span>
 </div>
