@@ -98,22 +98,25 @@ module.exports = function (app) {
 
         // Set value for this.firstOperand variable
 
-        this.setFirstOperand = firstOperandOperand => {
+        this.setFirstOperand = firstOperand => {
             if (this.firstOperand.value === '0') {
-                this.firstOperand.value = firstOperandOperand;
+                this.firstOperand.value = firstOperand;
             } else if ( (this.removeComa(this.firstOperand.value)).length < 16 ) {
-                this.firstOperand.value = this.firstOperand.value.concat(firstOperandOperand);
+                this.firstOperand.value = this.firstOperand.value.concat(firstOperand);
             }
         };
 
         // Set value for this.secondOperand variable
 
-        this.setSecondOperand = secondOperandOperand => {
-            if (this.secondOperand.value == '' || this.secondOperand.value == '0' || (this.secondOperand.value === this.defaultOperand && this.clearDefaultOperand)) {
+        this.setSecondOperand = secondOperand => {
+            const condition = this.secondOperand.value == ''
+                              || this.secondOperand.value == '0'
+                              || (this.secondOperand.value === this.defaultOperand && this.clearDefaultOperand);
+            if (condition) {
                 this.clearDefaultOperand = false;
-                this.secondOperand.value = secondOperandOperand;
+                this.secondOperand.value = secondOperand;
             } else if ( this.removeComa(this.secondOperand.value).length < 16) {
-                this.secondOperand.value = this.secondOperand.value.concat(secondOperandOperand);
+                this.secondOperand.value = this.secondOperand.value.concat(secondOperand);
             }
         };
 
