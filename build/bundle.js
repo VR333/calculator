@@ -34536,6 +34536,9 @@ module.exports = function (app) {
         this.operator = {value:''};
         this.defaultOperand = 0;
 
+        // switcher to handle default value, when it should be cleared and when not
+        this.clearDefaultOperand = true;
+
         this.topScreen = {value: ''};
         this.botScreen = {value: this.firstOperand.value};
 
@@ -34635,9 +34638,10 @@ module.exports = function (app) {
         };
 
         // Set value for this.secondOperand variable
-        // && this.removeComa(this.secondOperand.value).length < 16) BUG BUG BUG rewrite!!!
+
         this.setSecondOperand = secondOperandOperand => {
-            if (this.secondOperand.value == '' || this.secondOperand.value == '0' || this.secondOperand.value === this.defaultOperand) {
+            if (this.secondOperand.value == '' || this.secondOperand.value == '0' || (this.secondOperand.value === this.defaultOperand && this.clearDefaultOperand)) {
+                this.clearDefaultOperand = false;
                 this.secondOperand.value = secondOperandOperand;
             } else if ( this.removeComa(this.secondOperand.value).length < 16) {
                 this.secondOperand.value = this.secondOperand.value.concat(secondOperandOperand);
@@ -34655,6 +34659,7 @@ module.exports = function (app) {
             this.operator.value = operator;
             this.defaultOperand = this.firstOperand.value;
             this.secondOperand.value = this.defaultOperand;
+            this.clearDefaultOperand = true;
         };
 
         // check for proper action if both operands and operator were chosen
