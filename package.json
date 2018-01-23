@@ -7,6 +7,7 @@
     "build": "webpack -p",
     "watch": "webpack --watch",
     "start": "webpack-dev-server --progress --port 8080",
+    "calc": "start npm run build && start npm run watch && start npm run start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -14,5 +15,6 @@
   "dependencies": {
     "node-dev-server": "0.0.1",
     "sass-loader": "^6.0.6"
-  }
+  },
+  "devDependencies": {}
 }
