@@ -1,3 +1,10 @@
+@import './../diractives/btn/btn.css';
+@import './../diractives/display/display.css';
+@import './../diractives/header/header.css';
+@import './../diractives/keyboard/keyboard.css';
+@import './../diractives/menu/menu.css';
+@import './../diractives/navigator/navigator.css';
+
 calculator {
     position:relative;
     top: 150px;
