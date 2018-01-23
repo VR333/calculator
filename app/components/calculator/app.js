@@ -15,6 +15,6 @@ module.exports = function (app) {
             templateUrl : './app/components/calculator/template.html'
         };
 
-        function ctrl($scope) {}
+        function ctrl() {}
     });
 }
