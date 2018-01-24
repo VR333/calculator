@@ -1,5 +1,4 @@
 const path = require('path');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
     entry: ['./app/app.js', './app/styles.scss'],
@@ -10,6 +9,11 @@ module.exports = {
     // Add sass-loader
     module: {
         loaders: [
+            {
+                test: /\.jsx?$/,
+                loader: 'babel-loader',
+                exclude: /node_modules/
+            },
             {
                 test: /\.scss$/,
                 loaders: ["style-loader", "css-loader", "sass-loader"]
