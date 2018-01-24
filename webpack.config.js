@@ -6,13 +6,16 @@ module.exports = {
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'build')
     },
-    // Add sass-loader
     module: {
         loaders: [
             {
-                test: /\.jsx?$/,
+                test: /\.js?$/,
                 loader: 'babel-loader',
                 exclude: /node_modules/
+            },
+            {
+                test: /\.css$/,
+                loaders: ["style-loader", "css-loader"]
             },
             {
                 test: /\.scss$/,
