@@ -1,0 +1,100 @@
+btn {
+    .btn {
+        width: 25%;
+        height: 55px;
+        float: left;
+        font-size: 18px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        &:hover {
+           background-color: #DEDEDE;
+        }
+
+        &:active {
+           background-color: #c8c8c8;
+        }
+
+        &:focus {
+           outline: none;
+        }
+    }
+}
+
+.m-buttons {
+    .btn {
+        width: 16.5%;
+        height: 29px;
+        color: #bdbdbd;
+        font-size: 12px;
+        &:hover {
+           background-color: white;
+        }
+    }
+
+    .tooltip {
+       position: relative;
+       color: black;
+       &:hover {
+          background-color: #DEDEDE;
+       }
+
+       /* Show the tooltip text when you mouse over the tooltip container */
+       &:hover .tooltiptext {
+           transition: opacity .5s;
+           transition-timing-function: ease-in;
+           visibility: visible;
+           opacity: 1;
+       }
+
+       /* Tooltip text */
+        .tooltiptext {
+           visibility: hidden;
+           width: 110px;
+           background-color: #bdbdbd;
+           padding: 5px 0;
+           position: absolute;
+           z-index: 1;
+           top: -32px;
+           right: -33px;
+           transition: opacity .5s, visibility .5s;
+           opacity: 0;
+        }
+    }
+}
+
+.input-buttons {
+    .number {
+        font-weight: bold;
+        font-size: 24px;
+    }
+
+    .operator {
+        font-size: 30px;
+        &:hover {
+            color: white;
+        }
+    }
+
+    .module {
+         font-size: 18px;
+         &:hover {
+              color: black;
+         }
+    }
+
+    .multiple {
+        font-size: 18px;
+    }
+
+    .equil {
+        &:hover {
+            background-color: #0078d7;
+        }
+    }
+
+    .font-size30 {
+         font-size: 30px;
+    }
+}

@@ -1,0 +1,36 @@
+navigator {
+    display: block;
+
+    .clock-img {
+        position: absolute;
+        top: 50px;
+        right: 10px;
+    }
+
+    div.title {
+         line-height: 48px;
+         font-size: 19px;
+         display: inline-block;
+         margin-left: 65px;
+    }
+
+    .menu-btn {
+         position: absolute;
+         z-index: 2;
+         height: 48px;
+         width: 55px;
+         display: inline-block;
+         padding-top: 5%;
+
+         &:hover {
+            background-color: #DEDEDE;
+         }
+
+         .line {
+             background-color: black;
+             width: 20px;
+             height: 1px;
+             margin: 4px auto;
+         }
+     }
+}

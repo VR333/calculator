@@ -1,0 +1,31 @@
+header {
+    font-size: 14px;
+    .title {
+        display: inline-block;
+        margin-left: 10px;
+        line-height: 31px;
+    }
+
+    .options {
+        display: inline-block;
+        float: right;
+    }
+
+    .btn {
+        width: 46px;
+        height: 31px;
+        margin-right: -1px;
+        text-align: center;
+        line-height: 31px;
+        &:hover {
+            background-color: #DEDEDE;
+        }
+    }
+
+    .btn.close {
+        &:hover {
+            background-color: red;
+            color: white;
+        }
+    }
+}
