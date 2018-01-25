@@ -18643,9 +18643,10 @@ module.exports = function (app) {
 
 
     this.setSecondOperand = secondOperand => {
-      const condition = this.secondOperand.value == '' || this.secondOperand.value == '0' || this.secondOperand.value === this.defaultOperand && this.clearDefaultOperand;
+      const condition1 = this.secondOperand.value == '' || this.secondOperand.value == '0';
+      const condition2 = this.secondOperand.value === this.defaultOperand && this.clearDefaultOperand;
 
-      if (condition) {
+      if (condition1 || condition2) {
         [this.clearDefaultOperand, this.secondOperand.value] = [false, secondOperand];
       } else if (this.removeComa(this.secondOperand.value).length < 16) {
         this.secondOperand.value = this.secondOperand.value.concat(secondOperand);
@@ -18689,7 +18690,7 @@ module.exports = function (app) {
         maximumFractionDigits: 17
       });
       return includesDot ? operand.concat('.') : operand;
-    }; // check for proper dot(.) usage..
+    }; // check for proper dot--'.' usage..
 
 
     this.handleDecimalDot = dot => {
