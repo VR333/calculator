@@ -1,19 +1,19 @@
-import {Keyboard} from './diractives/keyboard/keyboard.js';
-import {Btn} from './diractives/btn/btn.js';
-import {Display} from './diractives/display/display.js';
-import {Header} from './diractives/header/header.js';
-import {Menu} from './diractives/menu/menu.js';
-import {Navigator} from './diractives/navigator/navigator.js';
-import {Calculate} from './servises/calculate.js';
+import {keyboard} from './diractives/keyboard/keyboard.js';
+import {btn} from './diractives/btn/btn.js';
+import {display} from './diractives/display/display.js';
+import {header} from './diractives/header/header.js';
+import {menu} from './diractives/menu/menu.js';
+import {navigator} from './diractives/navigator/navigator.js';
+import {calculate} from './servises/calculate.js';
 
-export function Calculator(app) {
-    const keyboard = Keyboard(app);
-    const btn = Btn(app);
-    const display = Display(app);
-    const header = Header(app);
-    const menu = Menu(app);
-    const navigator = Navigator(app);
-    const calculate = Calculate(app);
+export function calculator(app) {
+    const Keyboard = keyboard(app);
+    const Btn = btn(app);
+    const Display = display(app);
+    const Header = header(app);
+    const Menu = menu(app);
+    const Navigator = navigator(app);
+    const Calculate = calculate(app);
 
     app.directive('calculator', function(){
         return {

@@ -1,4 +1,4 @@
-export function Header(app) {
+export function header(app) {
     app.directive('header', function(){
         return {
             scope: true,

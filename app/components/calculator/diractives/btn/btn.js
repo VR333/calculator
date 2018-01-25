@@ -1,4 +1,4 @@
-export function Btn(app) {
+export function btn(app) {
     app.directive('btn', function(){
         return {
             scope: true,

@@ -1,4 +1,4 @@
-export function Display(app) {
+export function display(app) {
     app.directive('display', function(){
         return {
             restrict: 'E',

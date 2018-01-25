@@ -83,7 +83,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 const app = angular.module('tester', []);
-const calculator = Object(__WEBPACK_IMPORTED_MODULE_1__components_calculator_app_js__["a" /* Calculator */])(app);
+const Calculator = Object(__WEBPACK_IMPORTED_MODULE_1__components_calculator_app_js__["a" /* calculator */])(app);
 
 /***/ }),
 /* 2 */
@@ -18303,7 +18303,7 @@ bindJQuery();publishExternalAPI(angular);angular.module("ngLocale",[],["$provide
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = Calculator;
+/* harmony export (immutable) */ __webpack_exports__["a"] = calculator;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__diractives_keyboard_keyboard_js__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__diractives_btn_btn_js__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__diractives_display_display_js__ = __webpack_require__(6);
@@ -18318,14 +18318,14 @@ bindJQuery();publishExternalAPI(angular);angular.module("ngLocale",[],["$provide
 
 
 
-function Calculator(app) {
-  const keyboard = Object(__WEBPACK_IMPORTED_MODULE_0__diractives_keyboard_keyboard_js__["a" /* Keyboard */])(app);
-  const btn = Object(__WEBPACK_IMPORTED_MODULE_1__diractives_btn_btn_js__["a" /* Btn */])(app);
-  const display = Object(__WEBPACK_IMPORTED_MODULE_2__diractives_display_display_js__["a" /* Display */])(app);
-  const header = Object(__WEBPACK_IMPORTED_MODULE_3__diractives_header_header_js__["a" /* Header */])(app);
-  const menu = Object(__WEBPACK_IMPORTED_MODULE_4__diractives_menu_menu_js__["a" /* Menu */])(app);
-  const navigator = Object(__WEBPACK_IMPORTED_MODULE_5__diractives_navigator_navigator_js__["a" /* Navigator */])(app);
-  const calculate = Object(__WEBPACK_IMPORTED_MODULE_6__servises_calculate_js__["a" /* Calculate */])(app);
+function calculator(app) {
+  const Keyboard = Object(__WEBPACK_IMPORTED_MODULE_0__diractives_keyboard_keyboard_js__["a" /* keyboard */])(app);
+  const Btn = Object(__WEBPACK_IMPORTED_MODULE_1__diractives_btn_btn_js__["a" /* btn */])(app);
+  const Display = Object(__WEBPACK_IMPORTED_MODULE_2__diractives_display_display_js__["a" /* display */])(app);
+  const Header = Object(__WEBPACK_IMPORTED_MODULE_3__diractives_header_header_js__["a" /* header */])(app);
+  const Menu = Object(__WEBPACK_IMPORTED_MODULE_4__diractives_menu_menu_js__["a" /* menu */])(app);
+  const Navigator = Object(__WEBPACK_IMPORTED_MODULE_5__diractives_navigator_navigator_js__["a" /* navigator */])(app);
+  const Calculate = Object(__WEBPACK_IMPORTED_MODULE_6__servises_calculate_js__["a" /* calculate */])(app);
   app.directive('calculator', function () {
     return {
       restrict: 'E',
@@ -18343,8 +18343,8 @@ function Calculator(app) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = Keyboard;
-function Keyboard(app) {
+/* harmony export (immutable) */ __webpack_exports__["a"] = keyboard;
+function keyboard(app) {
   app.directive('keyboard', function () {
     return {
       scope: true,
@@ -18363,8 +18363,8 @@ function Keyboard(app) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = Btn;
-function Btn(app) {
+/* harmony export (immutable) */ __webpack_exports__["a"] = btn;
+function btn(app) {
   app.directive('btn', function () {
     return {
       scope: true,
@@ -18393,8 +18393,8 @@ function Btn(app) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = Display;
-function Display(app) {
+/* harmony export (immutable) */ __webpack_exports__["a"] = display;
+function display(app) {
   app.directive('display', function () {
     return {
       restrict: 'E',
@@ -18419,8 +18419,8 @@ function Display(app) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = Header;
-function Header(app) {
+/* harmony export (immutable) */ __webpack_exports__["a"] = header;
+function header(app) {
   app.directive('header', function () {
     return {
       scope: true,
@@ -18439,8 +18439,8 @@ function Header(app) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = Menu;
-function Menu(app) {
+/* harmony export (immutable) */ __webpack_exports__["a"] = menu;
+function menu(app) {
   app.directive('menu', function () {
     return {
       scope: true,
@@ -18525,8 +18525,8 @@ function Menu(app) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = Navigator;
-function Navigator(app) {
+/* harmony export (immutable) */ __webpack_exports__["a"] = navigator;
+function navigator(app) {
   app.directive('navigator', function () {
     return {
       scope: true,
@@ -18552,8 +18552,8 @@ function Navigator(app) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = Calculate;
-function Calculate(app) {
+/* harmony export (immutable) */ __webpack_exports__["a"] = calculate;
+function calculate(app) {
   app.service('operationsService', function () {
     [this.firstOperand, this.secondOperand] = [{
       value: '0'

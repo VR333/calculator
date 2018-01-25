@@ -1,4 +1,4 @@
-export function Keyboard(app) {
+export function keyboard(app) {
     app.directive('keyboard', function(){
         return {
             scope: true,

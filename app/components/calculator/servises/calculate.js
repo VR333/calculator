@@ -1,4 +1,4 @@
-export function Calculate(app) {
+export function calculate(app) {
     app.service('operationsService', function() {
         [this.firstOperand, this.secondOperand] = [ {value:'0'}, {value:''} ];
         [this.operator, this.defaultOperand] = [ {value:''}, 0];
