@@ -1,9 +1,11 @@
+$keyboard-separator-border-color: rgba(199,199,199,0.4);
+
  keyboard {
      display: block;
-     
+
      .btn-separator {
          width: 100%;
-         border-color: rgba(199,199,199,0.4);
+         border-color: $keyboard-separator-border-color;
          margin-bottom: -1px;
      }
  }

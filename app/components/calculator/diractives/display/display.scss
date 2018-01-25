@@ -1,6 +1,8 @@
+$top-screen-text-color: grey;
+
  display {
     display: block;
-    
+
     .screen {
         margin-right: 4%;
         text-align: right;
@@ -8,7 +10,7 @@
 
     .top-screen {
         height: 20px;
-        color: grey;
+        color: $top-screen-text-color;
         font-size: 16px;
     }
 

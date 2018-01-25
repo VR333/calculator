@@ -5,6 +5,10 @@
 @import './../diractives/menu/menu.scss';
 @import './../diractives/navigator/navigator.scss';
 
+$primary-background-color: white;
+$calculator-border-color: #278ad8;
+$primary-fonts: Arial, Helvetica, sans-serif;
+
 calculator {
     position:relative;
     top: 150px;
@@ -12,10 +16,10 @@ calculator {
     margin:auto;
     display: block;
     width: 300px;
-    border: 1px solid #278ad8;
-    background-color: white;
+    border: 1px solid $calculator-border-color;
+    background-color: $primary-background-color;
     box-shadow: 2px 2px 40px rgba(200, 200, 200, 1);
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: $primary-fonts;
     user-select: none;
     -ms-user-select: none;
  }

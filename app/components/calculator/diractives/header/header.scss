@@ -1,3 +1,7 @@
+$header-hover-btn-background-color: #DEDEDE;
+$header-hover-close-btn-background-color: red;
+$header-hover-close-btn-text-color: white;
+
 header {
     font-size: 14px;
     .title {
@@ -18,14 +22,14 @@ header {
         text-align: center;
         line-height: 31px;
         &:hover {
-            background-color: #DEDEDE;
+            background-color: $header-hover-btn-background-color;
         }
     }
 
     .btn.close {
         &:hover {
-            background-color: red;
-            color: white;
+            background-color: $header-hover-close-btn-background-color;
+            color: $header-hover-close-btn-text-color;
         }
     }
 }

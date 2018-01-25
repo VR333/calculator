@@ -1,3 +1,8 @@
+$menu-background-color: #ededed;
+$menu-options-hover-background-color: #DEDEDE;
+$active-option-background-color: #7DBBEA;
+$active-option-hover-background-color: #73b0e2;
+
 .move-left {
     left: -250px;
 }
@@ -7,7 +12,7 @@
 }
 
 menu {
-    background-color: #ededed;
+    background-color: $menu-background-color;
     width: 250px;
     position: absolute;
     z-index: 1;
@@ -36,14 +41,14 @@ menu {
              line-height: 51px;
              padding-left: 65px;
              &:hover {
-                 background-color: #DEDEDE;
+                 background-color: $menu-options-hover-background-color;
              }
          }
 
          li.active {
-             background-color: #7DBBEA;
+             background-color: $active-option-background-color;
              &:hover {
-                 background-color: #73b0e2;
+                 background-color: $active-option-hover-background-color;
              }
          }
     }
@@ -59,7 +64,7 @@ menu {
           line-height: 51px;
           padding-left: 14px;
           &:hover {
-              background-color: #DEDEDE;
+              background-color: $menu-options-hover-background-color;
           }
 
           .info {

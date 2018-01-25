@@ -1,3 +1,6 @@
+$menu-btn-hover-background-color: #DEDEDE;
+$menu-btn-lines-color: black;
+
 navigator {
     display: block;
 
@@ -23,11 +26,11 @@ navigator {
          padding-top: 5%;
 
          &:hover {
-            background-color: #DEDEDE;
+            background-color: $menu-btn-hover-background-color;
          }
 
          .line {
-             background-color: black;
+             background-color: $menu-btn-lines-color;
              width: 20px;
              height: 1px;
              margin: 4px auto;
