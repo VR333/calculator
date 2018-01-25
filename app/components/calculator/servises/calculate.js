@@ -1,15 +1,12 @@
 module.exports = function (app) {
     app.service('operationsService', function() {
-        this.firstOperand = {value:'0'};
-        this.secondOperand = {value:''};
-        this.operator = {value:''};
-        this.defaultOperand = 0;
+        [this.firstOperand, this.secondOperand] = [ {value:'0'}, {value:''} ];
+        [this.operator, this.defaultOperand] = [ {value:''}, 0];
 
         // switcher to handle default value, when it should be cleared and when not
         this.clearDefaultOperand = true;
 
-        this.topScreen = {value: ''};
-        this.botScreen = {value: this.firstOperand.value};
+        [this.topScreen, this.botScreen] = [ {value: ''}, {value: this.firstOperand.value} ];
 
         // switcher to change input to a secondOperand number
 

@@ -18531,24 +18531,21 @@ module.exports = function (app) {
 
 module.exports = function (app) {
   app.service('operationsService', function () {
-    this.firstOperand = {
+    [this.firstOperand, this.secondOperand] = [{
       value: '0'
-    };
-    this.secondOperand = {
+    }, {
       value: ''
-    };
-    this.operator = {
+    }];
+    [this.operator, this.defaultOperand] = [{
       value: ''
-    };
-    this.defaultOperand = 0; // switcher to handle default value, when it should be cleared and when not
+    }, 0]; // switcher to handle default value, when it should be cleared and when not
 
     this.clearDefaultOperand = true;
-    this.topScreen = {
+    [this.topScreen, this.botScreen] = [{
       value: ''
-    };
-    this.botScreen = {
+    }, {
       value: this.firstOperand.value
-    }; // switcher to change input to a secondOperand number
+    }]; // switcher to change input to a secondOperand number
 
     this.toggle = true; // get top and bot screens
 
