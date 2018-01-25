@@ -1,11 +1,19 @@
-module.exports = function (app) {
-    require('./diractives/keyboard/keyboard.js')(app);
-    require('./diractives/btn/btn.js')(app);
-    require('./diractives/display/display.js')(app);
-    require('./diractives/header/header.js')(app);
-    require('./diractives/menu/menu.js')(app);
-    require('./diractives/navigator/navigator.js')(app);
-    require('./servises/calculate.js')(app);
+import {Keyboard} from './diractives/keyboard/keyboard.js';
+import {Btn} from './diractives/btn/btn.js';
+import {Display} from './diractives/display/display.js';
+import {Header} from './diractives/header/header.js';
+import {Menu} from './diractives/menu/menu.js';
+import {Navigator} from './diractives/navigator/navigator.js';
+import {Calculate} from './servises/calculate.js';
+
+export function Calculator(app) {
+    const keyboard = Keyboard(app);
+    const btn = Btn(app);
+    const display = Display(app);
+    const header = Header(app);
+    const menu = Menu(app);
+    const navigator = Navigator(app);
+    const calculate = Calculate(app);
 
     app.directive('calculator', function(){
         return {

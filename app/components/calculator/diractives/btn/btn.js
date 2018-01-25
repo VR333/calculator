@@ -1,4 +1,4 @@
-module.exports = function (app) {
+export function Btn(app) {
     app.directive('btn', function(){
         return {
             scope: true,

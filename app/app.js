@@ -1,4 +1,5 @@
 import '../bower_components/angular/angular.js';
+import {Calculator} from './components/calculator/app.js';
 
 const app = angular.module('tester', []);
-require ('./components/calculator/app.js')(app);
+const calculator = Calculator(app);

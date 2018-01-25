@@ -1,4 +1,4 @@
-module.exports = function (app) {
+export function Keyboard(app) {
     app.directive('keyboard', function(){
         return {
             scope: true,

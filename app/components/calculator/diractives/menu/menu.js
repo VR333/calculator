@@ -1,4 +1,4 @@
-module.exports = function (app) {
+export function Menu(app) {
     app.directive('menu', function(){
         return {
             scope: true,

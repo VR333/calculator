@@ -1,4 +1,4 @@
-module.exports = function (app) {
+export function Navigator(app) {
     app.directive('navigator', function(){
         return {
             scope: true,
