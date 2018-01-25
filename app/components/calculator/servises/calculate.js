@@ -39,8 +39,7 @@ module.exports = function (app) {
                                 this.checkOperation(inputData);
                                 break;
             }
-            this.firstOperand.value = this.addComa(this.firstOperand.value);
-            this.secondOperand.value = this.addComa(this.secondOperand.value);
+            [this.firstOperand.value, this.secondOperand.value] = [this.addComa(this.firstOperand.value), this.addComa(this.secondOperand.value)];
             this.checkWhatToDisplay();
         };
 
@@ -82,11 +81,9 @@ module.exports = function (app) {
 
         this.checkWhatToDisplay = () => {
             if (this.toggle) {
-                this.topScreen.value = '';
-                this.botScreen.value = this.firstOperand.value;
+                [this.topScreen.value, this.botScreen.value] = ['', this.firstOperand.value];
             } else {
-                this.topScreen.value = `${this.firstOperand.value} ${this.operator.value}`;
-                this.botScreen.value = this.secondOperand.value;
+                [this.topScreen.value, this.botScreen.value] = [`${this.firstOperand.value} ${this.operator.value}`, this.secondOperand.value];
             }
         };
 
@@ -113,8 +110,7 @@ module.exports = function (app) {
                               || this.secondOperand.value == '0'
                               || (this.secondOperand.value === this.defaultOperand && this.clearDefaultOperand);
             if (condition) {
-                this.clearDefaultOperand = false;
-                this.secondOperand.value = secondOperand;
+                [this.clearDefaultOperand, this.secondOperand.value] = [false, secondOperand];
             } else if ( this.removeComa(this.secondOperand.value).length < 16) {
                 this.secondOperand.value = this.secondOperand.value.concat(secondOperand);
             }
@@ -128,10 +124,8 @@ module.exports = function (app) {
             } else {
                 this.toggle = false;
             }
-            this.operator.value = operator;
-            this.defaultOperand = this.firstOperand.value;
-            this.secondOperand.value = this.defaultOperand;
-            this.clearDefaultOperand = true;
+            [this.operator.value, this.defaultOperand] = [operator, this.firstOperand.value];
+            [this.secondOperand.value , this.clearDefaultOperand] = [this.defaultOperand, true];
         };
 
         // check for proper action if both operands and operator were chosen
@@ -191,9 +185,7 @@ module.exports = function (app) {
                         this.module();
                         break;
             }
-            this.secondOperand.value = '';
-            this.operator.value = '';
-            this.toggle = true;
+            [this.secondOperand.value, this.operator.value , this.toggle] = ['', '', true];
         };
 
         /*
@@ -237,10 +229,7 @@ module.exports = function (app) {
         // clear calculator operands and operator
 
         this.reset = () => {
-            this.firstOperand.value = '0';
-            this.secondOperand.value = '';
-            this.operator.value = '';
-            this.toggle = true;
+            [this.firstOperand.value, this.secondOperand.value, this.operator.value , this.toggle] = ['0', '', '', true];
         };
 
         // clear last symbol of a current operand

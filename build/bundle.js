@@ -18576,8 +18576,7 @@ module.exports = function (app) {
           break;
       }
 
-      this.firstOperand.value = this.addComa(this.firstOperand.value);
-      this.secondOperand.value = this.addComa(this.secondOperand.value);
+      [this.firstOperand.value, this.secondOperand.value] = [this.addComa(this.firstOperand.value), this.addComa(this.secondOperand.value)];
       this.checkWhatToDisplay();
     }; // check for operation
 
@@ -18625,11 +18624,9 @@ module.exports = function (app) {
 
     this.checkWhatToDisplay = () => {
       if (this.toggle) {
-        this.topScreen.value = '';
-        this.botScreen.value = this.firstOperand.value;
+        [this.topScreen.value, this.botScreen.value] = ['', this.firstOperand.value];
       } else {
-        this.topScreen.value = `${this.firstOperand.value} ${this.operator.value}`;
-        this.botScreen.value = this.secondOperand.value;
+        [this.topScreen.value, this.botScreen.value] = [`${this.firstOperand.value} ${this.operator.value}`, this.secondOperand.value];
       }
     }; // find out: firstOperand or secondOperand operand is adding..
 
@@ -18652,8 +18649,7 @@ module.exports = function (app) {
       const condition = this.secondOperand.value == '' || this.secondOperand.value == '0' || this.secondOperand.value === this.defaultOperand && this.clearDefaultOperand;
 
       if (condition) {
-        this.clearDefaultOperand = false;
-        this.secondOperand.value = secondOperand;
+        [this.clearDefaultOperand, this.secondOperand.value] = [false, secondOperand];
       } else if (this.removeComa(this.secondOperand.value).length < 16) {
         this.secondOperand.value = this.secondOperand.value.concat(secondOperand);
       }
@@ -18667,10 +18663,8 @@ module.exports = function (app) {
         this.toggle = false;
       }
 
-      this.operator.value = operator;
-      this.defaultOperand = this.firstOperand.value;
-      this.secondOperand.value = this.defaultOperand;
-      this.clearDefaultOperand = true;
+      [this.operator.value, this.defaultOperand] = [operator, this.firstOperand.value];
+      [this.secondOperand.value, this.clearDefaultOperand] = [this.defaultOperand, true];
     }; // check for proper action if both operands and operator were chosen
 
 
@@ -18733,9 +18727,7 @@ module.exports = function (app) {
           break;
       }
 
-      this.secondOperand.value = '';
-      this.operator.value = '';
-      this.toggle = true;
+      [this.secondOperand.value, this.operator.value, this.toggle] = ['', '', true];
     };
     /*
     * start makeSomeMath() when both operands and operator is present
@@ -18776,10 +18768,7 @@ module.exports = function (app) {
 
 
     this.reset = () => {
-      this.firstOperand.value = '0';
-      this.secondOperand.value = '';
-      this.operator.value = '';
-      this.toggle = true;
+      [this.firstOperand.value, this.secondOperand.value, this.operator.value, this.toggle] = ['0', '', '', true];
     }; // clear last symbol of a current operand
 
 
