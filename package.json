@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack -p",
     "watch": "webpack --watch",
-    "start": "webpack-dev-server --progress --port 8080",
+    "start": "webpack-dev-server",
     "calc": "start npm run build && start npm run start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
