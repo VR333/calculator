@@ -68,7 +68,7 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(1);
-module.exports = __webpack_require__(12);
+module.exports = __webpack_require__(13);
 
 
 /***/ }),
@@ -82,7 +82,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__bower_components_angular_route_angular_route_js__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__bower_components_angular_route_angular_route_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__bower_components_angular_route_angular_route_js__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_calculator_app_js__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_googleApi_app_js__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_googleApi_app_js__ = __webpack_require__(12);
 
 
 
@@ -20072,12 +20072,52 @@ function calculate(app) {
 
 /***/ }),
 /* 12 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = distance;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__servises_distance_js__ = __webpack_require__(18);
+
+function distance(app) {
+  const DistanceCount = Object(__WEBPACK_IMPORTED_MODULE_0__servises_distance_js__["a" /* distanceCount */])(app);
+  app.directive('distance', function () {
+    return {
+      scope: true,
+      restrict: 'E',
+      controllerAs: 'ctrl',
+      controller: ctrl,
+      templateUrl: './app/components/googleApi/template.html'
+    };
+
+    function ctrl($scope, $http, distanceCount) {
+      this.origins = '';
+      this.destinations = '';
+      $scope.distance = '';
+      this.api = 'AIzaSyBsMeetk8vb5UFAtlZ3A6agbV-Nr8q-UV4';
+
+      this.lol = event => {
+        console.dir(event);
+        console.log(event.target.value);
+      };
+
+      this.countDistance = () => {
+        $http.get(`https://maps.googleapis.com/maps/api/distancematrix/json?origins=${this.origins}&destinations=${this.destinations}&key=${this.api}`).then(function (response) {
+          console.dir(response.data);
+          $scope.distance = response.data;
+        });
+      };
+    }
+  });
+}
+
+/***/ }),
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(13);
+var content = __webpack_require__(14);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -20085,7 +20125,7 @@ var transform;
 var options = {"hmr":true}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(15)(content, options);
+var update = __webpack_require__(16)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -20102,21 +20142,21 @@ if(false) {
 }
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(14)(false);
+exports = module.exports = __webpack_require__(15)(false);
 // imports
 
 
 // module
-exports.push([module.i, "btn .btn{width:25%;height:55px;float:left;font-size:18px;text-align:center;display:flex;justify-content:center;flex-direction:column}btn .btn:hover{background-color:#dedede}btn .btn:active{background-color:#c8c8c8}btn .btn:focus{outline:none}.m-buttons .btn{width:16.5%;height:29px;color:#bdbdbd;font-size:12px}.m-buttons .btn:hover{background-color:#fff}.m-buttons .tooltip{position:relative;color:#000}.m-buttons .tooltip:hover{background-color:#dedede}.m-buttons .tooltip:hover .tooltiptext{transition:opacity .5s;transition-timing-function:ease-in;visibility:visible;opacity:1}.m-buttons .tooltip .tooltiptext{visibility:hidden;width:110px;background-color:#bdbdbd;padding:5px 0;position:absolute;z-index:1;top:-32px;right:-33px;transition:opacity .5s,visibility .5s;opacity:0}.input-buttons .number{font-weight:700;font-size:24px}.input-buttons .operator{font-size:30px}.input-buttons .operator:hover{color:#fff}.input-buttons .module{font-size:18px}.input-buttons .module:hover{color:#000}.input-buttons .multiple{font-size:18px}.input-buttons .equil:hover{background-color:#0078d7}.input-buttons .font-size30{font-size:30px}display{display:block}display .screen{margin-right:4%;text-align:right}display .top-screen{height:20px;color:grey;font-size:16px}display .bot-screen{height:70px;margin-top:10px;font-size:51px}display h1.font-size46{font-size:46px}display h1.font-size42{font-size:42px}display h1.font-size38{font-size:38px}display h1.font-size36{font-size:36px}display h1.font-size34{font-size:34px}display h1.font-size32{font-size:32px}display h1.font-size30{font-size:30px}display h1.font-size27{font-size:27px}header{font-size:14px}header .title{display:inline-block;margin-left:10px;line-height:31px}header .options{display:inline-block;float:right}header .btn{width:46px;height:31px;margin-right:-1px;text-align:center;line-height:31px}header .btn:hover{background-color:#dedede}header .btn.close:hover{background-color:red;color:#fff}keyboard{display:block}keyboard .btn-separator{width:100%;border-color:hsla(0,0%,78%,.4);margin-bottom:-1px}.move-left{left:-250px}.move-right{left:0}menu{background-color:#ededed;width:250px;position:absolute;z-index:1;transition:left .2s}menu .menu-items{height:450px;overflow:auto;list-style-type:none}menu .menu-items li.roomless{margin-left:65px;line-height:48px;font-size:20px;font-weight:700}menu .menu-items li.title{font-weight:700;font-size:20px;line-height:40px;padding-left:44px}menu .menu-items li.version{line-height:51px;padding-left:65px}menu .menu-items li.version:hover{background-color:#dedede}menu .menu-items li.active{background-color:#7dbbea}menu .menu-items li.active:hover{background-color:#73b0e2}menu .separator{margin:auto;margin-top:5px;width:90%}menu .about{font-size:18px;line-height:51px;padding-left:14px}menu .about:hover{background-color:#dedede}menu .about .info{margin-right:23px}navigator{display:block}navigator .clock-img{position:absolute;top:50px;right:10px}navigator div.title{line-height:48px;font-size:19px;display:inline-block;margin-left:65px}navigator .menu-btn{position:absolute;z-index:2;height:48px;width:55px;display:inline-block;padding-top:5%}navigator .menu-btn:hover{background-color:#dedede}navigator .menu-btn .line{background-color:#000;width:20px;height:1px;margin:4px auto}calculator{position:relative;top:150px;overflow:hidden;margin:auto;display:block;width:300px;border:1px solid #278ad8;background-color:#fff;box-shadow:2px 2px 40px #c8c8c8;font-family:Arial,Helvetica,sans-serif;user-select:none;-ms-user-select:none;-moz-user-select:none}*{padding:0;margin:0;box-sizing:border-box}", ""]);
+exports.push([module.i, "btn .btn{width:25%;height:55px;float:left;font-size:18px;text-align:center;display:flex;justify-content:center;flex-direction:column}btn .btn:hover{background-color:#dedede}btn .btn:active{background-color:#c8c8c8}btn .btn:focus{outline:none}.m-buttons .btn{width:16.5%;height:29px;color:#bdbdbd;font-size:12px}.m-buttons .btn:hover{background-color:#fff}.m-buttons .tooltip{position:relative;color:#000}.m-buttons .tooltip:hover{background-color:#dedede}.m-buttons .tooltip:hover .tooltiptext{transition:opacity .5s;transition-timing-function:ease-in;visibility:visible;opacity:1}.m-buttons .tooltip .tooltiptext{visibility:hidden;width:110px;background-color:#bdbdbd;padding:5px 0;position:absolute;z-index:1;top:-32px;right:-33px;transition:opacity .5s,visibility .5s;opacity:0}.input-buttons .number{font-weight:700;font-size:24px}.input-buttons .operator{font-size:30px}.input-buttons .operator:hover{color:#fff}.input-buttons .module{font-size:18px}.input-buttons .module:hover{color:#000}.input-buttons .multiple{font-size:18px}.input-buttons .equil:hover{background-color:#0078d7}.input-buttons .font-size30{font-size:30px}display{display:block}display .screen{margin-right:4%;text-align:right}display .top-screen{height:20px;color:grey;font-size:16px}display .bot-screen{height:70px;margin-top:10px;font-size:51px}display h1.font-size46{font-size:46px}display h1.font-size42{font-size:42px}display h1.font-size38{font-size:38px}display h1.font-size36{font-size:36px}display h1.font-size34{font-size:34px}display h1.font-size32{font-size:32px}display h1.font-size30{font-size:30px}display h1.font-size27{font-size:27px}header{font-size:14px}header .title{display:inline-block;margin-left:10px;line-height:31px}header .options{float:right}header .options .btn{width:46px;height:31px;float:left;margin-right:-1px;text-align:center;line-height:31px}header .options .btn:hover{background-color:#dedede}header .options .btn.close:hover{background-color:red;color:#fff}keyboard{display:block}keyboard .btn-separator{width:100%;border-color:hsla(0,0%,78%,.4);margin-bottom:-1px}.move-left{left:-250px}.move-right{left:0}menu{background-color:#ededed;width:250px;position:absolute;z-index:1;transition:left .2s}menu .menu-items{height:450px;overflow:auto;list-style-type:none}menu .menu-items li.roomless{margin-left:65px;line-height:48px;font-size:20px;font-weight:700}menu .menu-items li.title{font-weight:700;font-size:20px;line-height:40px;padding-left:44px}menu .menu-items li.version{line-height:51px;padding-left:65px}menu .menu-items li.version:hover{background-color:#dedede}menu .menu-items li.active{background-color:#7dbbea}menu .menu-items li.active:hover{background-color:#73b0e2}menu .separator{margin:auto;margin-top:5px;width:90%}menu .about{font-size:18px;line-height:51px;padding-left:14px}menu .about:hover{background-color:#dedede}menu .about .info{margin-right:23px}navigator{display:block}navigator .clock-img{position:absolute;top:50px;right:10px}navigator div.title{line-height:48px;font-size:19px;display:inline-block;margin-left:65px}navigator .menu-btn{position:absolute;z-index:2;height:48px;width:55px;display:inline-block;padding-top:5%}navigator .menu-btn:hover{background-color:#dedede}navigator .menu-btn .line{background-color:#000;width:20px;height:1px;margin:4px auto}calculator{position:relative;top:150px;overflow:hidden;margin:auto;display:block;width:300px;border:1px solid #278ad8;background-color:#fff;box-shadow:2px 2px 40px #c8c8c8;font-family:Arial,Helvetica,sans-serif;user-select:none;-ms-user-select:none;-moz-user-select:none}distance .place-input{width:400px;height:25px;margin:0 10px;border-radius:5px}distance .place-input:focus{border-color:skyblue}*{padding:0;margin:0;box-sizing:border-box}.top-navigation{background-color:#6363ce}.top-navigation .option{height:40px;line-height:40px;padding:0 10px;display:inline-block;color:#fff;text-decoration:none}.top-navigation .option:hover{background-color:blue}", ""]);
 
 // exports
 
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports) {
 
 /*
@@ -20198,7 +20238,7 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -20254,7 +20294,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(16);
+var	fixUrls = __webpack_require__(17);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -20570,7 +20610,7 @@ function updateLink (link, options, obj) {
 
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports) {
 
 
@@ -20665,22 +20705,23 @@ module.exports = function (css) {
 
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = distance;
-function distance(app) {
-  app.directive('distance', function () {
-    return {
-      scope: true,
-      restrict: 'E',
-      controllerAs: 'ctrl',
-      controller: ctrl,
-      templateUrl: './app/components/googleApi/template.html'
+/* harmony export (immutable) */ __webpack_exports__["a"] = distanceCount;
+function distanceCount(app) {
+  app.service('distanceCount', function () {
+    this.defaultBounds = new google.maps.LatLngBounds(new google.maps.LatLng(-33.8902, 151.1759), new google.maps.LatLng(-33.8474, 151.2631));
+    this.options = {
+      bounds: this.defaultBounds,
+      types: []
     };
+    this.address = document.getElementsByClassName('place-input search');
 
-    function ctrl() {}
+    for (let i = 0; i < this.address.length; i++) {
+      new google.maps.places.Autocomplete(this.address[i], this.options);
+    }
   });
 }
 

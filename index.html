@@ -3,15 +3,16 @@
   <head>
     <meta charset="utf-8" />
     <title>Calculator</title>
-    <link rel="stylesheet" href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css">
+    <!-- <link rel="stylesheet" href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css"> -->
 
     <script type="text/javascript" src="./build/bundle.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBsMeetk8vb5UFAtlZ3A6agbV-Nr8q-UV4&libraries=places"></script>
   </head>
 
   <body>
-  	<nav>
-  		<a ng-href='#!/calculator'>Calculator</a>
-  		<a ng-href='#!/googleApi'>GoogleApi</a>
+  	<nav class='top-navigation'>
+  		<a ng-href='#!/calculator' class='option'>Calculator</a>
+  		<a ng-href='#!/googleApi' class='option'>GoogleApi</a>
   	</nav>
   	<main ng-view></main>
   </body>

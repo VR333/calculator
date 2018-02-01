@@ -1,0 +1,12 @@
+distance {
+	.place-input {
+		width: 400px;
+		height: 25px;
+		margin: 0 10px;
+		border-radius: 5px;
+
+		&:focus {
+			border-color: skyblue;
+		}
+	}
+}

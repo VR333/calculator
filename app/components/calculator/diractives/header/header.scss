@@ -11,25 +11,26 @@ header {
     }
 
     .options {
-        display: inline-block;
         float: right;
-    }
 
-    .btn {
-        width: 46px;
-        height: 31px;
-        margin-right: -1px;
-        text-align: center;
-        line-height: 31px;
-        &:hover {
-            background-color: $header-hover-btn-background-color;
+        .btn {
+            width: 46px;
+            height: 31px;
+            float: left;
+            margin-right: -1px;
+            text-align: center;
+            line-height: 31px;
+            &:hover {
+                background-color: $header-hover-btn-background-color;
+            }
+        }
+
+        .btn.close {
+            &:hover {
+                background-color: $header-hover-close-btn-background-color;
+                color: $header-hover-close-btn-text-color;
+            }
         }
     }
 
-    .btn.close {
-        &:hover {
-            background-color: $header-hover-close-btn-background-color;
-            color: $header-hover-close-btn-text-color;
-        }
-    }
 }

@@ -1,1 +1,10 @@
-I will count Distance!!!
+<h1>Find out distance between two points!</h1>
+<input ng-blur="ctrl.lol($event)" class='place-input search' ng-model="ctrl.origins" placeholder='origins'/>
+<input ng-blur="ctrl.lol($event)" class='place-input search' ng-model="ctrl.destinations" placeholder='destination'/>
+<button click='ctrl.countDistance()'>Count</button>
+<div>
+	Distance from 
+	<strong>{{ctrl.origins}}</strong> 
+	to <strong>{{ctrl.destinations}}</strong>
+	is <strong>{{distance}}</strong>
+</div>
