@@ -12,19 +12,31 @@ export function distance(app) {
             templateUrl: './app/components/googleApi/template.html'
         };
 
-        function ctrl(distanceCount) {
+        function ctrl($scope, $http, distanceCount) {
             this.origins = '';
             this.destinations = '';
             this.distance = '';
-            this.api = 'AIzaSyBsMeetk8vb5UFAtlZ3A6agbV-Nr8q-UV4';
+            this.key = 'AIzaSyBsMeetk8vb5UFAtlZ3A6agbV-Nr8q-UV4';
 
             this.countDistance = () => {
                 let origins = encodeURI(this.origins);
                 let destinations = encodeURI(this.destinations);
+   
+                // distanceCount.getDistance(origins, destinations, this.key);
 
-                distanceCount.request(origins, destinations);   
-            };
+                let proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+                let url = `https://maps.googleapis.com/maps/api/distancematrix/json?origins=${this.origins}&destinations=${this.destinations}&key=${this.key}`;
+            
+                $http.get(proxyUrl + url)
+                .then(
+                    response => {
+                        this.distance = response.data.rows[0].elements[0].distance.text;
+                    },
+                    error => {
+                        console.dir(error);
+                    })
+            } 
         }
-    });
+    })
 }
 
