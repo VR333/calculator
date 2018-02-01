@@ -21,16 +21,8 @@ export function distance(app) {
             this.countDistance = () => {
                 let origins = encodeURI(this.origins);
                 let destinations = encodeURI(this.destinations);
-                $http.get(`https://maps.googleapis.com/maps/api/distancematrix/json?origins=${origins}&destinations=${destinations}&key=${this.api}`)
-                    .then(
-                    function(response) {
-                        console.dir(response);
-                        // $scope.distance = response.data;
-                    },
-                    function(error) {
-                        console.dir(error);
-                    }
-                );   
+
+                distanceCount.request(origins, destinations);   
             };
         }
     });
