@@ -68,7 +68,7 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(1);
-module.exports = __webpack_require__(13);
+module.exports = __webpack_require__(14);
 
 
 /***/ }),
@@ -81,15 +81,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__bower_components_angular_angular_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__bower_components_angular_angular_js__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__bower_components_angular_route_angular_route_js__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__bower_components_angular_route_angular_route_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__bower_components_angular_route_angular_route_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_calculator_app_js__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_googleApi_app_js__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__bower_components_ng_map_autocomplete_src_ng_map_autocomplete_js__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__bower_components_ng_map_autocomplete_src_ng_map_autocomplete_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__bower_components_ng_map_autocomplete_src_ng_map_autocomplete_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_calculator_app_js__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_googleApi_app_js__ = __webpack_require__(12);
 
 
 
 
-const app = angular.module('tester', ['ngRoute']);
-const Calculator = Object(__WEBPACK_IMPORTED_MODULE_2__components_calculator_app_js__["a" /* calculator */])(app);
-const Distance = Object(__WEBPACK_IMPORTED_MODULE_3__components_googleApi_app_js__["a" /* distance */])(app);
+
+const app = angular.module('tester', ['ngRoute', 'ngMapAutocomplete']);
+const Calculator = Object(__WEBPACK_IMPORTED_MODULE_3__components_calculator_app_js__["a" /* calculator */])(app);
+const Distance = Object(__WEBPACK_IMPORTED_MODULE_4__components_googleApi_app_js__["a" /* distance */])(app);
 app.config(['$routeProvider', function ($routeProvider) {
   $routeProvider.when('/calculator', {
     templateUrl: './app/components/calculator/rename.html'
@@ -20076,7 +20079,7 @@ function calculate(app) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = distance;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__servises_distance_js__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__servises_distance_js__ = __webpack_require__(13);
 
 function distance(app) {
   const DistanceCount = Object(__WEBPACK_IMPORTED_MODULE_0__servises_distance_js__["a" /* distanceCount */])(app);
@@ -20095,15 +20098,13 @@ function distance(app) {
       $scope.distance = '';
       this.api = 'AIzaSyBsMeetk8vb5UFAtlZ3A6agbV-Nr8q-UV4';
 
-      this.lol = event => {
-        console.dir(event);
-        console.log(event.target.value);
-      };
-
       this.countDistance = () => {
-        $http.get(`https://maps.googleapis.com/maps/api/distancematrix/json?origins=${this.origins}&destinations=${this.destinations}&key=${this.api}`).then(function (response) {
-          console.dir(response.data);
-          $scope.distance = response.data;
+        let origins = encodeURI(this.origins);
+        let destinations = encodeURI(this.destinations);
+        $http.get(`https://maps.googleapis.com/maps/api/distancematrix/json?origins=${origins}&destinations=${destinations}&key=${this.api}`).then(function (response) {
+          console.dir(response); // $scope.distance = response.data;
+        }, function (error) {
+          console.dir(error);
         });
       };
     }
@@ -20112,12 +20113,28 @@ function distance(app) {
 
 /***/ }),
 /* 13 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = distanceCount;
+function distanceCount(app) {
+  app.service('distanceCount', function () {
+    this.address = document.getElementsByClassName('place-input');
+
+    for (let i = 0; i < this.address.length; i++) {
+      new google.maps.places.Autocomplete(this.address[i]);
+    }
+  });
+}
+
+/***/ }),
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(14);
+var content = __webpack_require__(15);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -20125,7 +20142,7 @@ var transform;
 var options = {"hmr":true}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(16)(content, options);
+var update = __webpack_require__(17)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -20142,10 +20159,10 @@ if(false) {
 }
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(15)(false);
+exports = module.exports = __webpack_require__(16)(false);
 // imports
 
 
@@ -20156,7 +20173,7 @@ exports.push([module.i, "btn .btn{width:25%;height:55px;float:left;font-size:18p
 
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports) {
 
 /*
@@ -20238,7 +20255,7 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -20294,7 +20311,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(17);
+var	fixUrls = __webpack_require__(18);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -20610,7 +20627,7 @@ function updateLink (link, options, obj) {
 
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports) {
 
 
@@ -20705,25 +20722,216 @@ module.exports = function (css) {
 
 
 /***/ }),
-/* 18 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/* 19 */
+/***/ (function(module, exports) {
 
-"use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = distanceCount;
-function distanceCount(app) {
-  app.service('distanceCount', function () {
-    this.defaultBounds = new google.maps.LatLngBounds(new google.maps.LatLng(-33.8902, 151.1759), new google.maps.LatLng(-33.8474, 151.2631));
-    this.options = {
-      bounds: this.defaultBounds,
-      types: []
-    };
-    this.address = document.getElementsByClassName('place-input search');
+/*!
+ The MIT License
 
-    for (let i = 0; i < this.address.length; i++) {
-      new google.maps.places.Autocomplete(this.address[i], this.options);
+ Copyright (c) 2014 Will Palahnuk
+
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE.
+ */
+
+/**
+ * A directive for adding google places autocomplete to a text box
+ * google places autocomplete info: https://developers.google.com/maps/documentation/javascript/places
+ *
+ * Usage:
+ *
+ * <input type="text"  ng-autocomplete ng-model="autocomplete" options="options" details="details/>
+ *
+ * + ng-model - autocomplete textbox value
+ *
+ * + details - more detailed autocomplete result, includes address parts, latlng, etc. (Optional)
+ *
+ * + options - configuration for the autocomplete (Optional)
+ *
+ *       + types: type,        String, values can be 'geocode', 'establishment', '(regions)', or '(cities)'
+ *       + bounds: bounds,     Google maps LatLngBounds Object, biases results to bounds, but may return results outside these bounds
+ *       + country: country    String, ISO 3166-1 Alpha-2 compatible country code. examples; 'ca', 'us', 'gb'
+ *       + watchEnter:         Boolean, true; on Enter select top autocomplete result. false(default); enter ends autocomplete
+ *
+ * example:
+ *
+ *    options = {
+ *        types: '(cities)',
+ *        country: 'ca'
+ *    }
+<<<<<<< HEAD
+**/
+angular.module("ngMapAutocomplete", []).directive('ngMapAutocomplete', ['$timeout', function ($timeout) {
+  return {
+    require: 'ngModel',
+    scope: {
+      ngModel: '=ngModel',
+      options: '=?',
+      details: '=?'
+    },
+    link: function (scope, element, attrs, ngModel) {
+      if (!ngModel) {
+        return;
+      } // do nothing if no ng-model
+      //options for autocomplete
+
+
+      var opts;
+      var watchEnter = false; //convert options provided to opts
+
+      var initOpts = function () {
+        opts = {};
+
+        if (scope.options) {
+          watchEnter = scope.options.watchEnter === true;
+
+          if (scope.options.types) {
+            opts.types = [];
+            opts.types.push(scope.options.types);
+            scope.gPlace.setTypes(opts.types);
+          } else {
+            scope.gPlace.setTypes([]);
+          }
+
+          if (scope.options.bounds) {
+            opts.bounds = scope.options.bounds;
+            scope.gPlace.setBounds(opts.bounds);
+          } else {
+            scope.gPlace.setBounds(null);
+          }
+
+          if (scope.options.country) {
+            opts.componentRestrictions = {
+              country: scope.options.country
+            };
+            scope.gPlace.setComponentRestrictions(opts.componentRestrictions);
+          } else {
+            scope.gPlace.setComponentRestrictions(null);
+          }
+        }
+      };
+
+      if (scope.gPlace === undefined) {
+        scope.gPlace = new google.maps.places.Autocomplete(element[0], {});
+      }
+
+      google.maps.event.addListener(scope.gPlace, 'place_changed', function () {
+        var result = scope.gPlace.getPlace();
+
+        if (result !== undefined) {
+          if (result.address_components !== undefined) {
+            scope.$apply(function () {
+              scope.details = result;
+              scope.$emit('mapentrySelected', scope.details);
+              ngModel.$setViewValue(element.val());
+            });
+          } else {
+            if (watchEnter) {
+              getPlace(result);
+            }
+          }
+        }
+      });
+      /*                var applySelection = function() {
+                          var result = scope.gPlace.getPlace();
+                          console.log(scope.gPlace.getPlace());
+                          if (true) {
+                              if (true) {
+      
+                                  scope.$apply(function () {
+                                      // scope.details = result;
+                                      // scope.details.description = element.val();
+                                      ngModel.$setViewValue(element.val());
+                                  });
+                              }
+                              else {
+                                  if (watchEnter) {
+                                      getPlace(result);
+                                  }
+                              }
+                          }
+                      };
+                      */
+      // Watch enter and update autocomplete before sending
+
+      element.bind("keydown keypress", function (event) {
+        if (event.which === 13) {
+          google.maps.event.trigger(scope.gPlace, 'place_changed');
+          return false;
+        }
+      }); //function to get retrieve the autocompletes first result using the AutocompleteService
+
+      var getPlace = function (result) {
+        var autocompleteService = new google.maps.places.AutocompleteService();
+
+        if (result.name.length > 0) {
+          autocompleteService.getPlacePredictions({
+            input: result.name,
+            offset: result.name.length
+          }, function listentoresult(list, status) {
+            if (list === null || list.length === 0) {
+              scope.$apply(function () {
+                scope.details = null;
+              });
+            } else {
+              var placesService = new google.maps.places.PlacesService(element[0]);
+              placesService.getDetails({
+                'reference': list[0].reference
+              }, function detailsresult(detailsResult, placesServiceStatus) {
+                if (placesServiceStatus === google.maps.GeocoderStatus.OK) {
+                  scope.$apply(function () {
+                    //detailsResult.formatted_address = list[0].description;
+                    detailsResult.description = list[0].description;
+                    ngModel.$setViewValue(detailsResult.formatted_address);
+                    element.val(detailsResult.formatted_address);
+                    scope.details = detailsResult;
+                  });
+                }
+              });
+            }
+          });
+        }
+      };
+
+      ngModel.$render = function () {
+        var location = ngModel.$viewValue;
+        element.val(location);
+      }; //watch options provided to directive
+
+
+      scope.watchOptions = function () {
+        return scope.options;
+      };
+
+      scope.$watch(scope.watchOptions, function () {
+        initOpts();
+      }, true); //on focusout the value reverts, need to set it again.
+      // with a timer to prevent maps event bug
+
+      element.on('focusout', function (event) {
+        $timeout(function () {
+          element.val(ngModel.$viewValue);
+          event.preventDefault();
+        }, 2, false); //    element.unbind('focusout');
+      });
     }
-  });
-}
+  };
+}]);
 
 /***/ })
 /******/ ]);

@@ -1,7 +1,7 @@
 <h1>Find out distance between two points!</h1>
-<input ng-blur="ctrl.lol($event)" class='place-input search' ng-model="ctrl.origins" placeholder='origins'/>
-<input ng-blur="ctrl.lol($event)" class='place-input search' ng-model="ctrl.destinations" placeholder='destination'/>
-<button click='ctrl.countDistance()'>Count</button>
+<input ng-map-autocomplete class='place-input' ng-model="ctrl.origins" placeholder='origins'/>
+<input ng-map-autocomplete class='place-input' ng-model="ctrl.destinations" placeholder='destination'/>
+<button ng-click='ctrl.countDistance()'>Count</button>
 <div>
 	Distance from 
 	<strong>{{ctrl.origins}}</strong> 

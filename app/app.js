@@ -1,9 +1,10 @@
 import '../bower_components/angular/angular.js';
 import '../bower_components/angular-route/angular-route.js';
+import '../bower_components/ng-map-autocomplete/src/ng-map-autocomplete.js';
 import {calculator} from './components/calculator/app.js';
 import {distance} from './components/googleApi/app.js';
 
-const app = angular.module('tester', ['ngRoute']);
+const app = angular.module('tester', ['ngRoute', 'ngMapAutocomplete']);
 const Calculator = calculator(app);
 const Distance = distance(app);
 
