@@ -12,10 +12,10 @@ export function distance(app) {
             templateUrl: './app/components/googleApi/template.html'
         };
 
-        function ctrl($scope, $http, distanceCount) {
+        function ctrl(distanceCount) {
             this.origins = '';
             this.destinations = '';
-            $scope.distance = '';
+            this.distance = '';
             this.api = 'AIzaSyBsMeetk8vb5UFAtlZ3A6agbV-Nr8q-UV4';
 
             this.countDistance = () => {
